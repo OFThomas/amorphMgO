@@ -42,4 +42,3 @@ minimize 1e-15 1e-15 5000 5000 #minimiser settings
 
 #----------------------SIMULATION DONE-------------------------------
 print "Calculation complete"
-
