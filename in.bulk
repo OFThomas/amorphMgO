@@ -73,12 +73,13 @@ fix 1 all box/relax tri 0.0001 vmax 0.0001 #specify what is allowed to move (her
 reset_timestep	0 #start at 0
 thermo 10 #how often to output properties
 thermo_style custom step pe cella cellb cellc cellalpha cellbeta cellgamma #custom specification of what to print
+
 dump 1 all custom 1 dump.lammpstrj id type xs ys zs  #dump info to trjectory file
 dump 2 all xyz 1 dump.xyz  #dump info to xyz file
 dump visual all cfg 250 dump.snap.*.cfg mass type xs ys zs vx vy vz
+
 min_style cg #apply conjugate gradients
 minimize 1e-15 1e-15 5000 5000 #minimiser settings
 
 #----------------------SIMULATION DONE-------------------------------
 print "Calculation complete"
-
