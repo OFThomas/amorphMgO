@@ -1,4 +1,4 @@
-LAMMPS (18 Jun 2016-ICMS)
+LAMMPS (28 Jun 2016-ICMS)
 WARNING: OMP_NUM_THREADS environment is not set. (../comm.cpp:90)
   using 1 OpenMP thread(s) per MPI task
 #---------------------------WELCOME----------------------------
@@ -48,6 +48,10 @@ pair_modify table 0
 neighbor 2.0 bin
 neigh_modify delay 0 every 1 check yes
 
+# ---------- Define Settings ---------------------
+compute eng all pe/atom
+compute eatoms all reduce sum c_eng
+
 #-----------------------MINIMISATION-------------------------------
 reset_timestep	0 #start at 0
 thermo 10 #how often to output properties
@@ -73,7 +77,7 @@ Neighbor list info ...
   master list distance cutoff = 10
   ghost atom cutoff = 10
   binsize = 5 -> bins = 1 80 80
-Memory usage per processor = 108.491 Mbytes
+Memory usage per processor = 159.511 Mbytes
 Step PotEng 
        0    -112832.6 
       10   -112927.21 
@@ -89,9 +93,9 @@ Step PotEng
      110   -113009.03 
      120   -113009.24 
      125    -113009.3 
-Loop time of 188.487 on 1 procs for 125 steps with 5508 atoms
+Loop time of 108.513 on 1 procs for 125 steps with 5508 atoms
 
-99.4% CPU use with 1 MPI tasks x 1 OpenMP threads
+99.9% CPU use with 1 MPI tasks x 1 OpenMP threads
 
 Minimization stats:
   Stopping criterion = linesearch alpha is zero
@@ -105,13 +109,13 @@ Minimization stats:
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 57.085     | 57.085     | 57.085     |  -nan | 30.29
-Kspace  | 127.79     | 127.79     | 127.79     |   0.0 | 67.80
-Neigh   | 0.2249     | 0.2249     | 0.2249     |   0.0 |  0.12
-Comm    | 0.22144    | 0.22144    | 0.22144    |   0.0 |  0.12
-Output  | 2.9073     | 2.9073     | 2.9073     |   0.0 |  1.54
+Pair    | 32.882     | 32.882     | 32.882     |   0.0 | 30.30
+Kspace  | 73.583     | 73.583     | 73.583     |   0.0 | 67.81
+Neigh   | 0.14666    | 0.14666    | 0.14666    |   0.0 |  0.14
+Comm    | 0.1148     | 0.1148     | 0.1148     |   0.0 |  0.11
+Output  | 1.6839     | 1.6839     | 1.6839     |   0.0 |  1.55
 Modify  | 0          | 0          | 0          |   0.0 |  0.00
-Other   |            | 0.2564     |            |       |  0.14
+Other   |            | 0.1024     |            |       |  0.09
 
 Nlocal:    5508 ave 5508 max 5508 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
@@ -126,6 +130,11 @@ Neighbor list builds = 4
 Dangerous builds = 0
 
 #----------------------SIMULATION DONE-------------------------------
-print "Calculation complete"
-Calculation complete
-Total wall time: 0:03:09
+
+variable natoms equal "count(all)"
+variable teng equal "c_eatoms"
+variable length equal "lx"
+variable ecoh equal "v_teng/v_natoms"
+
+print "Total energy (eV) = ${teng};"
+ERROR: Compute used in variable between runs is not current (../variable.cpp:1287)

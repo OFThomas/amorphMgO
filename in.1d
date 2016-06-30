@@ -32,6 +32,10 @@ pair_modify table 0
 neighbor 2.0 bin
 neigh_modify delay 0 every 1 check yes
 
+# ---------- Define Settings --------------------- 
+#compute eng all pe/atom 
+#compute eatoms all reduce sum c_eng 
+
 #-----------------------MINIMISATION-------------------------------
 reset_timestep	0 #start at 0
 thermo 10 #how often to output properties
@@ -43,4 +47,15 @@ min_style cg #apply conjugate gradients
 minimize 1e-15 1e-15 5000 5000 #minimiser settings
 
 #----------------------SIMULATION DONE-------------------------------
+
+variable natoms equal "count(all)" 
+variable teng equal "c_eatoms"
+variable length equal "lx"
+variable ecoh equal "v_teng/v_natoms"
+
+#print "Total energy (eV) = ${teng};"
+print "Number of atoms = ${natoms};"
+print "Lattice constant (Angstoms) = ${length};"
+#print "Cohesive energy (eV) = ${ecoh};"
+
 print "Calculation complete"

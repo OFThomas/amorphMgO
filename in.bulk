@@ -82,4 +82,15 @@ min_style cg #apply conjugate gradients
 minimize 1e-15 1e-15 5000 5000 #minimiser settings
 
 #----------------------SIMULATION DONE-------------------------------
+variable natoms equal "count(all)" 
+variable teng equal "c_eatoms"
+variable length equal "lx"
+variable ecoh equal "v_teng/v_natoms"
+
+#print "Total energy (eV) = ${teng};"
+print "Number of atoms = ${natoms};"
+print "Lattice constant (Angstoms) = ${length};"
+#print "Cohesive energy (eV) = ${ecoh};"
+
+print "All done!"
 print "Calculation complete"
