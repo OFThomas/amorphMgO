@@ -16,7 +16,7 @@ region box block 0.0 4.212 -200.0 200.0 -200.0 200.0 units box
 boundary p p p  #PBC in x-direction
 create_box 2 box  #generate simulation box
 Created orthogonal box = (0 -200 -200) to (4.212 200 200)
-  1 by 1 by 1 MPI processor grid
+  1 by 2 by 3 MPI processor grid
 
 #read in coordinates
 read_dump test.xyz 0 x y z box no add yes format xyz
@@ -48,10 +48,6 @@ pair_modify table 0
 neighbor 2.0 bin
 neigh_modify delay 0 every 1 check yes
 
-# ---------- Define Settings ---------------------
-compute eng all pe/atom
-compute eatoms all reduce sum c_eng
-
 #-----------------------MINIMISATION-------------------------------
 reset_timestep	0 #start at 0
 thermo 10 #how often to output properties
@@ -69,7 +65,7 @@ WARNING: Using polynomial approximation for long-range coulomb (../kspace.cpp:31
   estimated absolute RMS force accuracy = 0.0013814
   estimated relative force accuracy = 9.59332e-05
   using double precision FFTs
-  3d grid and FFT values/proc = 1098162 518400
+  3d grid and FFT values/proc = 198882 86400
 Neighbor list info ...
   2 neighbor list requests
   update every 1 steps, delay 0 steps, check yes
@@ -77,7 +73,7 @@ Neighbor list info ...
   master list distance cutoff = 10
   ghost atom cutoff = 10
   binsize = 5 -> bins = 1 80 80
-Memory usage per processor = 159.511 Mbytes
+Memory usage per processor = 22.4404 Mbytes
 Step PotEng 
        0    -112832.6 
       10   -112927.21 
@@ -93,9 +89,9 @@ Step PotEng
      110   -113009.03 
      120   -113009.24 
      125    -113009.3 
-Loop time of 108.513 on 1 procs for 125 steps with 5508 atoms
+Loop time of 73.2355 on 6 procs for 125 steps with 5508 atoms
 
-99.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+91.4% CPU use with 6 MPI tasks x 1 OpenMP threads
 
 Minimization stats:
   Stopping criterion = linesearch alpha is zero
@@ -109,20 +105,20 @@ Minimization stats:
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 32.882     | 32.882     | 32.882     |   0.0 | 30.30
-Kspace  | 73.583     | 73.583     | 73.583     |   0.0 | 67.81
-Neigh   | 0.14666    | 0.14666    | 0.14666    |   0.0 |  0.14
-Comm    | 0.1148     | 0.1148     | 0.1148     |   0.0 |  0.11
-Output  | 1.6839     | 1.6839     | 1.6839     |   0.0 |  1.55
+Pair    | 0.006438   | 6.1745     | 20.826     | 344.3 |  8.43
+Kspace  | 49.648     | 64.517     | 70.866     | 108.3 | 88.09
+Neigh   | 6.5327e-05 | 0.030737   | 0.10536    |  24.4 |  0.04
+Comm    | 0.0050726  | 0.30007    | 0.50503    |  38.9 |  0.41
+Output  | 1.6244     | 1.6523     | 1.6716     |   1.2 |  2.26
 Modify  | 0          | 0          | 0          |   0.0 |  0.00
-Other   |            | 0.1024     |            |       |  0.09
+Other   |            | 0.5613     |            |       |  0.77
 
-Nlocal:    5508 ave 5508 max 5508 min
-Histogram: 1 0 0 0 0 0 0 0 0 0
-Nghost:    24786 ave 24786 max 24786 min
-Histogram: 1 0 0 0 0 0 0 0 0 0
-Neighs:    1.13784e+06 ave 1.13784e+06 max 1.13784e+06 min
-Histogram: 1 0 0 0 0 0 0 0 0 0
+Nlocal:    918 ave 3102 max 0 min
+Histogram: 4 0 0 0 0 0 0 1 0 1
+Nghost:    5471.17 ave 17347 max 0 min
+Histogram: 3 1 0 0 0 0 0 1 0 1
+Neighs:    189640 ave 643073 max 0 min
+Histogram: 4 0 0 0 0 0 0 1 0 1
 
 Total # of neighbors = 1137839
 Ave neighs/atom = 206.579
@@ -136,5 +132,13 @@ variable teng equal "c_eatoms"
 variable length equal "lx"
 variable ecoh equal "v_teng/v_natoms"
 
-print "Total energy (eV) = ${teng};"
-ERROR: Compute used in variable between runs is not current (../variable.cpp:1287)
+#print "Total energy (eV) = ${teng};"
+print "Number of atoms = ${natoms};"
+Number of atoms = 5508;
+print "Lattice constant (Angstoms) = ${length};"
+Lattice constant (Angstoms) = 4.212;
+#print "Cohesive energy (eV) = ${ecoh};"
+
+print "Calculation complete"
+Calculation complete
+Total wall time: 0:01:13

@@ -32,10 +32,6 @@ pair_modify table 0
 neighbor 2.0 bin
 neigh_modify delay 0 every 1 check yes
 
-# ---------- Define Settings --------------------- 
-#compute eng all pe/atom 
-#compute eatoms all reduce sum c_eng 
-
 #-----------------------MINIMISATION-------------------------------
 reset_timestep	0 #start at 0
 thermo 10 #how often to output properties
