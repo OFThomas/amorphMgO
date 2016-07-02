@@ -37,8 +37,8 @@ reset_timestep	0 #start at 0
 thermo 10 #how often to output properties
 thermo_style custom step pe #custom specification of what to print
 dump 1 all custom 1 dump.lammpstrj id type xs ys zs  #dump info to trjectory file
-dump 2 all xyz 1 dump.1d.xyz  #dump info to xyz file
-dump visual all cfg 10 dump.1d.*.cfg mass type xs ys zs vx vy vz
+#dump 2 all xyz 1 dump.1d.xyz  #dump info to xyz file
+#dump visual all cfg 10 dump.1d.*.cfg mass type xs ys zs vx vy vz
 min_style cg #apply conjugate gradients
 minimize 1e-15 1e-15 5000 5000 #minimiser settings
 

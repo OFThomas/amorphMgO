@@ -59,10 +59,10 @@ c	shift of crystals as frac of a
 c	number of layers in b directions (perp to centre)	
 c         to generate core region
 c          nbmin=-5
-c          nbmax=-1
+c         nbmax=-1
                 
 c         to generate hollow core
-          nbmin=-5
+          nbmin=-1
 	  nbmax=20
 	
 c	number of layers in a directions (tangent to perp)	
@@ -444,8 +444,9 @@ c	count atoms in crystal
 	  endif
 	enddo
 	
-	write(*,*) atomscrys
-	write(*,*) 'Atoms. Timestep: 0'
+	write(*,"(I4)") atomscrys
+c	write(*,*) 'Atoms. Timestep: 0'
+	write(*,"(I2)") 0
 	do I=1,atoms
 	  if(C(i).ne.0) then
 	    write(*,*) Id(i),Zc(i), Xc(i),Yc(i)
