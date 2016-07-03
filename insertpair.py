@@ -5,8 +5,8 @@ import numpy as np
 #natoms=int(raw_input())
 
 lenunit = 4.212
-delx=0.5*lenunit
-dely=0.4*lenunit
+delx=0.8*lenunit
+dely=0.8*lenunit
 
 ypoint= 4*lenunit
 zpoint= 2*lenunit
@@ -19,8 +19,12 @@ xupper=4.212/float(2.0)
 xc1=xlower
 xc2=xupper
 
-yc=6.1
-zc=3.5
+yc=6.1 #3delta x
+zc=3.5 # 2delta y
+
+yc=1.0*delx
+zc=-0.5*dely
+
 n=4
 atom =1
 for i in range (0, n):
@@ -29,7 +33,7 @@ for i in range (0, n):
 	#	xc2=xlower
 	#offsety=i+ypoint
 	#offsetz=i+zpoint
-	for j in range (0, n):
+	for j in range (0, n+1):
 		#if ((i+j)%2==0):		
 		print mg, xc1, yc+(delx*i), zc+(dely*j)
 		print o, xc2, yc+(delx*i), zc+(dely*j)
