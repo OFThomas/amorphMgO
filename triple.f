@@ -62,7 +62,7 @@ c          nbmin=-5
 c         nbmax=-1
                 
 c         to generate hollow core
-          nbmin=-1
+          nbmin=2
 	  nbmax=20
 	
 c	number of layers in a directions (tangent to perp)	
