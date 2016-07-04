@@ -10,135 +10,190 @@ units metal		#distance in A and energy in eV
 atom_style charge	#specifies what properties to associate with atoms
 
 #cell vectors
-variable a equal  4.212
+#variable a equal  4.212
+#variable b equal  4.212
+#variable c equal  4.212
 
-region box block 0.0 4.212 -200.0 200.0 -200.0 200.0 units box
-boundary p p p  #PBC in x-direction
+variable a equal  4.15
+variable b equal  4.15
+variable c equal  4.15
+
+variable alpha equal 90.0000
+variable beta equal  90.0000
+variable gamma equal 90.0000
+variable deg_to_rad equal 0.0174532925
+
+#set up general triclinic box dimenions
+variable lx equal "v_a"
+variable xy equal "v_b*cos(v_gamma*v_deg_to_rad)"
+variable xz equal "v_c*cos(v_beta*v_deg_to_rad)"
+variable ly equal "sqrt((v_b^2)-(v_xy^2))"
+variable yz equal "((v_b*v_c*cos(v_alpha*v_deg_to_rad))-(v_xy*v_xz))/v_ly"
+variable lz equal "sqrt((v_c^2)-(v_xz^2)-(v_yz^2))"
+
+box tilt large
+region box prism 0.0 ${lx} 0.0 ${ly} 0.0 ${lz} ${xy} ${xz} ${yz} units box
+region box prism 0.0 4.15 0.0 ${ly} 0.0 ${lz} ${xy} ${xz} ${yz} units box
+region box prism 0.0 4.15 0.0 4.15 0.0 ${lz} ${xy} ${xz} ${yz} units box
+region box prism 0.0 4.15 0.0 4.15 0.0 4.15 ${xy} ${xz} ${yz} units box
+region box prism 0.0 4.15 0.0 4.15 0.0 4.15 7.44882145840646e-09 ${xz} ${yz} units box
+region box prism 0.0 4.15 0.0 4.15 0.0 4.15 7.44882145840646e-09 7.44882145840646e-09 ${yz} units box
+region box prism 0.0 4.15 0.0 4.15 0.0 4.15 7.44882145840646e-09 7.44882145840646e-09 7.44882144503659e-09 units box
+boundary p p p  #PBCs in all directions
 create_box 2 box  #generate simulation box
-Created orthogonal box = (0 -200 -200) to (4.212 200 200)
-  1 by 1 by 2 MPI processor grid
+Created triclinic box = (0 0 0) to (4.15 4.15 4.15) with tilt (7.44882e-09 7.44882e-09 7.44882e-09)
+  1 by 1 by 1 MPI processor grid
 
-#read in coordinates
-read_dump test.xyz 0 x y z box no add yes format xyz
-  orthogonal box = (0 -200 -200) to (4.212 200 200)
-  0 atoms before read
-  5508 atoms in snapshot
-  0 atoms purged
-  0 atoms replaced
-  0 atoms trimmed
-  5508 atoms added
-  5508 atoms after read
+print "Cell dimensions:"
+Cell dimensions:
+print "lx: ${lx}"
+lx: 4.15
+print "ly: ${ly}"
+ly: 4.15
+print "lz: ${lz}"
+lz: 4.15
+print "xy: ${xy}"
+xy: 7.44882145840646e-09
+print "yz: ${yz}"
+yz: 7.44882144503659e-09
+print "xz: ${xz}"
+xz: 7.44882145840646e-09
+
+#set up lattice
+#first Mg
+lattice custom 1.0 a1 ${lx} 0.0 0.0 a2 ${xy} ${ly} 0.0 a3 ${xz} ${yz} ${lz} 	       basis 0.0 0.0 0.0                basis 0.5 0.5 0.0 	       basis 0.5 0.0 0.5 	       basis 0.0 0.5 0.5
+lattice custom 1.0 a1 4.15 0.0 0.0 a2 ${xy} ${ly} 0.0 a3 ${xz} ${yz} ${lz} 	       basis 0.0 0.0 0.0                basis 0.5 0.5 0.0 	       basis 0.5 0.0 0.5 	       basis 0.0 0.5 0.5
+lattice custom 1.0 a1 4.15 0.0 0.0 a2 7.44882145840646e-09 ${ly} 0.0 a3 ${xz} ${yz} ${lz} 	       basis 0.0 0.0 0.0                basis 0.5 0.5 0.0 	       basis 0.5 0.0 0.5 	       basis 0.0 0.5 0.5
+lattice custom 1.0 a1 4.15 0.0 0.0 a2 7.44882145840646e-09 4.15 0.0 a3 ${xz} ${yz} ${lz} 	       basis 0.0 0.0 0.0                basis 0.5 0.5 0.0 	       basis 0.5 0.0 0.5 	       basis 0.0 0.5 0.5
+lattice custom 1.0 a1 4.15 0.0 0.0 a2 7.44882145840646e-09 4.15 0.0 a3 7.44882145840646e-09 ${yz} ${lz} 	       basis 0.0 0.0 0.0                basis 0.5 0.5 0.0 	       basis 0.5 0.0 0.5 	       basis 0.0 0.5 0.5
+lattice custom 1.0 a1 4.15 0.0 0.0 a2 7.44882145840646e-09 4.15 0.0 a3 7.44882145840646e-09 7.44882144503659e-09 ${lz} 	       basis 0.0 0.0 0.0                basis 0.5 0.5 0.0 	       basis 0.5 0.0 0.5 	       basis 0.0 0.5 0.5
+lattice custom 1.0 a1 4.15 0.0 0.0 a2 7.44882145840646e-09 4.15 0.0 a3 7.44882145840646e-09 7.44882144503659e-09 4.15 	       basis 0.0 0.0 0.0                basis 0.5 0.5 0.0 	       basis 0.5 0.0 0.5 	       basis 0.0 0.5 0.5
+Lattice spacing in x,y,z = 4.15 4.15 4.15
+create_atoms 1 region box #put Mg atoms in box
+Created 4 atoms
+mass 1 24.305 #specify mass of atoms
+
+#then O
+lattice custom 1.0 a1 ${lx} 0.0 0.0 a2 ${xy} ${ly} 0.0 a3 ${xz} ${yz} ${lz}                basis 0.5 0.0 0.0 	       basis 0.0 0.5 0.0 	       basis 0.0 0.0 0.5 	       basis 0.5 0.5 0.5
+lattice custom 1.0 a1 4.15 0.0 0.0 a2 ${xy} ${ly} 0.0 a3 ${xz} ${yz} ${lz}                basis 0.5 0.0 0.0 	       basis 0.0 0.5 0.0 	       basis 0.0 0.0 0.5 	       basis 0.5 0.5 0.5
+lattice custom 1.0 a1 4.15 0.0 0.0 a2 7.44882145840646e-09 ${ly} 0.0 a3 ${xz} ${yz} ${lz}                basis 0.5 0.0 0.0 	       basis 0.0 0.5 0.0 	       basis 0.0 0.0 0.5 	       basis 0.5 0.5 0.5
+lattice custom 1.0 a1 4.15 0.0 0.0 a2 7.44882145840646e-09 4.15 0.0 a3 ${xz} ${yz} ${lz}                basis 0.5 0.0 0.0 	       basis 0.0 0.5 0.0 	       basis 0.0 0.0 0.5 	       basis 0.5 0.5 0.5
+lattice custom 1.0 a1 4.15 0.0 0.0 a2 7.44882145840646e-09 4.15 0.0 a3 7.44882145840646e-09 ${yz} ${lz}                basis 0.5 0.0 0.0 	       basis 0.0 0.5 0.0 	       basis 0.0 0.0 0.5 	       basis 0.5 0.5 0.5
+lattice custom 1.0 a1 4.15 0.0 0.0 a2 7.44882145840646e-09 4.15 0.0 a3 7.44882145840646e-09 7.44882144503659e-09 ${lz}                basis 0.5 0.0 0.0 	       basis 0.0 0.5 0.0 	       basis 0.0 0.0 0.5 	       basis 0.5 0.5 0.5
+lattice custom 1.0 a1 4.15 0.0 0.0 a2 7.44882145840646e-09 4.15 0.0 a3 7.44882145840646e-09 7.44882144503659e-09 4.15                basis 0.5 0.0 0.0 	       basis 0.0 0.5 0.0 	       basis 0.0 0.0 0.5 	       basis 0.5 0.5 0.5
+Lattice spacing in x,y,z = 4.15 4.15 4.15
+create_atoms 2 region box #put O atoms in box
+Created 4 atoms
+mass 2 15.9994 #specify mass of atoms
 
 #set up potential
 set type 1 charge  2.000000
-  2754 settings made for charge
+  4 settings made for charge
 set type 2 charge -2.000000
-  2754 settings made for charge
-
-mass 1 24.305 #specify mass of atoms
-mass 2 15.9994 #specify mass of atoms
+  4 settings made for charge
 
 pair_style hybrid/overlay buck 8.0 coul/long 8.0
 pair_coeff 1 2 buck 1284.38000  0.299700  0.000000 8.0
 pair_coeff 2 2 buck 9574.95996  0.219200  32.00000 8.0
 pair_coeff * * coul/long
-kspace_style pppm 1.0e-4
+kspace_style ewald 1.0e-8
 pair_modify table 0
 
 neighbor 2.0 bin
 neigh_modify delay 0 every 1 check yes
 
 #-----------------------MINIMISATION-------------------------------
+fix 1 all box/relax tri 0.0001 vmax 0.0001 #specify what is allowed to move (here all atoms and x,y,z cell vectors)
 reset_timestep	0 #start at 0
 thermo 10 #how often to output properties
-thermo_style custom step pe #custom specification of what to print
-dump 1 all custom 1 dump.lammpstrj id type xs ys zs  #dump info to trjectory file
-#dump 2 all xyz 1 dump.1d.xyz  #dump info to xyz file
-#dump visual all cfg 10 dump.1d.*.cfg mass type xs ys zs vx vy vz
+thermo_style custom step pe cella cellb cellc cellalpha cellbeta cellgamma #custom specification of what to print
+
+dump 1 all custom 1 dumpbulk.lammpstrj id type xs ys zs  #dump info to trjectory file
+#dump 2 all xyz 1 dump.xyz  #dump info to xyz file
+#dump visual all cfg 250 dump.snap.*.cfg mass type xs ys zs vx vy vz
+
 min_style cg #apply conjugate gradients
 minimize 1e-15 1e-15 5000 5000 #minimiser settings
-PPPM initialization ...
+Ewald initialization ...
 WARNING: Using polynomial approximation for long-range coulomb (../kspace.cpp:316)
-  G vector (1/distance) = 0.358695
-  grid = 9 240 240
-  stencil order = 5
-  estimated absolute RMS force accuracy = 0.0013814
-  estimated relative force accuracy = 9.59332e-05
-  using double precision FFTs
-  3d grid and FFT values/proc = 564642 259200
+  G vector (1/distance) = 0.535687
+  estimated absolute RMS force accuracy = 1.43996e-07
+  estimated relative force accuracy = 1e-08
+  KSpace vectors: actual max1d max3d = 128 4 364
+                  kxmax kymax kzmax  = 4 4 4
 Neighbor list info ...
   2 neighbor list requests
   update every 1 steps, delay 0 steps, check yes
   max neighbors/atom: 2000, page size: 100000
   master list distance cutoff = 10
   ghost atom cutoff = 10
-  binsize = 5 -> bins = 1 80 80
-Memory usage per processor = 57.8773 Mbytes
-Step PotEng 
-       0    -112832.6 
-      10   -112927.21 
-      20   -112951.36 
-      30   -112968.06 
-      40   -112982.56 
-      50   -112994.99 
-      60   -112999.83 
-      70   -113003.61 
-      80   -113006.36 
-      90   -113007.49 
-     100    -113008.5 
-     110   -113009.03 
-     120   -113009.24 
-     125    -113009.3 
-Loop time of 196.868 on 2 procs for 125 steps with 5508 atoms
+  binsize = 5 -> bins = 1 1 1
+Memory usage per processor = 12.0987 Mbytes
+Step PotEng Cella Cellb Cellc CellAlpha CellBeta CellGamma 
+       0   -164.48873         4.15         4.15         4.15           90           90           90 
+      10   -164.50382      4.15415      4.15415      4.15415           90           90           90 
+      20    -164.5178       4.1583       4.1583       4.1583           90           90           90 
+      30    -164.5307      4.16245      4.16245      4.16245           90           90           90 
+      40   -164.54251       4.1666       4.1666       4.1666           90           90           90 
+      50   -164.55324      4.17075      4.17075      4.17075           90           90           90 
+      60   -164.56292       4.1749       4.1749       4.1749           90           90           90 
+      70   -164.57153      4.17905      4.17905      4.17905           90           90           90 
+      80    -164.5791       4.1832       4.1832       4.1832           90           90           90 
+      90   -164.58564      4.18735      4.18735      4.18735           90           90           90 
+     100   -164.59115       4.1915       4.1915       4.1915           90           90           90 
+     110   -164.59564      4.19565      4.19565      4.19565           90           90           90 
+     120   -164.59912       4.1998       4.1998       4.1998           90           90           90 
+     130    -164.6016      4.20395      4.20395      4.20395           90           90           90 
+     140   -164.60309       4.2081       4.2081       4.2081           90           90           90 
+     150   -164.60359      4.21225      4.21225      4.21225           90           90           90 
+     154   -164.60359    4.2123344    4.2123344    4.2123344           90           90           90 
+Loop time of 0.0890369 on 1 procs for 154 steps with 8 atoms
 
-75.3% CPU use with 2 MPI tasks x 1 OpenMP threads
+94.8% CPU use with 1 MPI tasks x 1 OpenMP threads
 
 Minimization stats:
-  Stopping criterion = linesearch alpha is zero
+  Stopping criterion = energy tolerance
   Energy initial, next-to-last, final = 
-        -112832.604458     -113009.299273     -113009.299273
-  Force two-norm initial, final = 33.4761 0.835665
-  Force max component initial, final = 1.69057 0.0513456
-  Final line search alpha, max atom move = 1.49012e-08 7.65108e-10
-  Iterations, force evaluations = 125 283
+        -164.488728711     -164.603594847     -164.603594847
+  Force two-norm initial, final = 9.03232 6.049e-14
+  Force max component initial, final = 5.21481 3.69257e-14
+  Final line search alpha, max atom move = 1 3.69257e-14
+  Iterations, force evaluations = 154 158
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 33.32      | 37.047     | 40.775     |  61.2 | 18.82
-Kspace  | 154.04     | 157.8      | 161.57     |  29.9 | 80.16
-Neigh   | 0.13855    | 0.14712    | 0.15569    |   2.2 |  0.07
-Comm    | 0.44024    | 0.45103    | 0.46183    |   1.6 |  0.23
-Output  | 1.1048     | 1.1165     | 1.1282     |   1.1 |  0.57
+Pair    | 0.054056   | 0.054056   | 0.054056   |   0.0 | 60.71
+Kspace  | 0.007478   | 0.007478   | 0.007478   |   0.0 |  8.40
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0.0029271  | 0.0029271  | 0.0029271  |   0.0 |  3.29
+Output  | 0.0090313  | 0.0090313  | 0.0090313  |   0.0 | 10.14
 Modify  | 0          | 0          | 0          |   0.0 |  0.00
-Other   |            | 0.3014     |            |       |  0.15
+Other   |            | 0.01554    |            |       | 17.46
 
-Nlocal:    2754 ave 3000 max 2508 min
-Histogram: 1 0 0 0 0 0 0 0 0 1
-Nghost:    15440 ave 16360 max 14520 min
-Histogram: 1 0 0 0 0 0 0 0 0 1
-Neighs:    568920 ave 636317 max 501522 min
-Histogram: 1 0 0 0 0 0 0 0 0 1
+Nlocal:    8 ave 8 max 8 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    1323 ave 1323 max 1323 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    1840 ave 1840 max 1840 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
 
-Total # of neighbors = 1137839
-Ave neighs/atom = 206.579
-Neighbor list builds = 4
+Total # of neighbors = 1840
+Ave neighs/atom = 230
+Neighbor list builds = 0
 Dangerous builds = 0
 
 #----------------------SIMULATION DONE-------------------------------
-
 variable natoms equal "count(all)"
-variable teng equal "c_eatoms"
 variable length equal "lx"
-variable ecoh equal "v_teng/v_natoms"
 
-#print "Total energy (eV) = ${teng};"
 print "Number of atoms = ${natoms};"
-Number of atoms = 5508;
+Number of atoms = 8;
 print "Lattice constant (Angstoms) = ${length};"
-Lattice constant (Angstoms) = 4.212;
-#print "Cohesive energy (eV) = ${ecoh};"
+Lattice constant (Angstoms) = 4.21233437913505;
 
+print "All done!"
+All done!
 print "Calculation complete"
 Calculation complete
-Total wall time: 0:03:17
+Total wall time: 0:00:00
