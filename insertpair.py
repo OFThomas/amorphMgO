@@ -1,47 +1,41 @@
 #!/bin/usr/env/python
 
-import numpy as np
-#atoms to add
-#natoms=int(raw_input())
-
 lenunit = 4.212
-delx=0.8*lenunit
-dely=0.8*lenunit
-
-ypoint= 4*lenunit
-zpoint= 2*lenunit
-
+delx=lenunit*0.5
+dely=lenunit*0.5
 
 mg=1
 o=2
-xlower=0.0
-xupper=4.212/float(2.0)
-xc1=xlower
-xc2=xupper
 
-yc=6.1 #3delta x
-zc=3.5 # 2delta y
+#Initial coords
+xc1=0
+xc2=0.5*lenunit
+yc=0
+zc=0
+#how many atoms in y and z
+ny=6
+nz=6
+atoms= ny*nz*2
+print atoms
+print "0"
+counter =0
 
-yc=1.0*delx
-zc=-0.5*dely
-
-n=4
-atom =1
-for i in range (0, n):
-	#if (i%2 == 0):
-	#	xc1=xupper
-	#	xc2=xlower
-	#offsety=i+ypoint
-	#offsetz=i+zpoint
-	for j in range (0, n+1):
-		#if ((i+j)%2==0):		
-		print mg, xc1, yc+(delx*i), zc+(dely*j)
-		print o, xc2, yc+(delx*i), zc+(dely*j)
-		atom+=1
-		xcold = xc1
-		xc1 = xc2
-		xc2 = xcold 
-		#print i, j
-	
-#print mg, xc1, yc+(delx*3), zc+(dely*3)
-#print o, xc2, yc+(delx*3), zc+(dely*3)
+for i in range (0, ny):
+	for j in range (0, nz):	
+		if (counter%2 == 0):
+			pair=1
+		else:
+			pair =2
+		
+		if (pair==1):
+			element1=mg
+			element2=o		
+		else:
+			element1=o
+			element2=mg
+		print element1, xc1, yc+(delx*i), zc+(dely*j)
+		print element2, xc2, yc+(delx*i), zc+(dely*j)
+		#swap elements for columns#
+		counter +=1
+	counter +=1
+ 
