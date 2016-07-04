@@ -1,0 +1,137 @@
+Info) VMD for LINUXAMD64, version 1.9.2 (December 29, 2014)
+Info) http://www.ks.uiuc.edu/Research/vmd/                         
+Info) Email questions and bug reports to vmd@ks.uiuc.edu           
+Info) Please include this reference in published work using VMD:   
+Info)    Humphrey, W., Dalke, A. and Schulten, K., `VMD - Visual   
+Info)    Molecular Dynamics', J. Molec. Graphics 1996, 14.1, 33-38.
+Info) -------------------------------------------------------------
+Info) Multithreading available, 6 CPUs detected.
+Info) Free system memory: 6374MB (80%)
+Warning) Detected a mismatch between CUDA runtime and GPU driver
+Warning) Check to make sure that GPU drivers are up to date.
+Info) No CUDA accelerator devices available.
+Warning) Detected X11 'Composite' extension: if incorrect display occurs
+Warning) try disabling this X server option.  Most OpenGL drivers
+Warning) disable stereoscopic display when 'Composite' is enabled.
+Info) OpenGL renderer: Gallium 0.4 on AMD CAPE VERDE
+Info)   Features: STENCIL MSAA(4) MDE CVA MTX NPOT PP PS GLSL(OVFS) 
+Info)   Full GLSL rendering mode is available.
+Info)   Textures: 2-D (16384x16384), 3-D (512x512x512), Multitexture (8)
+Info) Dynamically loaded 2 plugins in directory:
+Info) /usr/local/lib/vmd/plugins/LINUXAMD64/molfile
+Info) File loading in progress, please wait.
+Info) Using plugin lammpstrj for structure file dumpmc.lammpstrj
+lammpsplugin) New style dump with 5 data fields. Coordinate data flags: 0x02
+lammpsplugin) Reconstructing atomic coordinates from fractional coordinates and box vectors.
+Info) Using plugin lammpstrj for coordinates from file dumpmc.lammpstrj
+Info) Determining bond structure from distance search ...
+Info) Finished with coordinate file dumpmc.lammpstrj.
+Info) Analyzing structure ...
+Info)    Atoms: 72
+Info)    Bonds: 25
+Info)    Angles: 0  Dihedrals: 0  Impropers: 0  Cross-terms: 0
+Info)    Bondtypes: 0  Angletypes: 0  Dihedraltypes: 0  Impropertypes: 0
+Info)    Residues: 47
+Info)    Waters: 0
+Info)    Segments: 1
+Info)    Fragments: 47   Protein: 0   Nucleic: 0
+vmd > Info) VMD for LINUXAMD64, version 1.9.2 (December 29, 2014)
+Info) Exiting normally.
+Info) VMD for LINUXAMD64, version 1.9.2 (December 29, 2014)
+Info) http://www.ks.uiuc.edu/Research/vmd/                         
+Info) Email questions and bug reports to vmd@ks.uiuc.edu           
+Info) Please include this reference in published work using VMD:   
+Info)    Humphrey, W., Dalke, A. and Schulten, K., `VMD - Visual   
+Info)    Molecular Dynamics', J. Molec. Graphics 1996, 14.1, 33-38.
+Info) -------------------------------------------------------------
+Info) Multithreading available, 6 CPUs detected.
+Info) Free system memory: 6408MB (80%)
+Warning) Detected a mismatch between CUDA runtime and GPU driver
+Warning) Check to make sure that GPU drivers are up to date.
+Info) No CUDA accelerator devices available.
+Warning) Detected X11 'Composite' extension: if incorrect display occurs
+Warning) try disabling this X server option.  Most OpenGL drivers
+Warning) disable stereoscopic display when 'Composite' is enabled.
+Info) OpenGL renderer: Gallium 0.4 on AMD CAPE VERDE
+Info)   Features: STENCIL MSAA(4) MDE CVA MTX NPOT PP PS GLSL(OVFS) 
+Info)   Full GLSL rendering mode is available.
+Info)   Textures: 2-D (16384x16384), 3-D (512x512x512), Multitexture (8)
+Info) Dynamically loaded 2 plugins in directory:
+Info) /usr/local/lib/vmd/plugins/LINUXAMD64/molfile
+vmd > invalid command name "exit"
+vmd > Info) VMD for LINUXAMD64, version 1.9.2 (December 29, 2014)
+Info) http://www.ks.uiuc.edu/Research/vmd/                         
+Info) Email questions and bug reports to vmd@ks.uiuc.edu           
+Info) Please include this reference in published work using VMD:   
+Info)    Humphrey, W., Dalke, A. and Schulten, K., `VMD - Visual   
+Info)    Molecular Dynamics', J. Molec. Graphics 1996, 14.1, 33-38.
+Info) -------------------------------------------------------------
+Info) Multithreading available, 6 CPUs detected.
+Info) Free system memory: 6341MB (79%)
+Warning) Detected a mismatch between CUDA runtime and GPU driver
+Warning) Check to make sure that GPU drivers are up to date.
+Info) No CUDA accelerator devices available.
+Warning) Detected X11 'Composite' extension: if incorrect display occurs
+Warning) try disabling this X server option.  Most OpenGL drivers
+Warning) disable stereoscopic display when 'Composite' is enabled.
+Info) OpenGL renderer: Gallium 0.4 on AMD CAPE VERDE
+Info)   Features: STENCIL MSAA(4) MDE CVA MTX NPOT PP PS GLSL(OVFS) 
+Info)   Full GLSL rendering mode is available.
+Info)   Textures: 2-D (16384x16384), 3-D (512x512x512), Multitexture (8)
+Info) Dynamically loaded 2 plugins in directory:
+Info) /usr/local/lib/vmd/plugins/LINUXAMD64/molfile
+vmd > Info) VMD for LINUXAMD64, version 1.9.2 (December 29, 2014)
+Info) Exiting normally.
+Info) VMD for LINUXAMD64, version 1.9.2 (December 29, 2014)
+Info) http://www.ks.uiuc.edu/Research/vmd/                         
+Info) Email questions and bug reports to vmd@ks.uiuc.edu           
+Info) Please include this reference in published work using VMD:   
+Info)    Humphrey, W., Dalke, A. and Schulten, K., `VMD - Visual   
+Info)    Molecular Dynamics', J. Molec. Graphics 1996, 14.1, 33-38.
+Info) -------------------------------------------------------------
+Info) Multithreading available, 6 CPUs detected.
+Info) Free system memory: 6285MB (78%)
+Warning) Detected a mismatch between CUDA runtime and GPU driver
+Warning) Check to make sure that GPU drivers are up to date.
+Info) No CUDA accelerator devices available.
+Info) Dynamically loaded 2 plugins in directory:
+Info) /usr/local/lib/vmd/plugins/LINUXAMD64/molfile
+vmd > Info) VMD for LINUXAMD64, version 1.9.2 (December 29, 2014)
+Info) http://www.ks.uiuc.edu/Research/vmd/                         
+Info) Email questions and bug reports to vmd@ks.uiuc.edu           
+Info) Please include this reference in published work using VMD:   
+Info)    Humphrey, W., Dalke, A. and Schulten, K., `VMD - Visual   
+Info)    Molecular Dynamics', J. Molec. Graphics 1996, 14.1, 33-38.
+Info) -------------------------------------------------------------
+Info) Multithreading available, 6 CPUs detected.
+Info) Free system memory: 6240MB (78%)
+Warning) Detected a mismatch between CUDA runtime and GPU driver
+Warning) Check to make sure that GPU drivers are up to date.
+Info) No CUDA accelerator devices available.
+Warning) Detected X11 'Composite' extension: if incorrect display occurs
+Warning) try disabling this X server option.  Most OpenGL drivers
+Warning) disable stereoscopic display when 'Composite' is enabled.
+Info) OpenGL renderer: Gallium 0.4 on AMD CAPE VERDE
+Info)   Features: STENCIL MSAA(4) MDE CVA MTX NPOT PP PS GLSL(OVFS) 
+Info)   Full GLSL rendering mode is available.
+Info)   Textures: 2-D (16384x16384), 3-D (512x512x512), Multitexture (8)
+Info) Dynamically loaded 2 plugins in directory:
+Info) /usr/local/lib/vmd/plugins/LINUXAMD64/molfile
+Info) File loading in progress, please wait.
+Info) Using plugin lammpstrj for structure file dumpmc.lammpstrj
+lammpsplugin) New style dump with 5 data fields. Coordinate data flags: 0x02
+lammpsplugin) Reconstructing atomic coordinates from fractional coordinates and box vectors.
+Info) Using plugin lammpstrj for coordinates from file dumpmc.lammpstrj
+Info) Determining bond structure from distance search ...
+Info) Finished with coordinate file dumpmc.lammpstrj.
+Info) Analyzing structure ...
+Info)    Atoms: 72
+Info)    Bonds: 25
+Info)    Angles: 0  Dihedrals: 0  Impropers: 0  Cross-terms: 0
+Info)    Bondtypes: 0  Angletypes: 0  Dihedraltypes: 0  Impropertypes: 0
+Info)    Residues: 47
+Info)    Waters: 0
+Info)    Segments: 1
+Info)    Fragments: 47   Protein: 0   Nucleic: 0
+vmd > Info) VMD for LINUXAMD64, version 1.9.2 (December 29, 2014)
+Info) Exiting normally.
