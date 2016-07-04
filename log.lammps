@@ -1,4 +1,4 @@
-LAMMPS (1 Jul 2016-ICMS)
+LAMMPS (18 Jun 2016-ICMS)
 WARNING: OMP_NUM_THREADS environment is not set. (../comm.cpp:90)
   using 1 OpenMP thread(s) per MPI task
 #---------------------------WELCOME----------------------------
@@ -16,24 +16,24 @@ region box block 0.0 4.212 -200.0 200.0 -200.0 200.0 units box
 boundary p p p  #PBC in x-direction
 create_box 2 box  #generate simulation box
 Created orthogonal box = (0 -200 -200) to (4.212 200 200)
-  1 by 2 by 3 MPI processor grid
+  1 by 1 by 2 MPI processor grid
 
 #read in coordinates
 read_dump test.xyz 0 x y z box no add yes format xyz
   orthogonal box = (0 -200 -200) to (4.212 200 200)
   0 atoms before read
-  5380 atoms in snapshot
+  5508 atoms in snapshot
   0 atoms purged
   0 atoms replaced
   0 atoms trimmed
-  5380 atoms added
-  5380 atoms after read
+  5508 atoms added
+  5508 atoms after read
 
 #set up potential
 set type 1 charge  2.000000
-  2690 settings made for charge
+  2754 settings made for charge
 set type 2 charge -2.000000
-  2690 settings made for charge
+  2754 settings made for charge
 
 mass 1 24.305 #specify mass of atoms
 mass 2 15.9994 #specify mass of atoms
@@ -59,13 +59,13 @@ min_style cg #apply conjugate gradients
 minimize 1e-15 1e-15 5000 5000 #minimiser settings
 PPPM initialization ...
 WARNING: Using polynomial approximation for long-range coulomb (../kspace.cpp:316)
-  G vector (1/distance) = 0.358693
+  G vector (1/distance) = 0.358695
   grid = 9 240 240
   stencil order = 5
-  estimated absolute RMS force accuracy = 0.00136528
-  estimated relative force accuracy = 9.48135e-05
+  estimated absolute RMS force accuracy = 0.0013814
+  estimated relative force accuracy = 9.59332e-05
   using double precision FFTs
-  3d grid and FFT values/proc = 198882 86400
+  3d grid and FFT values/proc = 564642 259200
 Neighbor list info ...
   2 neighbor list requests
   update every 1 steps, delay 0 steps, check yes
@@ -73,74 +73,56 @@ Neighbor list info ...
   master list distance cutoff = 10
   ghost atom cutoff = 10
   binsize = 5 -> bins = 1 80 80
-Memory usage per processor = 20.6784 Mbytes
+Memory usage per processor = 57.8773 Mbytes
 Step PotEng 
-       0   -110087.67 
-      10   -110191.83 
-      20   -110241.25 
-      30   -110270.95 
-      40   -110285.84 
-      50   -110302.81 
-      60   -110315.44 
-      70   -110324.28 
-      80   -110332.95 
-      90   -110340.81 
-     100   -110347.28 
-     110   -110352.09 
-     120   -110354.26 
-     130   -110356.36 
-     140   -110359.11 
-     150   -110361.87 
-     160   -110363.07 
-     170   -110364.66 
-     180   -110367.14 
-     190   -110367.74 
-     200   -110368.12 
-     210   -110368.59 
-     220   -110369.22 
-     230   -110369.57 
-     240   -110369.73 
-     250   -110369.82 
-     260   -110369.88 
-     270   -110369.94 
-     280   -110369.98 
-     290   -110370.01 
-     300   -110370.04 
-     307   -110370.07 
-Loop time of 122.248 on 6 procs for 307 steps with 5380 atoms
+       0    -112832.6 
+      10   -112927.21 
+      20   -112951.36 
+      30   -112968.06 
+      40   -112982.56 
+      50   -112994.99 
+      60   -112999.83 
+      70   -113003.61 
+      80   -113006.36 
+      90   -113007.49 
+     100    -113008.5 
+     110   -113009.03 
+     120   -113009.24 
+     125    -113009.3 
+Loop time of 196.868 on 2 procs for 125 steps with 5508 atoms
 
-98.7% CPU use with 6 MPI tasks x 1 OpenMP threads
+75.3% CPU use with 2 MPI tasks x 1 OpenMP threads
 
 Minimization stats:
   Stopping criterion = linesearch alpha is zero
   Energy initial, next-to-last, final = 
-        -110087.668522     -110370.065206     -110370.065206
-  Force two-norm initial, final = 166.906 0.274082
-  Force max component initial, final = 89.3691 0.0200539
-  Final line search alpha, max atom move = 1.16338e-07 2.33303e-09
-  Iterations, force evaluations = 307 589
+        -112832.604458     -113009.299273     -113009.299273
+  Force two-norm initial, final = 33.4761 0.835665
+  Force max component initial, final = 1.69057 0.0513456
+  Final line search alpha, max atom move = 1.49012e-08 7.65108e-10
+  Iterations, force evaluations = 125 283
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 0.014006   | 11.457     | 38.108     | 467.2 |  9.37
-Kspace  | 81.416     | 108.42     | 120.21     | 154.1 | 88.69
-Neigh   | 0.00024438 | 0.080887   | 0.27263    |  39.2 |  0.07
-Comm    | 0.014608   | 0.34316    | 0.60846    |  41.2 |  0.28
-Output  | 1.5577     | 1.6077     | 1.6429     |   2.2 |  1.32
+Pair    | 33.32      | 37.047     | 40.775     |  61.2 | 18.82
+Kspace  | 154.04     | 157.8      | 161.57     |  29.9 | 80.16
+Neigh   | 0.13855    | 0.14712    | 0.15569    |   2.2 |  0.07
+Comm    | 0.44024    | 0.45103    | 0.46183    |   1.6 |  0.23
+Output  | 1.1048     | 1.1165     | 1.1282     |   1.1 |  0.57
 Modify  | 0          | 0          | 0          |   0.0 |  0.00
-Other   |            | 0.339      |            |       |  0.28
+Other   |            | 0.3014     |            |       |  0.15
 
-Nlocal:    896.667 ave 3046 max 0 min
-Histogram: 4 0 0 0 0 0 0 1 0 1
-Nghost:    5340.33 ave 16809 max 0 min
-Histogram: 3 1 0 0 0 0 0 1 0 1
-Neighs:    183663 ave 624447 max 0 min
-Histogram: 4 0 0 0 0 0 0 1 0 1
+Nlocal:    2754 ave 3000 max 2508 min
+Histogram: 1 0 0 0 0 0 0 0 0 1
+Nghost:    15440 ave 16360 max 14520 min
+Histogram: 1 0 0 0 0 0 0 0 0 1
+Neighs:    568920 ave 636317 max 501522 min
+Histogram: 1 0 0 0 0 0 0 0 0 1
 
-Total # of neighbors = 1101978
-Ave neighs/atom = 204.829
-Neighbor list builds = 12
+Total # of neighbors = 1137839
+Ave neighs/atom = 206.579
+Neighbor list builds = 4
 Dangerous builds = 0
 
 #----------------------SIMULATION DONE-------------------------------
@@ -152,11 +134,11 @@ variable ecoh equal "v_teng/v_natoms"
 
 #print "Total energy (eV) = ${teng};"
 print "Number of atoms = ${natoms};"
-Number of atoms = 5380;
+Number of atoms = 5508;
 print "Lattice constant (Angstoms) = ${length};"
 Lattice constant (Angstoms) = 4.212;
 #print "Cohesive energy (eV) = ${ecoh};"
 
 print "Calculation complete"
 Calculation complete
-Total wall time: 0:02:02
+Total wall time: 0:03:17
