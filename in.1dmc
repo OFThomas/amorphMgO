@@ -1,0 +1,57 @@
+#---------------------------WELCOME----------------------------
+print "Optimise lattice constant of MgO crystal"
+
+#--------------------INITIALISATION----------------------------
+units metal		#distance in A and energy in eV
+atom_style charge	#specifies what properties to associate with atoms
+
+#cell vectors
+variable a equal  4.212
+
+region box block 0.0 4.212 -200.0 200.0 -200.0 200.0 units box
+boundary p p p  #PBC in x-direction
+create_box 2 box  #generate simulation box
+
+#read in coordinates
+read_dump test.xyz 0 x y z box no add yes format xyz
+
+#set up potential
+set type 1 charge  2.000000
+set type 2 charge -2.000000
+
+mass 1 24.305 #specify mass of atoms
+mass 2 15.9994 #specify mass of atoms
+
+pair_style hybrid/overlay buck 8.0 coul/long 8.0
+pair_coeff 1 2 buck 1284.38000  0.299700  0.000000 8.0
+pair_coeff 2 2 buck 9574.95996  0.219200  32.00000 8.0
+pair_coeff * * coul/long 
+kspace_style pppm 1.0e-4
+pair_modify table 0
+
+neighbor 2.0 bin
+neigh_modify delay 0 every 1 check yes
+
+#-----------------------MINIMISATION-------------------------------
+reset_timestep	0 #start at 0
+thermo 10 #how often to output properties
+thermo_style custom step pe #custom specification of what to print
+dump 1 all custom 1 dump.lammpstrj id type xs ys zs  #dump info to trjectory file
+#dump 2 all xyz 1 dump.1d.xyz  #dump info to xyz file
+#dump visual all cfg 10 dump.1d.*.cfg mass type xs ys zs vx vy vz
+min_style cg #apply conjugate gradients
+minimize 1e-15 1e-15 5000 5000 #minimiser settings
+
+#----------------------SIMULATION DONE-------------------------------
+
+variable natoms equal "count(all)" 
+variable teng equal "c_eatoms"
+variable length equal "lx"
+variable ecoh equal "v_teng/v_natoms"
+
+#print "Total energy (eV) = ${teng};"
+print "Number of atoms = ${natoms};"
+print "Lattice constant (Angstoms) = ${length};"
+#print "Cohesive energy (eV) = ${ecoh};"
+
+print "Calculation complete"
