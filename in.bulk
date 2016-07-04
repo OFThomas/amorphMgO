@@ -10,9 +10,9 @@ atom_style charge	#specifies what properties to associate with atoms
 #variable b equal  4.212
 #variable c equal  4.212
 
-variable a equal  4.15
-variable b equal  4.15
-variable c equal  4.15
+variable a equal  4.1
+variable b equal  4.1
+variable c equal  4.1
 
 variable alpha equal 90.0000
 variable beta equal  90.0000
