@@ -1,0 +1,144 @@
+LAMMPS (18 Jun 2016-ICMS)
+WARNING: OMP_NUM_THREADS environment is not set. (../comm.cpp:90)
+  using 1 OpenMP thread(s) per MPI task
+#---------------------------WELCOME----------------------------
+print "Optimise lattice constant of MgO crystal"
+Optimise lattice constant of MgO crystal
+
+#--------------------INITIALISATION----------------------------
+units metal		#distance in A and energy in eV
+atom_style charge	#specifies what properties to associate with atoms
+
+#cell vectors
+variable a equal  4.212
+
+region box block 0.0 4.212 -200.0 200.0 -200.0 200.0 units box
+boundary p p p  #PBC in x-direction
+create_box 2 box  #generate simulation box
+Created orthogonal box = (0 -200 -200) to (4.212 200 200)
+  1 by 1 by 1 MPI processor grid
+
+#read in coordinates
+read_dump test.xyz 0 x y z box no add yes format xyz
+  orthogonal box = (0 -200 -200) to (4.212 200 200)
+  0 atoms before read
+  5508 atoms in snapshot
+  0 atoms purged
+  0 atoms replaced
+  0 atoms trimmed
+  5508 atoms added
+  5508 atoms after read
+
+#set up potential
+set type 1 charge  2.000000
+  2754 settings made for charge
+set type 2 charge -2.000000
+  2754 settings made for charge
+
+mass 1 24.305 #specify mass of atoms
+mass 2 15.9994 #specify mass of atoms
+
+pair_style hybrid/overlay buck 8.0 coul/long 8.0
+pair_coeff 1 2 buck 1284.38000  0.299700  0.000000 8.0
+pair_coeff 2 2 buck 9574.95996  0.219200  32.00000 8.0
+pair_coeff * * coul/long
+kspace_style pppm 1.0e-4
+pair_modify table 0
+
+neighbor 2.0 bin
+neigh_modify delay 0 every 1 check yes
+
+#-----------------------MINIMISATION-------------------------------
+reset_timestep	0 #start at 0
+thermo 10 #how often to output properties
+thermo_style custom step pe #custom specification of what to print
+dump 1 all custom 1 dump.lammpstrj id type xs ys zs  #dump info to trjectory file
+#dump 2 all xyz 1 dump.1d.xyz  #dump info to xyz file
+#dump visual all cfg 10 dump.1d.*.cfg mass type xs ys zs vx vy vz
+min_style cg #apply conjugate gradients
+minimize 1e-15 1e-15 5000 5000 #minimiser settings
+PPPM initialization ...
+WARNING: Using polynomial approximation for long-range coulomb (../kspace.cpp:316)
+  G vector (1/distance) = 0.358695
+  grid = 9 240 240
+  stencil order = 5
+  estimated absolute RMS force accuracy = 0.0013814
+  estimated relative force accuracy = 9.59332e-05
+  using double precision FFTs
+  3d grid and FFT values/proc = 1098162 518400
+Neighbor list info ...
+  2 neighbor list requests
+  update every 1 steps, delay 0 steps, check yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 10
+  ghost atom cutoff = 10
+  binsize = 5 -> bins = 1 80 80
+Memory usage per processor = 105.172 Mbytes
+Step PotEng 
+       0    -112832.6 
+      10   -112927.21 
+      20   -112951.36 
+      30   -112968.06 
+      40   -112982.56 
+      50   -112994.99 
+      60   -112999.83 
+      70   -113003.61 
+      80   -113006.36 
+      90   -113007.49 
+     100    -113008.5 
+     110   -113009.03 
+     120   -113009.24 
+     125    -113009.3 
+Loop time of 172.381 on 1 procs for 125 steps with 5508 atoms
+
+99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+Minimization stats:
+  Stopping criterion = linesearch alpha is zero
+  Energy initial, next-to-last, final = 
+        -112832.604458     -113009.299273     -113009.299273
+  Force two-norm initial, final = 33.4761 0.835665
+  Force max component initial, final = 1.69057 0.0513456
+  Final line search alpha, max atom move = 1.49012e-08 7.65108e-10
+  Iterations, force evaluations = 125 283
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 56.98      | 56.98      | 56.98      |  -nan | 33.05
+Kspace  | 113.5      | 113.5      | 113.5      |  -nan | 65.84
+Neigh   | 0.22414    | 0.22414    | 0.22414    |   0.0 |  0.13
+Comm    | 0.19392    | 0.19392    | 0.19392    |   0.0 |  0.11
+Output  | 1.2868     | 1.2868     | 1.2868     |   0.0 |  0.75
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 0.1945     |            |       |  0.11
+
+Nlocal:    5508 ave 5508 max 5508 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    24786 ave 24786 max 24786 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    1.13784e+06 ave 1.13784e+06 max 1.13784e+06 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 1137839
+Ave neighs/atom = 206.579
+Neighbor list builds = 4
+Dangerous builds = 0
+
+#----------------------SIMULATION DONE-------------------------------
+
+variable natoms equal "count(all)"
+variable teng equal "c_eatoms"
+variable length equal "lx"
+variable ecoh equal "v_teng/v_natoms"
+
+#print "Total energy (eV) = ${teng};"
+print "Number of atoms = ${natoms};"
+Number of atoms = 5508;
+print "Lattice constant (Angstoms) = ${length};"
+Lattice constant (Angstoms) = 4.212;
+#print "Cohesive energy (eV) = ${ecoh};"
+
+print "Calculation complete"
+Calculation complete
+Total wall time: 0:02:53
