@@ -11,6 +11,7 @@ atom_style charge	#specifies what properties to associate with atoms
 
 #cell vectors
 variable a equal  4.212
+atom_modify     map array sort 0 0.0
 
 region box block 0.0 4.212 -200.0 200.0 -200.0 200.0 units box
 boundary p p p  #PBC in x-direction
@@ -18,22 +19,32 @@ create_box 2 box  #generate simulation box
 Created orthogonal box = (0 -200 -200) to (4.212 200 200)
   1 by 1 by 1 MPI processor grid
 
+# set these parameters
+# make sure neigh skin > 2*deltamove
+
+variable iter loop 20            # number of Monte Carlo moves
+variable deltaperturb equal 1.0    #0.2 max size of initial perturbation per dim
+variable deltamove equal 0.5       #0.1 max size of MC move in one dimension
+variable density equal 1.0         # reduced LJ density of atoms on lattice
+variable kT equal 0.75             # effective T in Boltzmann factor
+variable seed equal 582783         # RNG seed
+
 #read in coordinates
-read_dump test.xyz 0 x y z box no add yes format xyz
+read_dump testmc.xyz 0 x y z box no add yes format xyz
   orthogonal box = (0 -200 -200) to (4.212 200 200)
   0 atoms before read
-  5508 atoms in snapshot
+  72 atoms in snapshot
   0 atoms purged
   0 atoms replaced
   0 atoms trimmed
-  5508 atoms added
-  5508 atoms after read
+  72 atoms added
+  72 atoms after read
 
 #set up potential
 set type 1 charge  2.000000
-  2754 settings made for charge
+  36 settings made for charge
 set type 2 charge -2.000000
-  2754 settings made for charge
+  36 settings made for charge
 
 mass 1 24.305 #specify mass of atoms
 mass 2 15.9994 #specify mass of atoms
@@ -48,24 +59,22 @@ pair_modify table 0
 neighbor 2.0 bin
 neigh_modify delay 0 every 1 check yes
 
-#-----------------------MINIMISATION-------------------------------
-reset_timestep	0 #start at 0
-thermo 10 #how often to output properties
-thermo_style custom step pe #custom specification of what to print
-dump 1 all custom 1 dump.lammpstrj id type xs ys zs  #dump info to trjectory file
-#dump 2 all xyz 1 dump.1d.xyz  #dump info to xyz file
-#dump visual all cfg 10 dump.1d.*.cfg mass type xs ys zs vx vy vz
-min_style cg #apply conjugate gradients
-minimize 1e-15 1e-15 5000 5000 #minimiser settings
+variable        e equal pe
+
+# run 0 to get energy of perfect lattice
+# emin = minimum energy
+
+run             0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
 PPPM initialization ...
 WARNING: Using polynomial approximation for long-range coulomb (../kspace.cpp:316)
-  G vector (1/distance) = 0.358695
-  grid = 9 240 240
+  G vector (1/distance) = 0.305703
+  grid = 6 150 150
   stencil order = 5
-  estimated absolute RMS force accuracy = 0.0013814
-  estimated relative force accuracy = 9.59332e-05
+  estimated absolute RMS force accuracy = 0.00150384
+  estimated relative force accuracy = 0.000104436
   using double precision FFTs
-  3d grid and FFT values/proc = 1098162 518400
+  3d grid and FFT values/proc = 312325 135000
 Neighbor list info ...
   2 neighbor list requests
   update every 1 steps, delay 0 steps, check yes
@@ -73,72 +82,965 @@ Neighbor list info ...
   master list distance cutoff = 10
   ghost atom cutoff = 10
   binsize = 5 -> bins = 1 80 80
-Memory usage per processor = 105.172 Mbytes
-Step PotEng 
-       0    -112832.6 
-      10   -112927.21 
-      20   -112951.36 
-      30   -112968.06 
-      40   -112982.56 
-      50   -112994.99 
-      60   -112999.83 
-      70   -113003.61 
-      80   -113006.36 
-      90   -113007.49 
-     100    -113008.5 
-     110   -113009.03 
-     120   -113009.24 
-     125    -113009.3 
-Loop time of 172.381 on 1 procs for 125 steps with 5508 atoms
+Memory usage per processor = 29.1547 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -1461.6701            0   -1461.6701   -110.70088 
+Loop time of 2.14577e-06 on 1 procs for 0 steps with 72 atoms
 
-99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
-
-Minimization stats:
-  Stopping criterion = linesearch alpha is zero
-  Energy initial, next-to-last, final = 
-        -112832.604458     -113009.299273     -113009.299273
-  Force two-norm initial, final = 33.4761 0.835665
-  Force max component initial, final = 1.69057 0.0513456
-  Final line search alpha, max atom move = 1.49012e-08 7.65108e-10
-  Iterations, force evaluations = 125 283
+186.4% CPU use with 1 MPI tasks x 1 OpenMP threads
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 56.98      | 56.98      | 56.98      |  -nan | 33.05
-Kspace  | 113.5      | 113.5      | 113.5      |  -nan | 65.84
-Neigh   | 0.22414    | 0.22414    | 0.22414    |   0.0 |  0.13
-Comm    | 0.19392    | 0.19392    | 0.19392    |   0.0 |  0.11
-Output  | 1.2868     | 1.2868     | 1.2868     |   0.0 |  0.75
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Kspace  | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
 Modify  | 0          | 0          | 0          |   0.0 |  0.00
-Other   |            | 0.1945     |            |       |  0.11
+Other   |            | 2.146e-06  |            |       |100.00
 
-Nlocal:    5508 ave 5508 max 5508 min
+Nlocal:    72 ave 72 max 72 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
-Nghost:    24786 ave 24786 max 24786 min
+Nghost:    324 ave 324 max 324 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
-Neighs:    1.13784e+06 ave 1.13784e+06 max 1.13784e+06 min
+Neighs:    8048 ave 8048 max 8048 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
 
-Total # of neighbors = 1137839
-Ave neighs/atom = 206.579
-Neighbor list builds = 4
+Total # of neighbors = 8048
+Ave neighs/atom = 111.778
+Neighbor list builds = 0
 Dangerous builds = 0
+variable        emin equal $e
+variable        emin equal -1461.67011902226
+
+# disorder the system
+# estart = initial energy
+
+variable        z atom z+v_deltaperturb*random(-1.0,1.0,${seed})
+variable        z atom z+v_deltaperturb*random(-1.0,1.0,582783)
+variable        y atom y+v_deltaperturb*random(-1.0,1.0,${seed})
+variable        y atom y+v_deltaperturb*random(-1.0,1.0,582783)
+
+set             group all z v_z
+  72 settings made for z
+set             group all y v_y
+  72 settings made for y
+
+dump 1 all custom 1 dumpmc.lammpstrj id type xs ys zs  #dump info to trjectory file
+
+run             0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+PPPM initialization ...
+WARNING: Using polynomial approximation for long-range coulomb (../kspace.cpp:316)
+  G vector (1/distance) = 0.305703
+  grid = 6 150 150
+  stencil order = 5
+  estimated absolute RMS force accuracy = 0.00150384
+  estimated relative force accuracy = 0.000104436
+  using double precision FFTs
+  3d grid and FFT values/proc = 312325 135000
+Memory usage per processor = 30.4074 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -564.37454            0   -564.37454     1625.739 
+Loop time of 2.14577e-06 on 1 procs for 0 steps with 72 atoms
+
+186.4% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Kspace  | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.146e-06  |            |       |100.00
+
+Nlocal:    72 ave 72 max 72 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    324 ave 324 max 324 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    7770 ave 7770 max 7770 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7770
+Ave neighs/atom = 107.917
+Neighbor list builds = 0
+Dangerous builds = 0
+
+variable        estart equal $e
+variable        estart equal -564.3745384091
+variable        elast equal $e
+variable        elast equal -564.3745384091
+
+#-------------------- loop over Monte Carlo moves ----------------------------
+
+variable        naccept equal 0
+variable        increment equal v_naccept+1
+variable 	nmoves equal 0.0
+variable 	nmincrement equal v_nmoves+1
+variable        irandom equal floor(atoms*random(0.0,1.0,${seed})+1)
+variable        irandom equal floor(atoms*random(0.0,1.0,582783)+1)
+variable        rn equal random(0.0,1.0,${seed})
+variable        rn equal random(0.0,1.0,582783)
+variable        boltzfactor equal "exp(atoms*(v_elast - v_e) / v_kT)"
+variable        znew equal z[v_i]+v_deltamove*random(-1.0,1.0,${seed})
+variable        znew equal z[v_i]+v_deltamove*random(-1.0,1.0,582783)
+variable        ynew equal y[v_i]+v_deltamove*random(-1.0,1.0,${seed})
+variable        ynew equal y[v_i]+v_deltamove*random(-1.0,1.0,582783)
+variable        zi equal z[v_i]
+variable        yi equal y[v_i]
+
+#--------------------- LOOP -----------------------------------
+label           loop
+
+variable        i equal ${irandom}
+variable        i equal 48
+
+variable        z0 equal ${zi}
+variable        z0 equal 11.0691701459885
+variable        y0 equal ${yi}
+variable        y0 equal 5.38635901737213
+
+set             atom $i z ${znew}
+set             atom 48 z ${znew}
+set             atom 48 z 11.2200532841682
+  1 settings made for z
+set             atom $i y ${ynew}
+set             atom 48 y ${ynew}
+set             atom 48 y 4.94912413883209
+  1 settings made for y
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -564.37454            0   -564.37454     1625.739 
+       1            0   -558.91272            0   -558.91272    1612.3169 
+Loop time of 0.109523 on 1 procs for 1 steps with 72 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 1
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}" 		  #"variable 	nmoves equal ${increment}"
+set atom $i z ${z0}
+set atom 48 z ${z0}
+set atom 48 z 11.0691701459885
+  1 settings made for z
+set atom $i y ${y0}
+set atom 48 y ${y0}
+set atom 48 y 5.38635901737213
+  1 settings made for y
+
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 12
+
+variable        z0 equal ${zi}
+variable        z0 equal 10.2652509498596
+variable        y0 equal ${yi}
+variable        y0 equal 0.436346292495728
+
+set             atom $i z ${znew}
+set             atom 12 z ${znew}
+set             atom 12 z 10.7337777900696
+  1 settings made for z
+set             atom $i y ${ynew}
+set             atom 12 y ${ynew}
+set             atom 12 y 0.384748697280884
+  1 settings made for y
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+       1            0   -558.91272            0   -558.91272    1612.3169 
+       2            0   -561.08259            0   -561.08259    1604.1288 
+Loop time of 0.111307 on 1 procs for 1 steps with 72 atoms
+
+99.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 2
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}" 		  #"variable 	nmoves equal ${increment}"
+set atom $i z ${z0}
+set atom 12 z ${z0}
+set atom 12 z 10.2652509498596
+  1 settings made for z
+set atom $i y ${y0}
+set atom 12 y ${y0}
+set atom 12 y 0.436346292495728
+  1 settings made for y
+
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 37
+
+variable        z0 equal ${zi}
+variable        z0 equal -0.0924346446990967
+variable        y0 equal ${yi}
+variable        y0 equal 6.01136795806885
+
+set             atom $i z ${znew}
+set             atom 37 z ${znew}
+set             atom 37 z 0.11873471736908
+  1 settings made for z
+set             atom $i y ${ynew}
+set             atom 37 y ${ynew}
+set             atom 37 y 5.77233247089386
+  1 settings made for y
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+       2            0   -561.08259            0   -561.08259    1604.1288 
+       3            0   -552.05412            0   -552.05412    1670.7693 
+Loop time of 0.110884 on 1 procs for 1 steps with 72 atoms
+
+99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 3
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}" 		  #"variable 	nmoves equal ${increment}"
+set atom $i z ${z0}
+set atom 37 z ${z0}
+set atom 37 z -0.0924346446990967
+  1 settings made for z
+set atom $i y ${y0}
+set atom 37 y ${y0}
+set atom 37 y 6.01136795806885
+  1 settings made for y
+
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 13
+
+variable        z0 equal ${zi}
+variable        z0 equal -0.666167736053467
+variable        y0 equal ${yi}
+variable        y0 equal 1.85312455272675
+
+set             atom $i z ${znew}
+set             atom 13 z ${znew}
+set             atom 13 z -0.83965653181076
+  1 settings made for z
+set             atom $i y ${ynew}
+set             atom 13 y ${ynew}
+set             atom 13 y 1.45153045034409
+  1 settings made for y
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+       3            0   -552.05412            0   -552.05412    1670.7693 
+       4            0   -557.66189            0   -557.66189    1634.1736 
+Loop time of 0.109015 on 1 procs for 1 steps with 72 atoms
+
+100.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 4
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}" 		  #"variable 	nmoves equal ${increment}"
+set atom $i z ${z0}
+set atom 13 z ${z0}
+set atom 13 z -0.666167736053467
+  1 settings made for z
+set atom $i y ${y0}
+set atom 13 y ${y0}
+set atom 13 y 1.85312455272675
+  1 settings made for y
+
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 29
+
+variable        z0 equal ${zi}
+variable        z0 equal 3.60473738861084
+variable        y0 equal ${yi}
+variable        y0 equal 4.91049920272827
+
+set             atom $i z ${znew}
+set             atom 29 z ${znew}
+set             atom 29 z 3.53447775793076
+  1 settings made for z
+set             atom $i y ${ynew}
+set             atom 29 y ${ynew}
+set             atom 29 y 4.58305536460876
+  1 settings made for y
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+       4            0   -557.66189            0   -557.66189    1634.1736 
+       5            0   -568.22511            0   -568.22511    1606.2849 
+Loop time of 0.114444 on 1 procs for 1 steps with 72 atoms
+
+99.4% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 5
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}" 		  #"variable 	nmoves equal ${increment}"
+variable elast equal $e
+variable elast equal -568.225110269237
+variable naccept equal ${increment}
+variable naccept equal 1
+
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 59
+
+variable        z0 equal ${zi}
+variable        z0 equal 10.5541801738739
+variable        y0 equal ${yi}
+variable        y0 equal 9.07175109291077
+
+set             atom $i z ${znew}
+set             atom 59 z ${znew}
+set             atom 59 z 10.6315930175781
+  1 settings made for z
+set             atom $i y ${ynew}
+set             atom 59 y ${ynew}
+set             atom 59 y 9.52782354259491
+  1 settings made for y
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+       5            0   -568.22511            0   -568.22511    1606.2849 
+       6            0   -510.80125            0   -510.80125    1709.6565 
+Loop time of 0.111958 on 1 procs for 1 steps with 72 atoms
+
+99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 6
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}" 		  #"variable 	nmoves equal ${increment}"
+set atom $i z ${z0}
+set atom 59 z ${z0}
+set atom 59 z 10.5541801738739
+  1 settings made for z
+set atom $i y ${y0}
+set atom 59 y ${y0}
+set atom 59 y 9.07175109291077
+  1 settings made for y
+
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 45
+
+variable        z0 equal ${zi}
+variable        z0 equal 8.34095713996887
+variable        y0 equal ${yi}
+variable        y0 equal 5.53514806556702
+
+set             atom $i z ${znew}
+set             atom 45 z ${znew}
+set             atom 45 z 8.32089499139786
+  1 settings made for z
+set             atom $i y ${ynew}
+set             atom 45 y ${ynew}
+set             atom 45 y 5.74201742935181
+  1 settings made for y
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+       6            0   -510.80125            0   -510.80125    1709.6565 
+       7            0   -602.95326            0   -602.95326     1541.993 
+Loop time of 0.113369 on 1 procs for 1 steps with 72 atoms
+
+99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 7
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}" 		  #"variable 	nmoves equal ${increment}"
+variable elast equal $e
+variable elast equal -602.953261377485
+variable naccept equal ${increment}
+variable naccept equal 2
+
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 60
+
+variable        z0 equal ${zi}
+variable        z0 equal 10.9190904188156
+variable        y0 equal ${yi}
+variable        y0 equal 7.85395691299438
+
+set             atom $i z ${znew}
+set             atom 60 z ${znew}
+set             atom 60 z 10.8218580770493
+  1 settings made for z
+set             atom $i y ${ynew}
+set             atom 60 y ${ynew}
+set             atom 60 y 7.5503256072998
+  1 settings made for y
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+       7            0   -602.95326            0   -602.95326     1541.993 
+       8            0    -600.3584            0    -600.3584    1544.1279 
+Loop time of 0.109458 on 1 procs for 1 steps with 72 atoms
+
+99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 8
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}" 		  #"variable 	nmoves equal ${increment}"
+set atom $i z ${z0}
+set atom 60 z ${z0}
+set atom 60 z 10.9190904188156
+  1 settings made for z
+set atom $i y ${y0}
+set atom 60 y ${y0}
+set atom 60 y 7.85395691299438
+  1 settings made for y
+
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 64
+
+variable        z0 equal ${zi}
+variable        z0 equal 2.01723020648956
+variable        y0 equal ${yi}
+variable        y0 equal 9.63480690002441
+
+set             atom $i z ${znew}
+set             atom 64 z ${znew}
+set             atom 64 z 2.24230676269531
+  1 settings made for z
+set             atom $i y ${ynew}
+set             atom 64 y ${ynew}
+set             atom 64 y 9.40228494882584
+  1 settings made for y
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+       8            0    -600.3584            0    -600.3584    1544.1279 
+       9            0   -578.70198            0   -578.70198    1593.7449 
+Loop time of 0.109223 on 1 procs for 1 steps with 72 atoms
+
+99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 9
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}" 		  #"variable 	nmoves equal ${increment}"
+set atom $i z ${z0}
+set atom 64 z ${z0}
+set atom 64 z 2.01723020648956
+  1 settings made for z
+set atom $i y ${y0}
+set atom 64 y ${y0}
+set atom 64 y 9.63480690002441
+  1 settings made for y
+
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 17
+
+variable        z0 equal ${zi}
+variable        z0 equal 4.00476847839355
+variable        y0 equal ${yi}
+variable        y0 equal 2.01733403778076
+
+set             atom $i z ${znew}
+set             atom 17 z ${znew}
+set             atom 17 z 3.71482537937164
+  1 settings made for z
+set             atom $i y ${ynew}
+set             atom 17 y ${ynew}
+set             atom 17 y 1.97111671543121
+  1 settings made for y
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+       9            0   -578.70198            0   -578.70198    1593.7449 
+      10            0   -606.62829            0   -606.62829    1531.3775 
+Loop time of 0.109078 on 1 procs for 1 steps with 72 atoms
+
+99.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 10
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}" 		  #"variable 	nmoves equal ${increment}"
+variable elast equal $e
+variable elast equal -606.628288114303
+variable naccept equal ${increment}
+variable naccept equal 3
+
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 71
+
+variable        z0 equal ${zi}
+variable        z0 equal 10.1987915325165
+variable        y0 equal ${yi}
+variable        y0 equal 10.1801268148422
+
+set             atom $i z ${znew}
+set             atom 71 z ${znew}
+set             atom 71 z 9.7272975730896
+  1 settings made for z
+set             atom $i y ${ynew}
+set             atom 71 y ${ynew}
+set             atom 71 y 10.1076088237762
+  1 settings made for y
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      10            0   -606.62829            0   -606.62829    1531.3775 
+      11            0   -584.75255            0   -584.75255    1566.1281 
+Loop time of 0.109041 on 1 procs for 1 steps with 72 atoms
+
+99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 11
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}" 		  #"variable 	nmoves equal ${increment}"
+set atom $i z ${z0}
+set atom 71 z ${z0}
+set atom 71 z 10.1987915325165
+  1 settings made for z
+set atom $i y ${y0}
+set atom 71 y ${y0}
+set atom 71 y 10.1801268148422
+  1 settings made for y
+
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 10
+
+variable        z0 equal ${zi}
+variable        z0 equal 8.84633872413635
+variable        y0 equal ${yi}
+variable        y0 equal 0.287407279014587
+
+set             atom $i z ${znew}
+set             atom 10 z ${znew}
+set             atom 10 z 8.9346400847435
+  1 settings made for z
+set             atom $i y ${ynew}
+set             atom 10 y ${ynew}
+set             atom 10 y 0.524912297725677
+  1 settings made for y
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      11            0   -584.75255            0   -584.75255    1566.1281 
+      12            0    -603.1293            0    -603.1293    1543.9775 
+Loop time of 0.110656 on 1 procs for 1 steps with 72 atoms
+
+99.7% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 12
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}" 		  #"variable 	nmoves equal ${increment}"
+set atom $i z ${z0}
+set atom 10 z ${z0}
+set atom 10 z 8.84633872413635
+  1 settings made for z
+set atom $i y ${y0}
+set atom 10 y ${y0}
+set atom 10 y 0.287407279014587
+  1 settings made for y
+
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 9
+
+variable        z0 equal ${zi}
+variable        z0 equal 8.44904861354828
+variable        y0 equal ${yi}
+variable        y0 equal -0.862976789474487
+
+set             atom $i z ${znew}
+set             atom 9 z ${znew}
+set             atom 9 z 8.23851976299286
+  1 settings made for z
+set             atom $i y ${ynew}
+set             atom 9 y ${ynew}
+set             atom 9 y -0.593391716480255
+  1 settings made for y
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      12            0    -603.1293            0    -603.1293    1543.9775 
+      13            0   -609.84362            0   -609.84362    1524.9377 
+Loop time of 0.109169 on 1 procs for 1 steps with 72 atoms
+
+99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 13
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}" 		  #"variable 	nmoves equal ${increment}"
+variable elast equal $e
+variable elast equal -609.843622723656
+variable naccept equal ${increment}
+variable naccept equal 4
+
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 31
+
+variable        z0 equal ${zi}
+variable        z0 equal 7.08912364768982
+variable        y0 equal ${yi}
+variable        y0 equal 4.52673219394684
+
+set             atom $i z ${znew}
+set             atom 31 z ${znew}
+set             atom 31 z 7.38195030021667
+  1 settings made for z
+set             atom $i y ${ynew}
+set             atom 31 y ${ynew}
+set             atom 31 y 4.85050277662277
+  1 settings made for y
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      13            0   -609.84362            0   -609.84362    1524.9377 
+      14            0   -498.42926            0   -498.42926    1709.9419 
+Loop time of 0.1095 on 1 procs for 1 steps with 72 atoms
+
+99.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 14
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}" 		  #"variable 	nmoves equal ${increment}"
+set atom $i z ${z0}
+set atom 31 z ${z0}
+set atom 31 z 7.08912364768982
+  1 settings made for z
+set atom $i y ${y0}
+set atom 31 y ${y0}
+set atom 31 y 4.52673219394684
+  1 settings made for y
+
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 12
+
+variable        z0 equal ${zi}
+variable        z0 equal 10.2652509498596
+variable        y0 equal ${yi}
+variable        y0 equal 0.436346292495728
+
+set             atom $i z ${znew}
+set             atom 12 z ${znew}
+set             atom 12 z 10.4416684794426
+  1 settings made for z
+set             atom $i y ${ynew}
+set             atom 12 y ${ynew}
+set             atom 12 y 0.157949507236481
+  1 settings made for y
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      14            0   -498.42926            0   -498.42926    1709.9419 
+      15            0   -610.47194            0   -610.47194    1512.5322 
+Loop time of 0.109202 on 1 procs for 1 steps with 72 atoms
+
+99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 15
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}" 		  #"variable 	nmoves equal ${increment}"
+variable elast equal $e
+variable elast equal -610.47194026657
+variable naccept equal ${increment}
+variable naccept equal 5
+
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 53
+
+variable        z0 equal ${zi}
+variable        z0 equal 3.53964863967895
+variable        y0 equal ${yi}
+variable        y0 equal 9.0678672542572
+
+set             atom $i z ${znew}
+set             atom 53 z ${znew}
+set             atom 53 z 3.09687374782562
+  1 settings made for z
+set             atom $i y ${ynew}
+set             atom 53 y ${ynew}
+set             atom 53 y 8.85638967657089
+  1 settings made for y
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      15            0   -610.47194            0   -610.47194    1512.5322 
+      16            0   -524.19404            0   -524.19404    1627.5449 
+Loop time of 0.109209 on 1 procs for 1 steps with 72 atoms
+
+99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 16
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}" 		  #"variable 	nmoves equal ${increment}"
+set atom $i z ${z0}
+set atom 53 z ${z0}
+set atom 53 z 3.53964863967895
+  1 settings made for z
+set atom $i y ${y0}
+set atom 53 y ${y0}
+set atom 53 y 9.0678672542572
+  1 settings made for y
+
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 51
+
+variable        z0 equal ${zi}
+variable        z0 equal 2.75354116535187
+variable        y0 equal ${yi}
+variable        y0 equal 8.31161949539185
+
+set             atom $i z ${znew}
+set             atom 51 z ${znew}
+set             atom 51 z 2.31556140756607
+  1 settings made for z
+set             atom $i y ${ynew}
+set             atom 51 y ${ynew}
+set             atom 51 y 8.6964534869194
+  1 settings made for y
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      16            0   -524.19404            0   -524.19404    1627.5449 
+      17            0   -623.85372            0   -623.85372    1476.9137 
+Loop time of 0.109209 on 1 procs for 1 steps with 72 atoms
+
+99.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 17
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}" 		  #"variable 	nmoves equal ${increment}"
+variable elast equal $e
+variable elast equal -623.85371795019
+variable naccept equal ${increment}
+variable naccept equal 6
+
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 28
+
+variable        z0 equal ${zi}
+variable        z0 equal 1.91153531646729
+variable        y0 equal ${yi}
+variable        y0 equal 4.37062584114075
+
+set             atom $i z ${znew}
+set             atom 28 z ${znew}
+set             atom 28 z 1.86715041971207
+  1 settings made for z
+set             atom $i y ${ynew}
+set             atom 28 y ${ynew}
+set             atom 28 y 4.54805980873108
+  1 settings made for y
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      17            0   -623.85372            0   -623.85372    1476.9137 
+      18            0   -617.18803            0   -617.18803    1495.5066 
+Loop time of 0.10913 on 1 procs for 1 steps with 72 atoms
+
+99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 18
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}" 		  #"variable 	nmoves equal ${increment}"
+set atom $i z ${z0}
+set atom 28 z ${z0}
+set atom 28 z 1.91153531646729
+  1 settings made for z
+set atom $i y ${y0}
+set atom 28 y ${y0}
+set atom 28 y 4.37062584114075
+  1 settings made for y
+
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 54
+
+variable        z0 equal ${zi}
+variable        z0 equal 4.56483505916595
+variable        y0 equal ${yi}
+variable        y0 equal 9.41013345623016
+
+set             atom $i z ${znew}
+set             atom 54 z ${znew}
+set             atom 54 z 4.77070980024338
+  1 settings made for z
+set             atom $i y ${ynew}
+set             atom 54 y ${ynew}
+set             atom 54 y 9.83272102975845
+  1 settings made for y
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      18            0   -617.18803            0   -617.18803    1495.5066 
+      19            0   -608.80785            0   -608.80785    1472.2476 
+Loop time of 0.10925 on 1 procs for 1 steps with 72 atoms
+
+99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 19
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}" 		  #"variable 	nmoves equal ${increment}"
+set atom $i z ${z0}
+set atom 54 z ${z0}
+set atom 54 z 4.56483505916595
+  1 settings made for z
+set atom $i y ${y0}
+set atom 54 y ${y0}
+set atom 54 y 9.41013345623016
+  1 settings made for y
+
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 25
+
+variable        z0 equal ${zi}
+variable        z0 equal -0.0401242971420288
+variable        y0 equal ${yi}
+variable        y0 equal 4.12302838516235
+
+set             atom $i z ${znew}
+set             atom 25 z ${znew}
+set             atom 25 z 0.428180277347565
+  1 settings made for z
+set             atom $i y ${ynew}
+set             atom 25 y ${ynew}
+set             atom 25 y 4.3717660779953
+  1 settings made for y
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      19            0   -608.80785            0   -608.80785    1472.2476 
+      20            0   -618.62126            0   -618.62126    1487.9385 
+Loop time of 0.10903 on 1 procs for 1 steps with 72 atoms
+
+99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 20
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}" 		  #"variable 	nmoves equal ${increment}"
+set atom $i z ${z0}
+set atom 25 z ${z0}
+set atom 25 z -0.0401242971420288
+  1 settings made for z
+set atom $i y ${y0}
+set atom 25 y ${y0}
+set atom 25 y 4.12302838516235
+  1 settings made for y
+
+next            iter
+jump            SELF loop
+
+# final energy and stats
+
+variable       nb equal nbuild
+variable       nbuild equal ${nb}
+variable       nbuild equal 0
+variable       ratio equal "v_naccept/v_nmoves"
+
+run             0
+WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
+PPPM initialization ...
+WARNING: Using polynomial approximation for long-range coulomb (../kspace.cpp:316)
+  G vector (1/distance) = 0.305703
+  grid = 6 150 150
+  stencil order = 5
+  estimated absolute RMS force accuracy = 0.00150384
+  estimated relative force accuracy = 0.000104436
+  using double precision FFTs
+  3d grid and FFT values/proc = 312325 135000
+Memory usage per processor = 30.4074 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+      20            0   -623.85372            0   -623.85372    1476.9137 
+Loop time of 3.09944e-06 on 1 procs for 0 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Kspace  | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 3.099e-06  |            |       |100.00
+
+Nlocal:    72 ave 72 max 72 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:    324 ave 324 max 324 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:    7759 ave 7759 max 7759 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 7759
+Ave neighs/atom = 107.764
+Neighbor list builds = 0
+Dangerous builds = 0
+
+#-------------------------END OF MONTE CARLO------------------------
+print           "MC stats:"
+MC stats:
+print           "  neighbor list rebuilds = ${nbuild}"
+  neighbor list rebuilds = 0
+print           "  starting energy = ${estart}"
+  starting energy = -564.3745384091
+print           "  final energy = $e"
+  final energy = -623.853717950191
+print           "  minimum energy of perfect lattice = ${emin}"
+  minimum energy of perfect lattice = -1461.67011902226
+print           "  accepted MC moves = ${naccept}"
+  accepted MC moves = 6
+print 		"  Total moves = ${nmoves}"
+  Total moves = 20
+print 		"  Ratio of accepted/Total = ${ratio}"
+  Ratio of accepted/Total = 0.3
+
+
+#-----------------------MINIMISATION-------------------------------
+#reset_timestep	0 #start at 0
+#thermo 10 #how often to output properties
+#thermo_style custom step pe #custom specification of what to print
+#dump 1 all custom 1 dump.lammpstrj id type xs ys zs  #dump info to trjectory file
+#dump 2 all xyz 1 dump.1d.xyz  #dump info to xyz file
+#dump visual all cfg 10 dump.1d.*.cfg mass type xs ys zs vx vy vz
+#min_style cg #apply conjugate gradients
+#minimize 1e-15 1e-15 5000 5000 #minimiser settings
 
 #----------------------SIMULATION DONE-------------------------------
 
-variable natoms equal "count(all)"
-variable teng equal "c_eatoms"
-variable length equal "lx"
-variable ecoh equal "v_teng/v_natoms"
+#variable natoms equal "count(all)"
+#variable teng equal "c_eatoms"
+#variable length equal "lx"
+#variable ecoh equal "v_teng/v_natoms"
 
 #print "Total energy (eV) = ${teng};"
-print "Number of atoms = ${natoms};"
-Number of atoms = 5508;
-print "Lattice constant (Angstoms) = ${length};"
-Lattice constant (Angstoms) = 4.212;
+#print "Number of atoms = ${natoms};"
+#print "Lattice constant (Angstoms) = ${length};"
 #print "Cohesive energy (eV) = ${ecoh};"
 
 print "Calculation complete"
 Calculation complete
-Total wall time: 0:02:53
+Total wall time: 0:00:02
