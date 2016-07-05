@@ -76,15 +76,28 @@ variable 	nmincrement equal v_nmoves+1
 variable        irandom equal floor(atoms*random(0.0,1.0,${seed})+1)
 variable        rn equal random(0.0,1.0,${seed})
 variable        boltzfactor equal "exp(atoms*(v_elast - v_e) / v_kT)"
+
+variable 	atomid equal v_i%2
+
 variable        znew equal z[v_i]+v_deltamove*random(-1.0,1.0,${seed})
 variable        ynew equal y[v_i]+v_deltamove*random(-1.0,1.0,${seed})
 variable        zi equal z[v_i]
 variable        yi equal y[v_i]
+variable	layeri equal 0
+variable 	loweri equal "v_i - 1"
+variable 	upperi equal "v_i + 1"
 
 #--------------------- LOOP -----------------------------------
 label           loop
 
 variable        i equal ${irandom}
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then &
+                  "variable layeri equal ${loweri} " &
+                else &
+                  "variable layeri equal ${upperi} " &
 
 variable        z0 equal ${zi}
 variable        y0 equal ${yi}
@@ -92,6 +105,11 @@ variable        y0 equal ${yi}
 set             atom $i z ${znew}
 set             atom $i y ${ynew}
 
+set             atom ${layeri} z ${znew}
+set             atom ${layeri} y ${ynew}
+
+print 	"$i"
+print 	"${layeri}"
 run             1 pre no post no
 variable 	nmoves equal ${nmincrement}
 if              "$e <= ${elast}" then &
@@ -103,7 +121,8 @@ if              "$e <= ${elast}" then &
                 else &
                   "set atom $i z ${z0}" &
                   "set atom $i y ${y0}" &
-		  #"variable 	nmoves equal ${increment}"
+                  "set atom ${layeri} z ${z0}" &
+                  "set atom ${layeri} y ${y0}" &
 
 next            iter
 jump            SELF loop
