@@ -16,11 +16,11 @@ create_box 2 box  #generate simulation box
 # set these parameters
 # make sure neigh skin > 2*deltamove
 
-variable iter loop 3000            # number of Monte Carlo moves
+variable iter loop 500            # number of Monte Carlo moves
 variable deltaperturb equal 1.0    #0.2 max size of initial perturbation per dim
-variable deltamove equal 1.0       #0.1 max size of MC move in one dimension
+variable deltamove equal 0.5       #0.1 max size of MC move in one dimension
 variable density equal 1.0         # reduced LJ density of atoms on lattice
-variable kT equal 0.2             # effective T in Boltzmann factor
+variable kT equal 0.75             # effective T in Boltzmann factor
 variable seed equal 582783         # RNG seed
 
 #read in coordinates
@@ -112,8 +112,6 @@ variable       nbuild equal ${nb}
 
 run             0
 
-
-
 #-------------------------END OF MONTE CARLO------------------------
 print           "MC stats:"
 print           "  starting energy = ${estart}"
@@ -121,9 +119,6 @@ print           "  final energy = $e"
 print           "  minimum energy of perfect lattice = ${emin}"
 print           "  accepted MC moves = ${naccept}"
 print           "  neighbor list rebuilds = ${nbuild}"
-
-
-
 
 #-----------------------MINIMISATION-------------------------------
 #reset_timestep	0 #start at 0
