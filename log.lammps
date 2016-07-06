@@ -13,25 +13,25 @@ atom_style charge	#specifies what properties to associate with atoms
 variable a equal  4.212
 atom_modify     map array sort 0 0.0
 
-region box block 0.0 4.212 -200.0 200.0 -200.0 200.0 units box
+region box block 0.0 4.212 0.0 12.636 0.0 12.636 units box
 boundary p p p  #PBC in x-direction
 create_box 2 box  #generate simulation box
-Created orthogonal box = (0 -200 -200) to (4.212 200 200)
+Created orthogonal box = (0 0 0) to (4.212 12.636 12.636)
   1 by 1 by 1 MPI processor grid
 
 # set these parameters
 # make sure neigh skin > 2*deltamove
 
-variable iter loop 20            # number of Monte Carlo moves
-variable deltaperturb equal 1.0    #0.2 max size of initial perturbation per dim
-variable deltamove equal 0.5       #0.1 max size of MC move in one dimension
+variable iter loop 50            # number of Monte Carlo moves
+variable deltaperturb equal 00.0    #0.2 max size of initial perturbation per dim
+variable deltamove equal 2.5       #0.1 max size of MC move in one dimension
 variable density equal 1.0         # reduced LJ density of atoms on lattice
-variable kT equal 0.75             # effective T in Boltzmann factor
+variable kT equal 1000             # effective T in Boltzmann factor
 variable seed equal 582783         # RNG seed
 
 #read in coordinates
 read_dump testmc.xyz 0 x y z box no add yes format xyz
-  orthogonal box = (0 -200 -200) to (4.212 200 200)
+  orthogonal box = (0 0 0) to (4.212 12.636 12.636)
   0 atoms before read
   72 atoms in snapshot
   0 atoms purged
@@ -68,26 +68,26 @@ run             0
 WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
 PPPM initialization ...
 WARNING: Using polynomial approximation for long-range coulomb (../kspace.cpp:316)
-  G vector (1/distance) = 0.305703
-  grid = 6 150 150
+  G vector (1/distance) = 0.400041
+  grid = 8 15 15
   stencil order = 5
-  estimated absolute RMS force accuracy = 0.00150384
-  estimated relative force accuracy = 0.000104436
+  estimated absolute RMS force accuracy = 0.000671313
+  estimated relative force accuracy = 4.66201e-05
   using double precision FFTs
-  3d grid and FFT values/proc = 312325 135000
+  3d grid and FFT values/proc = 8228 1800
 Neighbor list info ...
   2 neighbor list requests
   update every 1 steps, delay 0 steps, check yes
   max neighbors/atom: 2000, page size: 100000
   master list distance cutoff = 10
   ghost atom cutoff = 10
-  binsize = 5 -> bins = 1 80 80
-Memory usage per processor = 29.1547 Mbytes
+  binsize = 5 -> bins = 1 3 3
+Memory usage per processor = 3.49055 Mbytes
 Step Temp E_pair E_mol TotEng Press 
-       0            0   -1461.6701            0   -1461.6701   -110.70088 
-Loop time of 2.14577e-06 on 1 procs for 0 steps with 72 atoms
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+Loop time of 3.09944e-06 on 1 procs for 0 steps with 72 atoms
 
-233.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+64.5% CPU use with 1 MPI tasks x 1 OpenMP threads
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
@@ -98,21 +98,21 @@ Neigh   | 0          | 0          | 0          |   0.0 |  0.00
 Comm    | 0          | 0          | 0          |   0.0 |  0.00
 Output  | 0          | 0          | 0          |   0.0 |  0.00
 Modify  | 0          | 0          | 0          |   0.0 |  0.00
-Other   |            | 2.146e-06  |            |       |100.00
+Other   |            | 3.099e-06  |            |       |100.00
 
 Nlocal:    72 ave 72 max 72 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
-Nghost:    324 ave 324 max 324 min
+Nghost:    2403 ave 2403 max 2403 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
-Neighs:    8048 ave 8048 max 8048 min
+Neighs:    16560 ave 16560 max 16560 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
 
-Total # of neighbors = 8048
-Ave neighs/atom = 111.778
+Total # of neighbors = 16560
+Ave neighs/atom = 230
 Neighbor list builds = 0
 Dangerous builds = 0
 variable        emin equal $e
-variable        emin equal -1461.67011902226
+variable        emin equal -1481.42658366852
 
 # disorder the system
 # estart = initial energy
@@ -133,19 +133,19 @@ run             0
 WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
 PPPM initialization ...
 WARNING: Using polynomial approximation for long-range coulomb (../kspace.cpp:316)
-  G vector (1/distance) = 0.305703
-  grid = 6 150 150
+  G vector (1/distance) = 0.400041
+  grid = 8 15 15
   stencil order = 5
-  estimated absolute RMS force accuracy = 0.00150384
-  estimated relative force accuracy = 0.000104436
+  estimated absolute RMS force accuracy = 0.000671313
+  estimated relative force accuracy = 4.66201e-05
   using double precision FFTs
-  3d grid and FFT values/proc = 312325 135000
-Memory usage per processor = 30.4074 Mbytes
+  3d grid and FFT values/proc = 8228 1800
+Memory usage per processor = 4.7433 Mbytes
 Step Temp E_pair E_mol TotEng Press 
-       0            0   -564.37454            0   -564.37454     1625.739 
-Loop time of 2.86102e-06 on 1 procs for 0 steps with 72 atoms
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+Loop time of 2.14577e-06 on 1 procs for 0 steps with 72 atoms
 
-139.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
@@ -156,24 +156,24 @@ Neigh   | 0          | 0          | 0          |   0.0 |  0.00
 Comm    | 0          | 0          | 0          |   0.0 |  0.00
 Output  | 0          | 0          | 0          |   0.0 |  0.00
 Modify  | 0          | 0          | 0          |   0.0 |  0.00
-Other   |            | 2.861e-06  |            |       |100.00
+Other   |            | 2.146e-06  |            |       |100.00
 
 Nlocal:    72 ave 72 max 72 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
-Nghost:    324 ave 324 max 324 min
+Nghost:    2403 ave 2403 max 2403 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
-Neighs:    7770 ave 7770 max 7770 min
+Neighs:    16560 ave 16560 max 16560 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
 
-Total # of neighbors = 7770
-Ave neighs/atom = 107.917
+Total # of neighbors = 16560
+Ave neighs/atom = 230
 Neighbor list builds = 0
 Dangerous builds = 0
 
 variable        estart equal $e
-variable        estart equal -564.3745384091
+variable        estart equal -1481.42658366852
 variable        elast equal $e
-variable        elast equal -564.3745384091
+variable        elast equal -1481.42658366852
 
 #-------------------- loop over Monte Carlo moves ----------------------------
 
@@ -211,405 +211,701 @@ if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "  
 variable layeri equal ${loweri} 
 variable layeri equal 47 
 variable        z0 equal ${zi}
-variable        z0 equal 11.0691701459885
+variable        z0 equal 10.53
 variable        y0 equal ${yi}
-variable        y0 equal 5.38635901737213
+variable        y0 equal 6.318
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 11.2844156908989
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 4.1318256072998
 
-set             atom $i z ${znew}
-set             atom 48 z ${znew}
-set             atom 48 z 11.2200532841682
+set             atom $i z ${zupdate}
+set             atom 48 z ${zupdate}
+set             atom 48 z 11.2844156908989
   1 settings made for z
-set             atom $i y ${ynew}
-set             atom 48 y ${ynew}
-set             atom 48 y 4.94912413883209
+set             atom $i y ${yupdate}
+set             atom 48 y ${yupdate}
+set             atom 48 y 4.1318256072998
   1 settings made for y
-
-set             atom ${layeri} z ${znew}
-set             atom 47 z ${znew}
-set             atom 47 z 11.5620749282836
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 47 z ${zupdate}
+set             atom 47 z 11.2844156908989
   1 settings made for z
-set             atom ${layeri} y ${ynew}
-set             atom 47 y ${ynew}
-set             atom 47 y 4.60537145662308
+set             atom ${layeri} y ${yupdate}
+set             atom 47 y ${yupdate}
+set             atom 47 y 4.1318256072998
   1 settings made for y
+#print " ${zupdate}"
 
 print 	"$i"
 48
+#print  "v_y[i]"
+#print z[i]
 print 	"${layeri}"
 47
+
 run             1 pre no post no
 Step Temp E_pair E_mol TotEng Press 
-       0            0   -564.37454            0   -564.37454     1625.739 
-       1            0   -605.17739            0   -605.17739    1586.8169 
-Loop time of 0.110315 on 1 procs for 1 steps with 72 atoms
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1306.008            0    -1306.008    427388.04 
+Loop time of 0.00492096 on 1 procs for 1 steps with 72 atoms
 
-99.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+94.5% CPU use with 1 MPI tasks x 1 OpenMP threads
 variable 	nmoves equal ${nmincrement}
 variable 	nmoves equal 1
 if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 48 z ${z0}
+set atom 48 z 10.53
+  1 settings made for z
+set atom $i y ${y0}
+set atom 48 y ${y0}
+set atom 48 y 6.318
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 47 z ${z0}
+set atom 47 z 10.53
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 47 y ${y0}
+set atom 47 y 6.318
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 12
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 11 
+variable        z0 equal ${zi}
+variable        z0 equal 10.53
+variable        y0 equal ${yi}
+variable        y0 equal 0
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 12.8726342010498
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal -0.257987976074219
+
+set             atom $i z ${zupdate}
+set             atom 12 z ${zupdate}
+set             atom 12 z 12.8726342010498
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 12 y ${yupdate}
+set             atom 12 y -0.257987976074219
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 11 z ${zupdate}
+set             atom 11 z 12.8726342010498
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 11 y ${yupdate}
+set             atom 11 y -0.257987976074219
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+12
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+11
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+       1            0    -1306.008            0    -1306.008    427388.04 
+       2            0    -905.2049            0    -905.2049    553971.87 
+Loop time of 0.00580311 on 1 procs for 1 steps with 72 atoms
+
+90.4% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 2
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 12 z ${z0}
+set atom 12 z 10.53
+  1 settings made for z
+set atom $i y ${y0}
+set atom 12 y ${y0}
+set atom 12 y 0
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 11 z ${z0}
+set atom 11 z 10.53
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 11 y ${y0}
+set atom 11 y 0
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 37
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${upperi} 
+variable layeri equal 38 
+variable        z0 equal ${zi}
+variable        z0 equal 0
+variable        y0 equal ${yi}
+variable        y0 equal 6.318
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 1.05584681034088
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 5.12282256412506
+
+set             atom $i z ${zupdate}
+set             atom 37 z ${zupdate}
+set             atom 37 z 1.05584681034088
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 37 y ${yupdate}
+set             atom 37 y 5.12282256412506
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 38 z ${zupdate}
+set             atom 38 z 1.05584681034088
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 38 y ${yupdate}
+set             atom 38 y 5.12282256412506
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+37
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+38
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+       2            0    -905.2049            0    -905.2049    553971.87 
+       3            0   -1435.5442            0   -1435.5442     170455.5 
+Loop time of 0.00507998 on 1 procs for 1 steps with 72 atoms
+
+94.4% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 3
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 37 z ${z0}
+set atom 37 z 0
+  1 settings made for z
+set atom $i y ${y0}
+set atom 37 y ${y0}
+set atom 37 y 6.318
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 38 z ${z0}
+set atom 38 z 0
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 38 y ${y0}
+set atom 38 y 6.318
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 13
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${upperi} 
+variable layeri equal 14 
+variable        z0 equal ${zi}
+variable        z0 equal 0
+variable        y0 equal ${yi}
+variable        y0 equal 2.106
+variable 	zupdate equal ${znew}
+variable 	zupdate equal -0.867443978786469
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 0.0980294880867003
+
+set             atom $i z ${zupdate}
+set             atom 13 z ${zupdate}
+set             atom 13 z -0.867443978786469
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 13 y ${yupdate}
+set             atom 13 y 0.0980294880867003
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 14 z ${zupdate}
+set             atom 14 z -0.867443978786469
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 14 y ${yupdate}
+set             atom 14 y 0.0980294880867003
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+13
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+14
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+       3            0   -1435.5442            0   -1435.5442     170455.5 
+       4            0     -1339.58            0     -1339.58    391128.53 
+Loop time of 0.00497794 on 1 procs for 1 steps with 72 atoms
+
+64.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 4
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 13 z ${z0}
+set atom 13 z 0
+  1 settings made for z
+set atom $i y ${y0}
+set atom 13 y ${y0}
+set atom 13 y 2.106
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 14 z ${z0}
+set atom 14 z 0
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 14 y ${y0}
+set atom 14 y 2.106
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 29
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${upperi} 
+variable layeri equal 30 
+variable        z0 equal ${zi}
+variable        z0 equal 4.212
+variable        y0 equal ${yi}
+variable        y0 equal 4.212
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 3.86070184659958
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 2.57478080940247
+
+set             atom $i z ${zupdate}
+set             atom 29 z ${zupdate}
+set             atom 29 z 3.86070184659958
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 29 y ${yupdate}
+set             atom 29 y 2.57478080940247
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 30 z ${zupdate}
+set             atom 30 z 3.86070184659958
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 30 y ${yupdate}
+set             atom 30 y 2.57478080940247
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+29
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+30
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+       4            0     -1339.58            0     -1339.58    391128.53 
+       5            0   -1218.3097            0   -1218.3097    467194.68 
+Loop time of 0.00489807 on 1 procs for 1 steps with 72 atoms
+
+118.4% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 5
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 29 z ${z0}
+set atom 29 z 4.212
+  1 settings made for z
+set atom $i y ${y0}
+set atom 29 y ${y0}
+set atom 29 y 4.212
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 30 z ${z0}
+set atom 30 z 4.212
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 30 y ${y0}
+set atom 30 y 4.212
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 42
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 41 
+variable        z0 equal ${zi}
+variable        z0 equal 4.212
+variable        y0 equal ${yi}
+variable        y0 equal 6.318
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 6.49236224842072
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 8.19303010034561
+
+set             atom $i z ${zupdate}
+set             atom 42 z ${zupdate}
+set             atom 42 z 6.49236224842072
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 42 y ${yupdate}
+set             atom 42 y 8.19303010034561
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 41 z ${zupdate}
+set             atom 41 z 6.49236224842072
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 41 y ${yupdate}
+set             atom 41 y 8.19303010034561
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+42
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+41
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+       5            0   -1218.3097            0   -1218.3097    467194.68 
+       6            0   -53073.572            0   -53073.572 -2.5659348e+08 
+Loop time of 0.00488186 on 1 procs for 1 steps with 72 atoms
+
+95.7% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 6
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
 variable elast equal $e
-variable elast equal -605.177385919311
+variable elast equal -53073.5720627557
 variable naccept equal ${increment}
 variable naccept equal 1
 next            iter
 jump            SELF loop
 
 variable        i equal ${irandom}
-variable        i equal 70
+variable        i equal 45
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${upperi} 
+variable layeri equal 46 
+variable        z0 equal ${zi}
+variable        z0 equal 8.424
+variable        y0 equal ${yi}
+variable        y0 equal 6.318
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 8.32368925714493
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 7.35234681892395
+
+set             atom $i z ${zupdate}
+set             atom 45 z ${zupdate}
+set             atom 45 z 8.32368925714493
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 45 y ${yupdate}
+set             atom 45 y 7.35234681892395
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 46 z ${zupdate}
+set             atom 46 z 8.32368925714493
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 46 y ${yupdate}
+set             atom 46 y 7.35234681892395
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+45
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+46
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+       6            0   -53073.572            0   -53073.572 -2.5659348e+08 
+       7            0   -53025.582            0   -53025.582 -2.5643026e+08 
+Loop time of 0.00496793 on 1 procs for 1 steps with 72 atoms
+
+95.4% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 7
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 45 z ${z0}
+set atom 45 z 8.424
+  1 settings made for z
+set atom $i y ${y0}
+set atom 45 y ${y0}
+set atom 45 y 6.318
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 46 z ${z0}
+set atom 46 z 8.424
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 46 y ${y0}
+set atom 46 y 6.318
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 29
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${upperi} 
+variable layeri equal 30 
+variable        z0 equal ${zi}
+variable        z0 equal 4.212
+variable        y0 equal ${yi}
+variable        y0 equal 4.212
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 2.6938434715271
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 6.22109614562988
+
+set             atom $i z ${zupdate}
+set             atom 29 z ${zupdate}
+set             atom 29 z 2.6938434715271
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 29 y ${yupdate}
+set             atom 29 y 6.22109614562988
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 30 z ${zupdate}
+set             atom 30 z 2.6938434715271
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 30 y ${yupdate}
+set             atom 30 y 6.22109614562988
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+29
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+30
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+       7            0   -53025.582            0   -53025.582 -2.5643026e+08 
+       8            0   -53031.696            0   -53031.696 -2.5853464e+08 
+Loop time of 0.00570107 on 1 procs for 1 steps with 72 atoms
+
+65.7% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 8
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 29 z ${z0}
+set atom 29 z 4.212
+  1 settings made for z
+set atom $i y ${y0}
+set atom 29 y ${y0}
+set atom 29 y 4.212
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 30 z ${z0}
+set atom 30 z 4.212
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 30 y ${y0}
+set atom 30 y 4.212
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 53
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${upperi} 
+variable layeri equal 54 
+variable        z0 equal ${zi}
+variable        z0 equal 4.212
+variable        y0 equal ${yi}
+variable        y0 equal 8.424
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 3.04939024400711
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 9.70442697906494
+
+set             atom $i z ${zupdate}
+set             atom 53 z ${zupdate}
+set             atom 53 z 3.04939024400711
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 53 y ${yupdate}
+set             atom 53 y 9.70442697906494
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 54 z ${zupdate}
+set             atom 54 z 3.04939024400711
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 54 y ${yupdate}
+set             atom 54 y 9.70442697906494
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+53
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+54
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+       8            0   -53031.696            0   -53031.696 -2.5853464e+08 
+       9            0   -53011.769            0   -53011.769 -2.5637901e+08 
+Loop time of 0.00499201 on 1 procs for 1 steps with 72 atoms
+
+95.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 9
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 53 z ${z0}
+set atom 53 z 4.212
+  1 settings made for z
+set atom $i y ${y0}
+set atom 53 y ${y0}
+set atom 53 y 8.424
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 54 z ${z0}
+set atom 54 z 4.212
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 54 y ${y0}
+set atom 54 y 8.424
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 16
 
 # 0 for even, take away one to get lower layer
 # !=0 for odd, add one to get upper layer
 if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
 variable layeri equal ${loweri} 
-variable layeri equal 69 
+variable layeri equal 15 
 variable        z0 equal ${zi}
-variable        z0 equal 9.29745957756042
+variable        z0 equal 2.106
 variable        y0 equal ${yi}
-variable        y0 equal 10.5909146356583
+variable        y0 equal 2.106
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 1.87491338825226
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 4.48647987222671
 
-set             atom $i z ${znew}
-set             atom 70 z ${znew}
-set             atom 70 z 9.24586198234558
+set             atom $i z ${zupdate}
+set             atom 16 z ${zupdate}
+set             atom 16 z 1.87491338825226
   1 settings made for z
-set             atom $i y ${ynew}
-set             atom 70 y ${ynew}
-set             atom 70 y 10.3029548215866
+set             atom $i y ${yupdate}
+set             atom 16 y ${yupdate}
+set             atom 16 y 4.48647987222671
   1 settings made for y
-
-set             atom ${layeri} z ${znew}
-set             atom 69 z ${znew}
-set             atom 69 z 9.25838628911972
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 15 z ${zupdate}
+set             atom 15 z 1.87491338825226
   1 settings made for z
-set             atom ${layeri} y ${ynew}
-set             atom 69 y ${ynew}
-set             atom 69 y 10.5141241836548
+set             atom ${layeri} y ${yupdate}
+set             atom 15 y ${yupdate}
+set             atom 15 y 4.48647987222671
   1 settings made for y
+#print " ${zupdate}"
 
 print 	"$i"
-70
+16
+#print  "v_y[i]"
+#print z[i]
 print 	"${layeri}"
-69
+15
+
 run             1 pre no post no
 Step Temp E_pair E_mol TotEng Press 
-       1            0   -605.17739            0   -605.17739    1586.8169 
-       2            0   -588.99476            0   -588.99476    1640.2181 
-Loop time of 0.112248 on 1 procs for 1 steps with 72 atoms
+       9            0   -53011.769            0   -53011.769 -2.5637901e+08 
+      10            0   -52510.621            0   -52510.621 -2.5603606e+08 
+Loop time of 0.00499916 on 1 procs for 1 steps with 72 atoms
 
-99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+113.3% CPU use with 1 MPI tasks x 1 OpenMP threads
 variable 	nmoves equal ${nmincrement}
-variable 	nmoves equal 2
+variable 	nmoves equal 10
 if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
 set atom $i z ${z0}
-set atom 70 z ${z0}
-set atom 70 z 9.29745957756042
+set atom 16 z ${z0}
+set atom 16 z 2.106
   1 settings made for z
 set atom $i y ${y0}
-set atom 70 y ${y0}
-set atom 70 y 10.5909146356583
+set atom 16 y ${y0}
+set atom 16 y 2.106
   1 settings made for y
 set atom ${layeri} z ${z0}
-set atom 69 z ${z0}
-set atom 69 z 9.29745957756042
+set atom 15 z ${z0}
+set atom 15 z 2.106
   1 settings made for z
 set atom ${layeri} y ${y0}
-set atom 69 y ${y0}
-set atom 69 y 10.5909146356583
-  1 settings made for y
-next            iter
-jump            SELF loop
-
-variable        i equal ${irandom}
-variable        i equal 27
-
-# 0 for even, take away one to get lower layer
-# !=0 for odd, add one to get upper layer
-if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
-variable layeri equal ${upperi} 
-variable layeri equal 28 
-variable        z0 equal ${zi}
-variable        z0 equal 2.75103955841064
-variable        y0 equal ${yi}
-variable        y0 equal 4.95668243122101
-
-set             atom $i z ${znew}
-set             atom 27 z ${znew}
-set             atom 27 z 2.41795569038391
-  1 settings made for z
-set             atom $i y ${ynew}
-set             atom 27 y ${ynew}
-set             atom 27 y 4.78319363546371
-  1 settings made for y
-
-set             atom ${layeri} z ${znew}
-set             atom 28 z ${znew}
-set             atom 28 z 2.01636158800125
-  1 settings made for z
-set             atom ${layeri} y ${ynew}
-set             atom 28 y ${ynew}
-set             atom 28 y 4.50189022970199
-  1 settings made for y
-
-print 	"$i"
-27
-print 	"${layeri}"
-28
-run             1 pre no post no
-Step Temp E_pair E_mol TotEng Press 
-       2            0   -588.99476            0   -588.99476    1640.2181 
-       3            0   -626.34172            0   -626.34172      1558.11 
-Loop time of 0.109587 on 1 procs for 1 steps with 72 atoms
-
-99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
-variable 	nmoves equal ${nmincrement}
-variable 	nmoves equal 3
-if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
-variable elast equal $e
-variable elast equal -626.341719407291
-variable naccept equal ${increment}
-variable naccept equal 2
-next            iter
-jump            SELF loop
-
-variable        i equal ${irandom}
-variable        i equal 29
-
-# 0 for even, take away one to get lower layer
-# !=0 for odd, add one to get upper layer
-if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
-variable layeri equal ${upperi} 
-variable layeri equal 30 
-variable        z0 equal ${zi}
-variable        z0 equal 3.60473738861084
-variable        y0 equal ${yi}
-variable        y0 equal 4.91049920272827
-
-set             atom $i z ${znew}
-set             atom 29 z ${znew}
-set             atom 29 z 3.53447775793076
-  1 settings made for z
-set             atom $i y ${ynew}
-set             atom 29 y ${ynew}
-set             atom 29 y 4.58305536460876
-  1 settings made for y
-
-set             atom ${layeri} z ${znew}
-set             atom 30 z ${znew}
-set             atom 30 z 3.84839163970948
-  1 settings made for z
-set             atom ${layeri} y ${ynew}
-set             atom 30 y ${ynew}
-set             atom 30 y 4.66046820831298
-  1 settings made for y
-
-print 	"$i"
-29
-print 	"${layeri}"
-30
-run             1 pre no post no
-Step Temp E_pair E_mol TotEng Press 
-       3            0   -626.34172            0   -626.34172      1558.11 
-       4            0   -626.54355            0   -626.54355     1561.026 
-Loop time of 0.110262 on 1 procs for 1 steps with 72 atoms
-
-99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
-variable 	nmoves equal ${nmincrement}
-variable 	nmoves equal 4
-if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
-variable elast equal $e
-variable elast equal -626.543552635967
-variable naccept equal ${increment}
-variable naccept equal 3
-next            iter
-jump            SELF loop
-
-variable        i equal ${irandom}
-variable        i equal 69
-
-# 0 for even, take away one to get lower layer
-# !=0 for odd, add one to get upper layer
-if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
-variable layeri equal ${upperi} 
-variable layeri equal 70 
-variable        z0 equal ${zi}
-variable        z0 equal 9.29745957756042
-variable        y0 equal ${yi}
-variable        y0 equal 10.5909146356583
-
-set             atom $i z ${znew}
-set             atom 69 z ${znew}
-set             atom 69 z 9.67246559762954
-  1 settings made for z
-set             atom $i y ${ynew}
-set             atom 69 y ${ynew}
-set             atom 69 y 10.7079305934906
-  1 settings made for y
-
-set             atom ${layeri} z ${znew}
-set             atom 70 z ${znew}
-set             atom 70 z 9.65240344905853
-  1 settings made for z
-set             atom ${layeri} y ${ynew}
-set             atom 70 y ${ynew}
-set             atom 70 y 10.9147999572754
-  1 settings made for y
-
-print 	"$i"
-69
-print 	"${layeri}"
-70
-run             1 pre no post no
-Step Temp E_pair E_mol TotEng Press 
-       4            0   -626.54355            0   -626.54355     1561.026 
-       5            0   -581.79062            0   -581.79062    1636.9697 
-Loop time of 0.114748 on 1 procs for 1 steps with 72 atoms
-
-99.7% CPU use with 1 MPI tasks x 1 OpenMP threads
-variable 	nmoves equal ${nmincrement}
-variable 	nmoves equal 5
-if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
-set atom $i z ${z0}
-set atom 69 z ${z0}
-set atom 69 z 9.29745957756042
-  1 settings made for z
-set atom $i y ${y0}
-set atom 69 y ${y0}
-set atom 69 y 10.5909146356583
-  1 settings made for y
-set atom ${layeri} z ${z0}
-set atom 70 z ${z0}
-set atom 70 z 9.29745957756042
-  1 settings made for z
-set atom ${layeri} y ${y0}
-set atom 70 y ${y0}
-set atom 70 y 10.5909146356583
-  1 settings made for y
-next            iter
-jump            SELF loop
-
-variable        i equal ${irandom}
-variable        i equal 29
-
-# 0 for even, take away one to get lower layer
-# !=0 for odd, add one to get upper layer
-if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
-variable layeri equal ${upperi} 
-variable layeri equal 30 
-variable        z0 equal ${zi}
-variable        z0 equal 3.53447775793076
-variable        y0 equal ${yi}
-variable        y0 equal 4.58305536460876
-
-set             atom $i z ${znew}
-set             atom 29 z ${znew}
-set             atom 29 z 3.23084645223618
-  1 settings made for z
-set             atom $i y ${ynew}
-set             atom 29 y ${ynew}
-set             atom 29 y 4.98487459373474
-  1 settings made for y
-
-set             atom ${layeri} z ${znew}
-set             atom 30 z ${znew}
-set             atom 30 z 3.61640827608109
-  1 settings made for z
-set             atom ${layeri} y ${ynew}
-set             atom 30 y ${ynew}
-set             atom 30 y 5.20995114994049
-  1 settings made for y
-
-print 	"$i"
-29
-print 	"${layeri}"
-30
-run             1 pre no post no
-Step Temp E_pair E_mol TotEng Press 
-       5            0   -581.79062            0   -581.79062    1636.9697 
-       6            0   -585.07113            0   -585.07113    1676.3484 
-Loop time of 0.117894 on 1 procs for 1 steps with 72 atoms
-
-99.7% CPU use with 1 MPI tasks x 1 OpenMP threads
-variable 	nmoves equal ${nmincrement}
-variable 	nmoves equal 6
-if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
-set atom $i z ${z0}
-set atom 29 z ${z0}
-set atom 29 z 3.53447775793076
-  1 settings made for z
-set atom $i y ${y0}
-set atom 29 y ${y0}
-set atom 29 y 4.58305536460876
-  1 settings made for y
-set atom ${layeri} z ${z0}
-set atom 30 z ${z0}
-set atom 30 z 3.53447775793076
-  1 settings made for z
-set atom ${layeri} y ${y0}
-set atom 30 y ${y0}
-set atom 30 y 4.58305536460876
-  1 settings made for y
-next            iter
-jump            SELF loop
-
-variable        i equal ${irandom}
-variable        i equal 55
-
-# 0 for even, take away one to get lower layer
-# !=0 for odd, add one to get upper layer
-if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
-variable layeri equal ${upperi} 
-variable layeri equal 56 
-variable        z0 equal ${zi}
-variable        z0 equal 5.76120642948151
-variable        y0 equal ${yi}
-variable        y0 equal 8.85995218658447
-
-set             atom $i z ${znew}
-set             atom 55 z ${znew}
-set             atom 55 z 5.49219528961182
-  1 settings made for z
-set             atom $i y ${ynew}
-set             atom 55 y ${ynew}
-set             atom 55 y 8.57000908756256
-  1 settings made for y
-
-set             atom ${layeri} z ${znew}
-set             atom 56 z ${znew}
-set             atom 56 z 5.44597796726227
-  1 settings made for z
-set             atom ${layeri} y ${ynew}
-set             atom 56 y ${ynew}
-set             atom 56 y 9.0461050620079
-  1 settings made for y
-
-print 	"$i"
-55
-print 	"${layeri}"
-56
-run             1 pre no post no
-Step Temp E_pair E_mol TotEng Press 
-       6            0   -585.07113            0   -585.07113    1676.3484 
-       7            0   -596.75344            0   -596.75344    1649.2938 
-Loop time of 0.115335 on 1 procs for 1 steps with 72 atoms
-
-99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
-variable 	nmoves equal ${nmincrement}
-variable 	nmoves equal 7
-if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
-set atom $i z ${z0}
-set atom 55 z ${z0}
-set atom 55 z 5.76120642948151
-  1 settings made for z
-set atom $i y ${y0}
-set atom 55 y ${y0}
-set atom 55 y 8.85995218658447
-  1 settings made for y
-set atom ${layeri} z ${z0}
-set atom 56 z ${z0}
-set atom 56 z 5.76120642948151
-  1 settings made for z
-set atom ${layeri} y ${y0}
-set atom 56 y ${y0}
-set atom 56 y 8.85995218658447
+set atom 15 y ${y0}
+set atom 15 y 2.106
   1 settings made for y
 next            iter
 jump            SELF loop
@@ -623,202 +919,354 @@ if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "  
 variable layeri equal ${upperi} 
 variable layeri equal 32 
 variable        z0 equal ${zi}
-variable        z0 equal 7.08912364768982
+variable        z0 equal 6.318
 variable        y0 equal ${yi}
-variable        y0 equal 4.52673219394684
+variable        y0 equal 4.212
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 5.36677722263336
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 2.37005107355118
 
-set             atom $i z ${znew}
-set             atom 31 z ${znew}
-set             atom 31 z 6.89887909221649
+set             atom $i z ${zupdate}
+set             atom 31 z ${zupdate}
+set             atom 31 z 5.36677722263336
   1 settings made for z
-set             atom $i y ${ynew}
-set             atom 31 y ${ynew}
-set             atom 31 y 4.15834240865707
+set             atom $i y ${yupdate}
+set             atom 31 y ${yupdate}
+set             atom 31 y 2.37005107355118
   1 settings made for y
-
-set             atom ${layeri} z ${znew}
-set             atom 32 z ${znew}
-set             atom 32 z 6.98718045282364
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 32 z ${zupdate}
+set             atom 32 z 5.36677722263336
   1 settings made for z
-set             atom ${layeri} y ${ynew}
-set             atom 32 y ${ynew}
-set             atom 32 y 4.39584742736816
+set             atom ${layeri} y ${yupdate}
+set             atom 32 y ${yupdate}
+set             atom 32 y 2.37005107355118
   1 settings made for y
+#print " ${zupdate}"
 
 print 	"$i"
 31
+#print  "v_y[i]"
+#print z[i]
 print 	"${layeri}"
 32
+
 run             1 pre no post no
 Step Temp E_pair E_mol TotEng Press 
-       7            0   -596.75344            0   -596.75344    1649.2938 
-       8            0   -655.39379            0   -655.39379     1503.461 
-Loop time of 0.111572 on 1 procs for 1 steps with 72 atoms
+      10            0   -52510.621            0   -52510.621 -2.5603606e+08 
+      11            0   -52952.414            0   -52952.414 -2.5623892e+08 
+Loop time of 0.00499892 on 1 procs for 1 steps with 72 atoms
 
-99.7% CPU use with 1 MPI tasks x 1 OpenMP threads
-variable 	nmoves equal ${nmincrement}
-variable 	nmoves equal 8
-if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
-variable elast equal $e
-variable elast equal -655.393790175823
-variable naccept equal ${increment}
-variable naccept equal 4
-next            iter
-jump            SELF loop
-
-variable        i equal ${irandom}
-variable        i equal 34
-
-# 0 for even, take away one to get lower layer
-# !=0 for odd, add one to get upper layer
-if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
-variable layeri equal ${loweri} 
-variable layeri equal 33 
-variable        z0 equal ${zi}
-variable        z0 equal 8.93617079162598
-variable        y0 equal ${yi}
-variable        y0 equal 4.72811018180847
-
-set             atom $i z ${znew}
-set             atom 34 z ${znew}
-set             atom 34 z 8.55944398546219
-  1 settings made for z
-set             atom $i y ${ynew}
-set             atom 34 y ${ynew}
-set             atom 34 y 4.51758133125305
-  1 settings made for y
-
-set             atom ${layeri} z ${znew}
-set             atom 33 z ${znew}
-set             atom 33 z 8.82902905845642
-  1 settings made for z
-set             atom ${layeri} y ${ynew}
-set             atom 33 y ${ynew}
-set             atom 33 y 4.43911038589477
-  1 settings made for y
-
-print 	"$i"
-34
-print 	"${layeri}"
-33
-run             1 pre no post no
-Step Temp E_pair E_mol TotEng Press 
-       8            0   -655.39379            0   -655.39379     1503.461 
-       9            0   -713.25931            0   -713.25931    1370.5134 
-Loop time of 0.110627 on 1 procs for 1 steps with 72 atoms
-
-99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
-variable 	nmoves equal ${nmincrement}
-variable 	nmoves equal 9
-if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
-variable elast equal $e
-variable elast equal -713.259312240233
-variable naccept equal ${increment}
-variable naccept equal 5
-next            iter
-jump            SELF loop
-
-variable        i equal ${irandom}
-variable        i equal 58
-
-# 0 for even, take away one to get lower layer
-# !=0 for odd, add one to get upper layer
-if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
-variable layeri equal ${loweri} 
-variable layeri equal 57 
-variable        z0 equal ${zi}
-variable        z0 equal 8.00104484462738
-variable        y0 equal ${yi}
-variable        y0 equal 8.93565664196014
-
-set             atom $i z ${znew}
-set             atom 58 z ${znew}
-set             atom 58 z 8.32481542730331
-  1 settings made for z
-set             atom $i y ${ynew}
-set             atom 58 y ${ynew}
-set             atom 58 y 9.37649336957931
-  1 settings made for y
-
-set             atom ${layeri} z ${znew}
-set             atom 57 z ${znew}
-set             atom 57 z 7.98863974714279
-  1 settings made for z
-set             atom ${layeri} y ${ynew}
-set             atom 57 y ${ynew}
-set             atom 57 y 9.55291089916229
-  1 settings made for y
-
-print 	"$i"
-58
-print 	"${layeri}"
-57
-run             1 pre no post no
-Step Temp E_pair E_mol TotEng Press 
-       9            0   -713.25931            0   -713.25931    1370.5134 
-      10            0   -715.66647            0   -715.66647     1397.742 
-Loop time of 0.111085 on 1 procs for 1 steps with 72 atoms
-
-96.2% CPU use with 1 MPI tasks x 1 OpenMP threads
-variable 	nmoves equal ${nmincrement}
-variable 	nmoves equal 10
-if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
-variable elast equal $e
-variable elast equal -715.666466503412
-variable naccept equal ${increment}
-variable naccept equal 6
-next            iter
-jump            SELF loop
-
-variable        i equal ${irandom}
-variable        i equal 16
-
-# 0 for even, take away one to get lower layer
-# !=0 for odd, add one to get upper layer
-if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
-variable layeri equal ${loweri} 
-variable layeri equal 15 
-variable        z0 equal ${zi}
-variable        z0 equal 1.54339318847656
-variable        y0 equal ${yi}
-variable        y0 equal 2.51464133834839
-
-set             atom $i z ${znew}
-set             atom 16 z ${znew}
-set             atom 16 z 1.77589552974701
-  1 settings made for z
-set             atom $i y ${ynew}
-set             atom 16 y ${ynew}
-set             atom 16 y 2.07186644649506
-  1 settings made for y
-
-set             atom ${layeri} z ${znew}
-set             atom 15 z ${znew}
-set             atom 15 z 1.5644179520607
-  1 settings made for z
-set             atom ${layeri} y ${ynew}
-set             atom 15 y ${ynew}
-set             atom 15 y 2.08395653343201
-  1 settings made for y
-
-print 	"$i"
-16
-print 	"${layeri}"
-15
-run             1 pre no post no
-Step Temp E_pair E_mol TotEng Press 
-      10            0   -715.66647            0   -715.66647     1397.742 
-      11            0   -728.58961            0   -728.58961    1370.3404 
-Loop time of 0.110204 on 1 procs for 1 steps with 72 atoms
-
-99.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+32.4% CPU use with 1 MPI tasks x 1 OpenMP threads
 variable 	nmoves equal ${nmincrement}
 variable 	nmoves equal 11
 if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
-variable elast equal $e
-variable elast equal -728.589613519229
-variable naccept equal ${increment}
-variable naccept equal 7
+set atom $i z ${z0}
+set atom 31 z ${z0}
+set atom 31 z 6.318
+  1 settings made for z
+set atom $i y ${y0}
+set atom 31 y ${y0}
+set atom 31 y 4.212
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 32 z ${z0}
+set atom 32 z 6.318
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 32 y ${y0}
+set atom 32 y 4.212
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 54
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 53 
+variable        z0 equal ${zi}
+variable        z0 equal 4.212
+variable        y0 equal ${yi}
+variable        y0 equal 8.424
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 4.00439284992218
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 6.54036596918106
+
+set             atom $i z ${zupdate}
+set             atom 54 z ${zupdate}
+set             atom 54 z 4.00439284992218
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 54 y ${yupdate}
+set             atom 54 y 6.54036596918106
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 53 z ${zupdate}
+set             atom 53 z 4.00439284992218
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 53 y ${yupdate}
+set             atom 53 y 6.54036596918106
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+54
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+53
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      11            0   -52952.414            0   -52952.414 -2.5623892e+08 
+      12            0   -53051.117            0   -53051.117 -2.5659672e+08 
+Loop time of 0.00570107 on 1 procs for 1 steps with 72 atoms
+
+92.7% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 12
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 54 z ${z0}
+set atom 54 z 4.212
+  1 settings made for z
+set atom $i y ${y0}
+set atom 54 y ${y0}
+set atom 54 y 8.424
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 53 z ${z0}
+set atom 53 z 4.212
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 53 y ${y0}
+set atom 53 y 8.424
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 56
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 55 
+variable        z0 equal ${zi}
+variable        z0 equal 6.318
+variable        y0 equal ${yi}
+variable        y0 equal 8.424
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 5.92564527320862
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 9.88813326263428
+
+set             atom $i z ${zupdate}
+set             atom 56 z ${zupdate}
+set             atom 56 z 5.92564527320862
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 56 y ${yupdate}
+set             atom 56 y 9.88813326263428
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 55 z ${zupdate}
+set             atom 55 z 5.92564527320862
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 55 y ${yupdate}
+set             atom 55 y 9.88813326263428
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+56
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+55
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      12            0   -53051.117            0   -53051.117 -2.5659672e+08 
+      13            0    -1319.893            0    -1319.893    382204.42 
+Loop time of 0.00498796 on 1 procs for 1 steps with 72 atoms
+
+65.5% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 13
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 56 z ${z0}
+set atom 56 z 6.318
+  1 settings made for z
+set atom $i y ${y0}
+set atom 56 y ${y0}
+set atom 56 y 8.424
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 55 z ${z0}
+set atom 55 z 6.318
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 55 y ${y0}
+set atom 55 y 8.424
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 68
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 67 
+variable        z0 equal ${zi}
+variable        z0 equal 6.318
+variable        y0 equal ${yi}
+variable        y0 equal 10.53
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 4.63712159919739
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 11.4120876479149
+
+set             atom $i z ${zupdate}
+set             atom 68 z ${zupdate}
+set             atom 68 z 4.63712159919739
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 68 y ${yupdate}
+set             atom 68 y 11.4120876479149
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 67 z ${zupdate}
+set             atom 67 z 4.63712159919739
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 67 y ${yupdate}
+set             atom 67 y 11.4120876479149
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+68
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+67
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      13            0    -1319.893            0    -1319.893    382204.42 
+      14            0   -52968.235            0   -52968.235 -2.5628458e+08 
+Loop time of 0.00493717 on 1 procs for 1 steps with 72 atoms
+
+95.3% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 14
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 68 z ${z0}
+set atom 68 z 6.318
+  1 settings made for z
+set atom $i y ${y0}
+set atom 68 y ${y0}
+set atom 68 y 10.53
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 67 z ${z0}
+set atom 67 z 6.318
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 67 y ${y0}
+set atom 67 y 10.53
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 53
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${upperi} 
+variable layeri equal 54 
+variable        z0 equal ${zi}
+variable        z0 equal 4.212
+variable        y0 equal ${yi}
+variable        y0 equal 8.424
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 1.99812554073334
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 7.36661211156845
+
+set             atom $i z ${zupdate}
+set             atom 53 z ${zupdate}
+set             atom 53 z 1.99812554073334
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 53 y ${yupdate}
+set             atom 53 y 7.36661211156845
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 54 z ${zupdate}
+set             atom 54 z 1.99812554073334
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 54 y ${yupdate}
+set             atom 54 y 7.36661211156845
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+53
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+54
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      14            0   -52968.235            0   -52968.235 -2.5628458e+08 
+      15            0   -52930.311            0   -52930.311 -2.56203e+08 
+Loop time of 0.004879 on 1 procs for 1 steps with 72 atoms
+
+95.4% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 15
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 53 z ${z0}
+set atom 53 z 4.212
+  1 settings made for z
+set atom $i y ${y0}
+set atom 53 y ${y0}
+set atom 53 y 8.424
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 54 z ${z0}
+set atom 54 z 4.212
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 54 y ${y0}
+set atom 54 y 8.424
+  1 settings made for y
 next            iter
 jump            SELF loop
 
@@ -831,109 +1279,197 @@ if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "  
 variable layeri equal ${upperi} 
 variable layeri equal 52 
 variable        z0 equal ${zi}
-variable        z0 equal 2.75354116535187
+variable        z0 equal 2.106
 variable        y0 equal ${yi}
-variable        y0 equal 8.31161949539185
+variable        y0 equal 8.424
+variable 	zupdate equal ${znew}
+variable 	zupdate equal -0.0838987889289857
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 10.3481699576378
 
-set             atom $i z ${znew}
-set             atom 51 z ${znew}
-set             atom 51 z 2.31556140756607
+set             atom $i z ${zupdate}
+set             atom 51 z ${zupdate}
+set             atom 51 z -0.0838987889289857
   1 settings made for z
-set             atom $i y ${ynew}
-set             atom 51 y ${ynew}
-set             atom 51 y 8.6964534869194
+set             atom $i y ${yupdate}
+set             atom 51 y ${yupdate}
+set             atom 51 y 10.3481699576378
   1 settings made for y
-
-set             atom ${layeri} z ${znew}
-set             atom 52 z ${znew}
-set             atom 52 z 2.20013260221481
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 52 z ${zupdate}
+set             atom 52 z -0.0838987889289857
   1 settings made for z
-set             atom ${layeri} y ${ynew}
-set             atom 52 y ${ynew}
-set             atom 52 y 8.65206859016418
+set             atom ${layeri} y ${yupdate}
+set             atom 52 y ${yupdate}
+set             atom 52 y 10.3481699576378
   1 settings made for y
+#print " ${zupdate}"
 
 print 	"$i"
 51
+#print  "v_y[i]"
+#print z[i]
 print 	"${layeri}"
 52
+
 run             1 pre no post no
 Step Temp E_pair E_mol TotEng Press 
-      11            0   -728.58961            0   -728.58961    1370.3404 
-      12            0   -735.56659            0   -735.56659    1375.4469 
-Loop time of 0.112993 on 1 procs for 1 steps with 72 atoms
+      15            0   -52930.311            0   -52930.311 -2.56203e+08 
+      16            0    -544953.9            0    -544953.9 -2.6177317e+09 
+Loop time of 0.00579906 on 1 procs for 1 steps with 72 atoms
 
-99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+107.6% CPU use with 1 MPI tasks x 1 OpenMP threads
 variable 	nmoves equal ${nmincrement}
-variable 	nmoves equal 12
+variable 	nmoves equal 16
 if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
 variable elast equal $e
-variable elast equal -735.566589554903
+variable elast equal -544953.902585008
 variable naccept equal ${increment}
-variable naccept equal 8
+variable naccept equal 2
 next            iter
 jump            SELF loop
 
 variable        i equal ${irandom}
-variable        i equal 49
+variable        i equal 28
 
 # 0 for even, take away one to get lower layer
 # !=0 for odd, add one to get upper layer
 if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
-variable layeri equal ${upperi} 
-variable layeri equal 50 
+variable layeri equal ${loweri} 
+variable layeri equal 27 
 variable        z0 equal ${zi}
-variable        z0 equal -0.156941890716553
+variable        z0 equal 2.106
 variable        y0 equal ${yi}
-variable        y0 equal 8.92492256069183
+variable        y0 equal 4.212
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 1.88407551622391
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 5.09916983795166
 
-set             atom $i z ${znew}
-set             atom 49 z ${znew}
-set             atom 49 z -0.0777636170387268
+set             atom $i z ${zupdate}
+set             atom 28 z ${zupdate}
+set             atom 28 z 1.88407551622391
   1 settings made for z
-set             atom $i y ${ynew}
-set             atom 49 y ${ynew}
-set             atom 49 y 9.16524455451965
+set             atom $i y ${yupdate}
+set             atom 28 y ${yupdate}
+set             atom 28 y 5.09916983795166
   1 settings made for y
-
-set             atom ${layeri} z ${znew}
-set             atom 50 z ${znew}
-set             atom 50 z 0.128111124038696
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 27 z ${zupdate}
+set             atom 27 z 1.88407551622391
   1 settings made for z
-set             atom ${layeri} y ${ynew}
-set             atom 50 y ${ynew}
-set             atom 50 y 9.58783212804794
+set             atom ${layeri} y ${yupdate}
+set             atom 27 y ${yupdate}
+set             atom 27 y 5.09916983795166
   1 settings made for y
+#print " ${zupdate}"
 
 print 	"$i"
-49
+28
+#print  "v_y[i]"
+#print z[i]
 print 	"${layeri}"
-50
+27
+
 run             1 pre no post no
 Step Temp E_pair E_mol TotEng Press 
-      12            0   -735.56659            0   -735.56659    1375.4469 
-      13            0   -703.81746            0   -703.81746    1457.5686 
-Loop time of 0.112987 on 1 procs for 1 steps with 72 atoms
+      16            0    -544953.9            0    -544953.9 -2.6177317e+09 
+      17            0   -544933.34            0   -544933.34 -2.6176369e+09 
+Loop time of 0.00411606 on 1 procs for 1 steps with 72 atoms
 
-96.3% CPU use with 1 MPI tasks x 1 OpenMP threads
+99.0% CPU use with 1 MPI tasks x 1 OpenMP threads
 variable 	nmoves equal ${nmincrement}
-variable 	nmoves equal 13
+variable 	nmoves equal 17
 if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
 set atom $i z ${z0}
-set atom 49 z ${z0}
-set atom 49 z -0.156941890716553
+set atom 28 z ${z0}
+set atom 28 z 2.106
   1 settings made for z
 set atom $i y ${y0}
-set atom 49 y ${y0}
-set atom 49 y 8.92492256069183
+set atom 28 y ${y0}
+set atom 28 y 4.212
   1 settings made for y
 set atom ${layeri} z ${z0}
-set atom 50 z ${z0}
-set atom 50 z -0.156941890716553
+set atom 27 z ${z0}
+set atom 27 z 2.106
   1 settings made for z
 set atom ${layeri} y ${y0}
-set atom 50 y ${y0}
-set atom 50 y 8.92492256069183
+set atom 27 y ${y0}
+set atom 27 y 4.212
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 54
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 53 
+variable        z0 equal ${zi}
+variable        z0 equal 4.212
+variable        y0 equal ${yi}
+variable        y0 equal 8.424
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 5.24137370538712
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 10.5369378676414
+
+set             atom $i z ${zupdate}
+set             atom 54 z ${zupdate}
+set             atom 54 z 5.24137370538712
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 54 y ${yupdate}
+set             atom 54 y 10.5369378676414
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 53 z ${zupdate}
+set             atom 53 z 5.24137370538712
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 53 y ${yupdate}
+set             atom 53 y 10.5369378676414
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+54
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+53
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      17            0   -544933.34            0   -544933.34 -2.6176369e+09 
+      18            0   -544820.88            0   -544820.88 -2.61733e+09 
+Loop time of 0.00497317 on 1 procs for 1 steps with 72 atoms
+
+95.5% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 18
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 54 z ${z0}
+set atom 54 z 4.212
+  1 settings made for z
+set atom $i y ${y0}
+set atom 54 y ${y0}
+set atom 54 y 8.424
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 53 z ${z0}
+set atom 53 z 4.212
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 53 y ${y0}
+set atom 53 y 8.424
   1 settings made for y
 next            iter
 jump            SELF loop
@@ -947,57 +1483,1049 @@ if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "  
 variable layeri equal ${upperi} 
 variable layeri equal 26 
 variable        z0 equal ${zi}
-variable        z0 equal -0.0401242971420288
+variable        z0 equal 0
 variable        y0 equal ${yi}
-variable        y0 equal 4.12302838516235
+variable        y0 equal 4.212
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 2.34152287244797
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 5.45568846416473
 
-set             atom $i z ${znew}
-set             atom 25 z ${znew}
-set             atom 25 z 0.428180277347565
+set             atom $i z ${zupdate}
+set             atom 25 z ${zupdate}
+set             atom 25 z 2.34152287244797
   1 settings made for z
-set             atom $i y ${ynew}
-set             atom 25 y ${ynew}
-set             atom 25 y 4.3717660779953
+set             atom $i y ${yupdate}
+set             atom 25 y ${yupdate}
+set             atom 25 y 5.45568846416473
   1 settings made for y
-
-set             atom ${layeri} z ${znew}
-set             atom 26 z ${znew}
-set             atom 26 z 0.832437813282013
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 26 z ${zupdate}
+set             atom 26 z 2.34152287244797
   1 settings made for z
-set             atom ${layeri} y ${ynew}
-set             atom 26 y ${ynew}
-set             atom 26 y 4.04239283752441
+set             atom ${layeri} y ${yupdate}
+set             atom 26 y ${yupdate}
+set             atom 26 y 5.45568846416473
   1 settings made for y
+#print " ${zupdate}"
 
 print 	"$i"
 25
+#print  "v_y[i]"
+#print z[i]
 print 	"${layeri}"
 26
+
 run             1 pre no post no
 Step Temp E_pair E_mol TotEng Press 
-      13            0   -703.81746            0   -703.81746    1457.5686 
-      14            0   -733.63777            0   -733.63777    1360.6873 
-Loop time of 0.111657 on 1 procs for 1 steps with 72 atoms
+      18            0   -544820.88            0   -544820.88 -2.61733e+09 
+      19            0   -544768.04            0   -544768.04 -2.6173638e+09 
+Loop time of 0.00488186 on 1 procs for 1 steps with 72 atoms
 
-99.7% CPU use with 1 MPI tasks x 1 OpenMP threads
+96.2% CPU use with 1 MPI tasks x 1 OpenMP threads
 variable 	nmoves equal ${nmincrement}
-variable 	nmoves equal 14
+variable 	nmoves equal 19
 if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
 set atom $i z ${z0}
 set atom 25 z ${z0}
-set atom 25 z -0.0401242971420288
+set atom 25 z 0
   1 settings made for z
 set atom $i y ${y0}
 set atom 25 y ${y0}
-set atom 25 y 4.12302838516235
+set atom 25 y 4.212
   1 settings made for y
 set atom ${layeri} z ${z0}
 set atom 26 z ${z0}
-set atom 26 z -0.0401242971420288
+set atom 26 z 0
   1 settings made for z
 set atom ${layeri} y ${y0}
 set atom 26 y ${y0}
-set atom 26 y 4.12302838516235
+set atom 26 y 4.212
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 13
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${upperi} 
+variable layeri equal 14 
+variable        z0 equal ${zi}
+variable        z0 equal 0
+variable        y0 equal ${yi}
+variable        y0 equal 2.106
+variable 	zupdate equal ${znew}
+variable 	zupdate equal -0.580451190471649
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 1.17105942344666
+
+set             atom $i z ${zupdate}
+set             atom 13 z ${zupdate}
+set             atom 13 z -0.580451190471649
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 13 y ${yupdate}
+set             atom 13 y 1.17105942344666
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 14 z ${zupdate}
+set             atom 14 z -0.580451190471649
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 14 y ${yupdate}
+set             atom 14 y 1.17105942344666
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+13
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+14
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      19            0   -544768.04            0   -544768.04 -2.6173638e+09 
+      20            0   -544931.31            0   -544931.31 -2.617632e+09 
+Loop time of 0.00557709 on 1 procs for 1 steps with 72 atoms
+
+107.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 20
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 13 z ${z0}
+set atom 13 z 0
+  1 settings made for z
+set atom $i y ${y0}
+set atom 13 y ${y0}
+set atom 13 y 2.106
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 14 z ${z0}
+set atom 14 z 0
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 14 y ${y0}
+set atom 14 y 2.106
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 44
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 43 
+variable        z0 equal ${zi}
+variable        z0 equal 6.318
+variable        y0 equal ${yi}
+variable        y0 equal 6.318
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 8.11388288068771
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 4.16055802631378
+
+set             atom $i z ${zupdate}
+set             atom 44 z ${zupdate}
+set             atom 44 z 8.11388288068771
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 44 y ${yupdate}
+set             atom 44 y 4.16055802631378
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 43 z ${zupdate}
+set             atom 43 z 8.11388288068771
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 43 y ${yupdate}
+set             atom 43 y 4.16055802631378
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+44
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+43
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      20            0   -544931.31            0   -544931.31 -2.617632e+09 
+      21            0   -575537.48            0   -575537.48 -2.7728821e+09 
+Loop time of 0.00536513 on 1 procs for 1 steps with 72 atoms
+
+107.7% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 21
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+variable elast equal $e
+variable elast equal -575537.482131208
+variable naccept equal ${increment}
+variable naccept equal 3
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 47
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${upperi} 
+variable layeri equal 48 
+variable        z0 equal ${zi}
+variable        z0 equal 10.53
+variable        y0 equal ${yi}
+variable        y0 equal 6.318
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 8.61728784322739
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 7.40886573123932
+
+set             atom $i z ${zupdate}
+set             atom 47 z ${zupdate}
+set             atom 47 z 8.61728784322739
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 47 y ${yupdate}
+set             atom 47 y 7.40886573123932
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 48 z ${zupdate}
+set             atom 48 z 8.61728784322739
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 48 y ${yupdate}
+set             atom 48 y 7.40886573123932
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+47
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+48
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      21            0   -575537.48            0   -575537.48 -2.7728821e+09 
+      22            0   -575404.93            0   -575404.93 -2.7725028e+09 
+Loop time of 0.00497603 on 1 procs for 1 steps with 72 atoms
+
+30.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 22
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 47 z ${z0}
+set atom 47 z 10.53
+  1 settings made for z
+set atom $i y ${y0}
+set atom 47 y ${y0}
+set atom 47 y 6.318
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 48 z ${z0}
+set atom 48 z 10.53
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 48 y ${y0}
+set atom 48 y 6.318
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 70
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 69 
+variable        z0 equal ${zi}
+variable        z0 equal 8.424
+variable        y0 equal ${yi}
+variable        y0 equal 10.53
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 7.03579798841476
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 11.551603345871
+
+set             atom $i z ${zupdate}
+set             atom 70 z ${zupdate}
+set             atom 70 z 7.03579798841476
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 70 y ${yupdate}
+set             atom 70 y 11.551603345871
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 69 z ${zupdate}
+set             atom 69 z 7.03579798841476
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 69 y ${yupdate}
+set             atom 69 y 11.551603345871
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+70
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+69
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      22            0   -575404.93            0   -575404.93 -2.7725028e+09 
+      23            0   -575474.81            0   -575474.81 -2.7726648e+09 
+Loop time of 0.00496507 on 1 procs for 1 steps with 72 atoms
+
+96.2% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 23
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 70 z ${z0}
+set atom 70 z 8.424
+  1 settings made for z
+set atom $i y ${y0}
+set atom 70 y ${y0}
+set atom 70 y 10.53
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 69 z ${z0}
+set atom 69 z 8.424
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 69 y ${y0}
+set atom 69 y 10.53
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 1
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${upperi} 
+variable layeri equal 2 
+variable        z0 equal ${zi}
+variable        z0 equal 0
+variable        y0 equal ${yi}
+variable        y0 equal 0
+variable 	zupdate equal ${znew}
+variable 	zupdate equal -0.898085832595825
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal -1.28233641386032
+
+set             atom $i z ${zupdate}
+set             atom 1 z ${zupdate}
+set             atom 1 z -0.898085832595825
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 1 y ${yupdate}
+set             atom 1 y -1.28233641386032
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 2 z ${zupdate}
+set             atom 2 z -0.898085832595825
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 2 y ${yupdate}
+set             atom 2 y -1.28233641386032
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+1
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+2
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      23            0   -575474.81            0   -575474.81 -2.7726648e+09 
+      24            0   -575478.25            0   -575478.25 -2.772609e+09 
+Loop time of 0.00514293 on 1 procs for 1 steps with 72 atoms
+
+95.6% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 24
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 1 z ${z0}
+set atom 1 z 0
+  1 settings made for z
+set atom $i y ${y0}
+set atom 1 y ${y0}
+set atom 1 y 0
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 2 z ${z0}
+set atom 2 z 0
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 2 y ${y0}
+set atom 2 y 0
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 55
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${upperi} 
+variable layeri equal 56 
+variable        z0 equal ${zi}
+variable        z0 equal 6.318
+variable        y0 equal ${yi}
+variable        y0 equal 8.424
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 6.51005063581467
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 10.4353453269005
+
+set             atom $i z ${zupdate}
+set             atom 55 z ${zupdate}
+set             atom 55 z 6.51005063581467
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 55 y ${yupdate}
+set             atom 55 y 10.4353453269005
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 56 z ${zupdate}
+set             atom 56 z 6.51005063581467
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 56 y ${yupdate}
+set             atom 56 y 10.4353453269005
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+55
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+56
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      24            0   -575478.25            0   -575478.25 -2.772609e+09 
+      25            0   -523121.81            0   -523121.81 -2.5159194e+09 
+Loop time of 0.00544405 on 1 procs for 1 steps with 72 atoms
+
+71.5% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 25
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 55 z ${z0}
+set atom 55 z 6.318
+  1 settings made for z
+set atom $i y ${y0}
+set atom 55 y ${y0}
+set atom 55 y 8.424
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 56 z ${z0}
+set atom 56 z 6.318
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 56 y ${y0}
+set atom 56 y 8.424
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 24
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 23 
+variable        z0 equal ${zi}
+variable        z0 equal 10.53
+variable        y0 equal ${yi}
+variable        y0 equal 2.106
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 12.3917060780525
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 2.50256460285187
+
+set             atom $i z ${zupdate}
+set             atom 24 z ${zupdate}
+set             atom 24 z 12.3917060780525
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 24 y ${yupdate}
+set             atom 24 y 2.50256460285187
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 23 z ${zupdate}
+set             atom 23 z 12.3917060780525
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 23 y ${yupdate}
+set             atom 23 y 2.50256460285187
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+24
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+23
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      25            0   -523121.81            0   -523121.81 -2.5159194e+09 
+      26            0   -575141.12            0   -575141.12 -2.7723413e+09 
+Loop time of 0.00490999 on 1 procs for 1 steps with 72 atoms
+
+64.2% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 26
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 24 z ${z0}
+set atom 24 z 10.53
+  1 settings made for z
+set atom $i y ${y0}
+set atom 24 y ${y0}
+set atom 24 y 2.106
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 23 z ${z0}
+set atom 23 z 10.53
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 23 y ${y0}
+set atom 23 y 2.106
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 30
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 29 
+variable        z0 equal ${zi}
+variable        z0 equal 4.212
+variable        y0 equal ${yi}
+variable        y0 equal 4.212
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 4.9988304848671
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 2.691043841362
+
+set             atom $i z ${zupdate}
+set             atom 30 z ${zupdate}
+set             atom 30 z 4.9988304848671
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 30 y ${yupdate}
+set             atom 30 y 2.691043841362
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 29 z ${zupdate}
+set             atom 29 z 4.9988304848671
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 29 y ${yupdate}
+set             atom 29 y 2.691043841362
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+30
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+29
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      26            0   -575141.12            0   -575141.12 -2.7723413e+09 
+      27            0   -575454.16            0   -575454.16 -2.7726043e+09 
+Loop time of 0.00496316 on 1 procs for 1 steps with 72 atoms
+
+110.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 27
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 30 z ${z0}
+set atom 30 z 4.212
+  1 settings made for z
+set atom $i y ${y0}
+set atom 30 y ${y0}
+set atom 30 y 4.212
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 29 z ${z0}
+set atom 29 z 4.212
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 29 y ${y0}
+set atom 29 y 4.212
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 55
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${upperi} 
+variable layeri equal 56 
+variable        z0 equal ${zi}
+variable        z0 equal 6.318
+variable        y0 equal ${yi}
+variable        y0 equal 8.424
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 5.10506872463226
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 10.9093628873825
+
+set             atom $i z ${zupdate}
+set             atom 55 z ${zupdate}
+set             atom 55 z 5.10506872463226
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 55 y ${yupdate}
+set             atom 55 y 10.9093628873825
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 56 z ${zupdate}
+set             atom 56 z 5.10506872463226
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 56 y ${yupdate}
+set             atom 56 y 10.9093628873825
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+55
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+56
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      27            0   -575454.16            0   -575454.16 -2.7726043e+09 
+      28            0   -523798.17            0   -523798.17 -2.5159061e+09 
+Loop time of 0.0050199 on 1 procs for 1 steps with 72 atoms
+
+96.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 28
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 55 z ${z0}
+set atom 55 z 6.318
+  1 settings made for z
+set atom $i y ${y0}
+set atom 55 y ${y0}
+set atom 55 y 8.424
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 56 z ${z0}
+set atom 56 z 6.318
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 56 y ${y0}
+set atom 56 y 8.424
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 49
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${upperi} 
+variable layeri equal 50 
+variable        z0 equal ${zi}
+variable        z0 equal 0
+variable        y0 equal ${yi}
+variable        y0 equal 8.424
+variable 	zupdate equal ${znew}
+variable 	zupdate equal -0.978715419769287
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 7.06659839057922
+
+set             atom $i z ${zupdate}
+set             atom 49 z ${zupdate}
+set             atom 49 z -0.978715419769287
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 49 y ${yupdate}
+set             atom 49 y 7.06659839057922
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 50 z ${zupdate}
+set             atom 50 z -0.978715419769287
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 50 y ${yupdate}
+set             atom 50 y 7.06659839057922
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+49
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+50
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      28            0   -523798.17            0   -523798.17 -2.5159061e+09 
+      29            0   -575478.73            0   -575478.73 -2.7726838e+09 
+Loop time of 0.00539398 on 1 procs for 1 steps with 72 atoms
+
+95.1% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 29
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 49 z ${z0}
+set atom 49 z 0
+  1 settings made for z
+set atom $i y ${y0}
+set atom 49 y ${y0}
+set atom 49 y 8.424
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 50 z ${z0}
+set atom 50 z 0
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 50 y ${y0}
+set atom 50 y 8.424
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 70
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 69 
+variable        z0 equal ${zi}
+variable        z0 equal 8.424
+variable        y0 equal ${yi}
+variable        y0 equal 10.53
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 10.3560183992386
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 11.0884940314293
+
+set             atom $i z ${zupdate}
+set             atom 70 z ${zupdate}
+set             atom 70 z 10.3560183992386
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 70 y ${yupdate}
+set             atom 70 y 11.0884940314293
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 69 z ${zupdate}
+set             atom 69 z 10.3560183992386
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 69 y ${yupdate}
+set             atom 69 y 11.0884940314293
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+70
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+69
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      29            0   -575478.73            0   -575478.73 -2.7726838e+09 
+      30            0    -575259.1            0    -575259.1 -2.7723805e+09 
+Loop time of 0.00497913 on 1 procs for 1 steps with 72 atoms
+
+95.7% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 30
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 70 z ${z0}
+set atom 70 z 8.424
+  1 settings made for z
+set atom $i y ${y0}
+set atom 70 y ${y0}
+set atom 70 y 10.53
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 69 z ${z0}
+set atom 69 z 8.424
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 69 y ${y0}
+set atom 69 y 10.53
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 49
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${upperi} 
+variable layeri equal 50 
+variable        z0 equal ${zi}
+variable        z0 equal 0
+variable        y0 equal ${yi}
+variable        y0 equal 8.424
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 2.10771530866623
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 6.09489754343033
+
+set             atom $i z ${zupdate}
+set             atom 49 z ${zupdate}
+set             atom 49 z 2.10771530866623
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 49 y ${yupdate}
+set             atom 49 y 6.09489754343033
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 50 z ${zupdate}
+set             atom 50 z 2.10771530866623
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 50 y ${yupdate}
+set             atom 50 y 6.09489754343033
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+49
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+50
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      30            0    -575259.1            0    -575259.1 -2.7723805e+09 
+      31            0   -831070.68            0   -831070.68 -4.0058986e+09 
+Loop time of 0.00498295 on 1 procs for 1 steps with 72 atoms
+
+96.1% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 31
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+variable elast equal $e
+variable elast equal -831070.679525605
+variable naccept equal ${increment}
+variable naccept equal 4
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 55
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${upperi} 
+variable layeri equal 56 
+variable        z0 equal ${zi}
+variable        z0 equal 6.318
+variable        y0 equal ${yi}
+variable        y0 equal 8.424
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 5.4093513302803
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 8.14304873847961
+
+set             atom $i z ${zupdate}
+set             atom 55 z ${zupdate}
+set             atom 55 z 5.4093513302803
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 55 y ${yupdate}
+set             atom 55 y 8.14304873847961
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 56 z ${zupdate}
+set             atom 56 z 5.4093513302803
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 56 y ${yupdate}
+set             atom 56 y 8.14304873847961
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+55
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+56
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      31            0   -831070.68            0   -831070.68 -4.0058986e+09 
+      32            0   -779369.15            0   -779369.15 -3.7489894e+09 
+Loop time of 0.00380492 on 1 procs for 1 steps with 72 atoms
+
+83.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 32
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 55 z ${z0}
+set atom 55 z 6.318
+  1 settings made for z
+set atom $i y ${y0}
+set atom 55 y ${y0}
+set atom 55 y 8.424
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 56 z ${z0}
+set atom 56 z 6.318
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 56 y ${y0}
+set atom 56 y 8.424
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 60
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 59 
+variable        z0 equal ${zi}
+variable        z0 equal 10.53
+variable        y0 equal ${yi}
+variable        y0 equal 8.424
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 12.9953336405754
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 9.51388046646118
+
+set             atom $i z ${zupdate}
+set             atom 60 z ${zupdate}
+set             atom 60 z 12.9953336405754
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 60 y ${yupdate}
+set             atom 60 y 9.51388046646118
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 59 z ${zupdate}
+set             atom 59 z 12.9953336405754
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 59 y ${yupdate}
+set             atom 59 y 9.51388046646118
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+60
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+59
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      32            0   -779369.15            0   -779369.15 -3.7489894e+09 
+      33            0   -830839.22            0   -830839.22 -4.0054125e+09 
+Loop time of 0.00565314 on 1 procs for 1 steps with 72 atoms
+
+94.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 33
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 60 z ${z0}
+set atom 60 z 10.53
+  1 settings made for z
+set atom $i y ${y0}
+set atom 60 y ${y0}
+set atom 60 y 8.424
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 59 z ${z0}
+set atom 59 z 10.53
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 59 y ${y0}
+set atom 59 y 8.424
   1 settings made for y
 next            iter
 jump            SELF loop
@@ -1011,109 +2539,209 @@ if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "  
 variable layeri equal ${upperi} 
 variable layeri equal 24 
 variable        z0 equal ${zi}
-variable        z0 equal 11.2800120401382
+variable        z0 equal 10.53
 variable        y0 equal ${yi}
-variable        y0 equal 2.18282025432587
+variable        y0 equal 2.106
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 11.8091416049004
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 3.72537773227692
 
-set             atom $i z ${znew}
-set             atom 23 z ${znew}
-set             atom 23 z 11.0777009415627
+set             atom $i z ${zupdate}
+set             atom 23 z ${zupdate}
+set             atom 23 z 11.8091416049004
   1 settings made for z
-set             atom $i y ${ynew}
-set             atom 23 y ${ynew}
-set             atom 23 y 2.28437399244308
+set             atom $i y ${yupdate}
+set             atom 23 y ${yupdate}
+set             atom 23 y 3.72537773227692
   1 settings made for y
-
-set             atom ${layeri} z ${znew}
-set             atom 24 z ${znew}
-set             atom 24 z 11.4368775177002
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 24 z ${zupdate}
+set             atom 24 z 11.8091416049004
   1 settings made for z
-set             atom ${layeri} y ${ynew}
-set             atom 24 y ${ynew}
-set             atom 24 y 1.85288559770584
+set             atom ${layeri} y ${yupdate}
+set             atom 24 y ${yupdate}
+set             atom 24 y 3.72537773227692
   1 settings made for y
+#print " ${zupdate}"
 
 print 	"$i"
 23
+#print  "v_y[i]"
+#print z[i]
 print 	"${layeri}"
 24
+
 run             1 pre no post no
 Step Temp E_pair E_mol TotEng Press 
-      14            0   -733.63777            0   -733.63777    1360.6873 
-      15            0   -747.86136            0   -747.86136    1314.2606 
-Loop time of 0.11084 on 1 procs for 1 steps with 72 atoms
+      33            0   -830839.22            0   -830839.22 -4.0054125e+09 
+      34            0   -830927.89            0   -830927.89 -4.0055541e+09 
+Loop time of 0.00500798 on 1 procs for 1 steps with 72 atoms
 
-99.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+96.3% CPU use with 1 MPI tasks x 1 OpenMP threads
 variable 	nmoves equal ${nmincrement}
-variable 	nmoves equal 15
+variable 	nmoves equal 34
 if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
-variable elast equal $e
-variable elast equal -747.861356446571
-variable naccept equal ${increment}
-variable naccept equal 9
+set atom $i z ${z0}
+set atom 23 z ${z0}
+set atom 23 z 10.53
+  1 settings made for z
+set atom $i y ${y0}
+set atom 23 y ${y0}
+set atom 23 y 2.106
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 24 z ${z0}
+set atom 24 z 10.53
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 24 y ${y0}
+set atom 24 y 2.106
+  1 settings made for y
 next            iter
 jump            SELF loop
 
 variable        i equal ${irandom}
-variable        i equal 47
+variable        i equal 68
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 67 
+variable        z0 equal ${zi}
+variable        z0 equal 6.318
+variable        y0 equal ${yi}
+variable        y0 equal 10.53
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 5.68465117740631
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 12.0206543493271
+
+set             atom $i z ${zupdate}
+set             atom 68 z ${zupdate}
+set             atom 68 z 5.68465117740631
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 68 y ${yupdate}
+set             atom 68 y 12.0206543493271
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 67 z ${zupdate}
+set             atom 67 z 5.68465117740631
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 67 y ${yupdate}
+set             atom 67 y 12.0206543493271
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+68
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+67
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      34            0   -830927.89            0   -830927.89 -4.0055541e+09 
+      35            0   -830965.67            0   -830965.67 -4.0056105e+09 
+Loop time of 0.00500083 on 1 procs for 1 steps with 72 atoms
+
+96.3% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 35
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 68 z ${z0}
+set atom 68 z 6.318
+  1 settings made for z
+set atom $i y ${y0}
+set atom 68 y ${y0}
+set atom 68 y 10.53
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 67 z ${z0}
+set atom 67 z 6.318
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 67 y ${y0}
+set atom 67 y 10.53
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 27
 
 # 0 for even, take away one to get lower layer
 # !=0 for odd, add one to get upper layer
 if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
 variable layeri equal ${upperi} 
-variable layeri equal 48 
+variable layeri equal 28 
 variable        z0 equal ${zi}
-variable        z0 equal 11.5620749282836
+variable        z0 equal 2.106
 variable        y0 equal ${yi}
-variable        y0 equal 4.60537145662308
+variable        y0 equal 4.212
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 0.214571469783783
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 3.82959030818939
 
-set             atom $i z ${znew}
-set             atom 47 z ${znew}
-set             atom 47 z 11.1795324969291
+set             atom $i z ${zupdate}
+set             atom 27 z ${zupdate}
+set             atom 27 z 0.214571469783783
   1 settings made for z
-set             atom $i y ${ynew}
-set             atom 47 y ${ynew}
-set             atom 47 y 4.82354460287094
+set             atom $i y ${yupdate}
+set             atom 27 y ${yupdate}
+set             atom 27 y 3.82959030818939
   1 settings made for y
-
-set             atom ${layeri} z ${znew}
-set             atom 48 z ${znew}
-set             atom 48 z 11.0530947732925
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 28 z ${zupdate}
+set             atom 28 z 0.214571469783783
   1 settings made for z
-set             atom ${layeri} y ${ynew}
-set             atom 48 y ${ynew}
-set             atom 48 y 5.28337363529205
+set             atom ${layeri} y ${yupdate}
+set             atom 28 y ${yupdate}
+set             atom 28 y 3.82959030818939
   1 settings made for y
+#print " ${zupdate}"
 
 print 	"$i"
-47
+27
+#print  "v_y[i]"
+#print z[i]
 print 	"${layeri}"
-48
+28
+
 run             1 pre no post no
 Step Temp E_pair E_mol TotEng Press 
-      15            0   -747.86136            0   -747.86136    1314.2606 
-      16            0   -739.55292            0   -739.55292    1353.0022 
-Loop time of 0.111549 on 1 procs for 1 steps with 72 atoms
+      35            0   -830965.67            0   -830965.67 -4.0056105e+09 
+      36            0   -830631.99            0   -830631.99 -4.0053639e+09 
+Loop time of 0.00490808 on 1 procs for 1 steps with 72 atoms
 
-98.3% CPU use with 1 MPI tasks x 1 OpenMP threads
+96.6% CPU use with 1 MPI tasks x 1 OpenMP threads
 variable 	nmoves equal ${nmincrement}
-variable 	nmoves equal 16
+variable 	nmoves equal 36
 if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
 set atom $i z ${z0}
-set atom 47 z ${z0}
-set atom 47 z 11.5620749282836
+set atom 27 z ${z0}
+set atom 27 z 2.106
   1 settings made for z
 set atom $i y ${y0}
-set atom 47 y ${y0}
-set atom 47 y 4.60537145662308
+set atom 27 y ${y0}
+set atom 27 y 4.212
   1 settings made for y
 set atom ${layeri} z ${z0}
-set atom 48 z ${z0}
-set atom 48 z 11.5620749282836
+set atom 28 z ${z0}
+set atom 28 z 2.106
   1 settings made for z
 set atom ${layeri} y ${y0}
-set atom 48 y ${y0}
-set atom 48 y 4.60537145662308
+set atom 28 y ${y0}
+set atom 28 y 4.212
   1 settings made for y
 next            iter
 jump            SELF loop
@@ -1127,46 +2755,66 @@ if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "  
 variable layeri equal ${upperi} 
 variable layeri equal 52 
 variable        z0 equal ${zi}
-variable        z0 equal 2.31556140756607
+variable        z0 equal 12.552101211071
 variable        y0 equal ${yi}
-variable        y0 equal 8.6964534869194
+variable        y0 equal 10.3481699576378
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 12.7043878002167
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 9.47348699474336
 
-set             atom $i z ${znew}
-set             atom 51 z ${znew}
-set             atom 51 z 2.27122842645645
+set             atom $i z ${zupdate}
+set             atom 51 z ${zupdate}
+set             atom 51 z 12.7043878002167
   1 settings made for z
-set             atom $i y ${ynew}
-set             atom 51 y ${ynew}
-set             atom 51 y 8.2097454419136
+set             atom $i y ${yupdate}
+set             atom 51 y ${yupdate}
+set             atom 51 y 9.47348699474336
   1 settings made for y
-
-set             atom ${layeri} z ${znew}
-set             atom 52 z ${znew}
-set             atom 52 z 2.09161125993728
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 52 z ${zupdate}
+set             atom 52 z 12.7043878002167
   1 settings made for z
-set             atom ${layeri} y ${ynew}
-set             atom 52 y ${ynew}
-set             atom 52 y 7.95327815914154
+set             atom ${layeri} y ${yupdate}
+set             atom 52 y ${yupdate}
+set             atom 52 y 9.47348699474336
   1 settings made for y
+#print " ${zupdate}"
 
 print 	"$i"
 51
+#print  "v_y[i]"
+#print z[i]
 print 	"${layeri}"
 52
+
 run             1 pre no post no
 Step Temp E_pair E_mol TotEng Press 
-      16            0   -739.55292            0   -739.55292    1353.0022 
-      17            0   -771.97479            0   -771.97479    1180.4631 
-Loop time of 0.113143 on 1 procs for 1 steps with 72 atoms
+      36            0   -830631.99            0   -830631.99 -4.0053639e+09 
+      37            0    -339086.6            0    -339086.6 -1.6445379e+09 
+Loop time of 0.00571799 on 1 procs for 1 steps with 72 atoms
 
-97.2% CPU use with 1 MPI tasks x 1 OpenMP threads
+105.0% CPU use with 1 MPI tasks x 1 OpenMP threads
 variable 	nmoves equal ${nmincrement}
-variable 	nmoves equal 17
+variable 	nmoves equal 37
 if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
-variable elast equal $e
-variable elast equal -771.974785787166
-variable naccept equal ${increment}
-variable naccept equal 10
+set atom $i z ${z0}
+set atom 51 z ${z0}
+set atom 51 z 12.552101211071
+  1 settings made for z
+set atom $i y ${y0}
+set atom 51 y ${y0}
+set atom 51 y 10.3481699576378
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 52 z ${z0}
+set atom 52 z 12.552101211071
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 52 y ${y0}
+set atom 52 y 10.3481699576378
+  1 settings made for y
 next            iter
 jump            SELF loop
 
@@ -1179,185 +2827,893 @@ if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "  
 variable layeri equal ${loweri} 
 variable layeri equal 23 
 variable        z0 equal ${zi}
-variable        z0 equal 11.4368775177002
+variable        z0 equal 10.53
 variable        y0 equal ${yi}
-variable        y0 equal 1.85288559770584
+variable        y0 equal 2.106
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 8.61851838111877
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 2.20924239730835
 
-set             atom $i z ${znew}
-set             atom 24 z ${znew}
-set             atom 24 z 11.6958856868744
+set             atom $i z ${zupdate}
+set             atom 24 z ${zupdate}
+set             atom 24 z 8.61851838111877
   1 settings made for z
-set             atom $i y ${ynew}
-set             atom 24 y ${ynew}
-set             atom 24 y 1.89129572486877
+set             atom $i y ${yupdate}
+set             atom 24 y ${yupdate}
+set             atom 24 y 2.20924239730835
   1 settings made for y
-
-set             atom ${layeri} z ${znew}
-set             atom 23 z ${znew}
-set             atom 23 z 12.0981547522545
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 23 z ${zupdate}
+set             atom 23 z 8.61851838111877
   1 settings made for z
-set             atom ${layeri} y ${ynew}
-set             atom 23 y ${ynew}
-set             atom 23 y 1.84680991744995
+set             atom ${layeri} y ${yupdate}
+set             atom 23 y ${yupdate}
+set             atom 23 y 2.20924239730835
   1 settings made for y
+#print " ${zupdate}"
 
 print 	"$i"
 24
+#print  "v_y[i]"
+#print z[i]
 print 	"${layeri}"
 23
+
 run             1 pre no post no
 Step Temp E_pair E_mol TotEng Press 
-      17            0   -771.97479            0   -771.97479    1180.4631 
-      18            0   -769.80468            0   -769.80468    1162.8894 
-Loop time of 0.113232 on 1 procs for 1 steps with 72 atoms
+      37            0    -339086.6            0    -339086.6 -1.6445379e+09 
+      38            0   -830254.71            0   -830254.71 -4.0055263e+09 
+Loop time of 0.00520587 on 1 procs for 1 steps with 72 atoms
 
-97.5% CPU use with 1 MPI tasks x 1 OpenMP threads
+106.9% CPU use with 1 MPI tasks x 1 OpenMP threads
 variable 	nmoves equal ${nmincrement}
-variable 	nmoves equal 18
+variable 	nmoves equal 38
 if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
 set atom $i z ${z0}
 set atom 24 z ${z0}
-set atom 24 z 11.4368775177002
+set atom 24 z 10.53
   1 settings made for z
 set atom $i y ${y0}
 set atom 24 y ${y0}
-set atom 24 y 1.85288559770584
+set atom 24 y 2.106
   1 settings made for y
 set atom ${layeri} z ${z0}
 set atom 23 z ${z0}
-set atom 23 z 11.4368775177002
+set atom 23 z 10.53
   1 settings made for z
 set atom ${layeri} y ${y0}
 set atom 23 y ${y0}
-set atom 23 y 1.85288559770584
+set atom 23 y 2.106
   1 settings made for y
 next            iter
 jump            SELF loop
 
 variable        i equal ${irandom}
-variable        i equal 63
+variable        i equal 68
 
 # 0 for even, take away one to get lower layer
 # !=0 for odd, add one to get upper layer
 if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
-variable layeri equal ${upperi} 
-variable layeri equal 64 
+variable layeri equal ${loweri} 
+variable layeri equal 67 
 variable        z0 equal ${zi}
-variable        z0 equal 1.87514238929749
+variable        z0 equal 6.318
 variable        y0 equal ${yi}
-variable        y0 equal 11.1262617397308
+variable        y0 equal 10.53
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 4.4368902258873
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 10.6713071155548
 
-set             atom $i z ${znew}
-set             atom 63 z ${znew}
-set             atom 63 z 1.95445530986786
+set             atom $i z ${zupdate}
+set             atom 68 z ${zupdate}
+set             atom 68 z 4.4368902258873
   1 settings made for z
-set             atom $i y ${ynew}
-set             atom 63 y ${ynew}
-set             atom 63 y 11.475511341095
+set             atom $i y ${yupdate}
+set             atom 68 y ${yupdate}
+set             atom 68 y 10.6713071155548
   1 settings made for y
-
-set             atom ${layeri} z ${znew}
-set             atom 64 z ${znew}
-set             atom 64 z 1.85745083665848
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 67 z ${zupdate}
+set             atom 67 z 4.4368902258873
   1 settings made for z
-set             atom ${layeri} y ${ynew}
-set             atom 64 y ${ynew}
-set             atom 64 y 11.6328774380684
+set             atom ${layeri} y ${yupdate}
+set             atom 67 y ${yupdate}
+set             atom 67 y 10.6713071155548
   1 settings made for y
+#print " ${zupdate}"
 
 print 	"$i"
-63
+68
+#print  "v_y[i]"
+#print z[i]
 print 	"${layeri}"
-64
+67
+
 run             1 pre no post no
 Step Temp E_pair E_mol TotEng Press 
-      18            0   -769.80468            0   -769.80468    1162.8894 
-      19            0   -763.20113            0   -763.20113    1140.3484 
-Loop time of 0.113138 on 1 procs for 1 steps with 72 atoms
+      38            0   -830254.71            0   -830254.71 -4.0055263e+09 
+      39            0   -830342.83            0   -830342.83 -4.0054442e+09 
+Loop time of 0.00490999 on 1 procs for 1 steps with 72 atoms
 
-98.4% CPU use with 1 MPI tasks x 1 OpenMP threads
+96.8% CPU use with 1 MPI tasks x 1 OpenMP threads
 variable 	nmoves equal ${nmincrement}
-variable 	nmoves equal 19
+variable 	nmoves equal 39
 if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
 set atom $i z ${z0}
-set atom 63 z ${z0}
-set atom 63 z 1.87514238929749
+set atom 68 z ${z0}
+set atom 68 z 6.318
   1 settings made for z
 set atom $i y ${y0}
-set atom 63 y ${y0}
-set atom 63 y 11.1262617397308
+set atom 68 y ${y0}
+set atom 68 y 10.53
   1 settings made for y
 set atom ${layeri} z ${z0}
-set atom 64 z ${z0}
-set atom 64 z 1.87514238929749
+set atom 67 z ${z0}
+set atom 67 z 6.318
   1 settings made for z
 set atom ${layeri} y ${y0}
-set atom 64 y ${y0}
-set atom 64 y 11.1262617397308
+set atom 67 y ${y0}
+set atom 67 y 10.53
   1 settings made for y
 next            iter
 jump            SELF loop
 
 variable        i equal ${irandom}
-variable        i equal 57
+variable        i equal 10
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 9 
+variable        z0 equal ${zi}
+variable        z0 equal 8.424
+variable        y0 equal ${yi}
+variable        y0 equal 0
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 6.9251214017868
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal -0.900269746780396
+
+set             atom $i z ${zupdate}
+set             atom 10 z ${zupdate}
+set             atom 10 z 6.9251214017868
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 10 y ${yupdate}
+set             atom 10 y -0.900269746780396
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 9 z ${zupdate}
+set             atom 9 z 6.9251214017868
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 9 y ${yupdate}
+set             atom 9 y -0.900269746780396
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+10
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+9
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      39            0   -830342.83            0   -830342.83 -4.0054442e+09 
+      40            0   -830996.03            0   -830996.03 -4.0056498e+09 
+Loop time of 0.00492716 on 1 procs for 1 steps with 72 atoms
+
+96.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 40
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 10 z ${z0}
+set atom 10 z 8.424
+  1 settings made for z
+set atom $i y ${y0}
+set atom 10 y ${y0}
+set atom 10 y 0
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 9 z ${z0}
+set atom 9 z 8.424
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 9 y ${y0}
+set atom 9 y 0
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 18
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 17 
+variable        z0 equal ${zi}
+variable        z0 equal 4.212
+variable        y0 equal ${yi}
+variable        y0 equal 2.106
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 6.50439881038666
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal -0.0620325269699098
+
+set             atom $i z ${zupdate}
+set             atom 18 z ${zupdate}
+set             atom 18 z 6.50439881038666
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 18 y ${yupdate}
+set             atom 18 y -0.0620325269699098
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 17 z ${zupdate}
+set             atom 17 z 6.50439881038666
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 17 y ${yupdate}
+set             atom 17 y -0.0620325269699098
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+18
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+17
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      40            0   -830996.03            0   -830996.03 -4.0056498e+09 
+      41            0   -1383371.3            0   -1383371.3 -6.6552877e+09 
+Loop time of 0.00578809 on 1 procs for 1 steps with 72 atoms
+
+95.2% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 41
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+variable elast equal $e
+variable elast equal -1383371.33878823
+variable naccept equal ${increment}
+variable naccept equal 5
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 22
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 21 
+variable        z0 equal ${zi}
+variable        z0 equal 8.424
+variable        y0 equal ${yi}
+variable        y0 equal 2.106
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 6.7447893371582
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 4.15760468816757
+
+set             atom $i z ${zupdate}
+set             atom 22 z ${zupdate}
+set             atom 22 z 6.7447893371582
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 22 y ${yupdate}
+set             atom 22 y 4.15760468816757
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 21 z ${zupdate}
+set             atom 21 z 6.7447893371582
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 21 y ${yupdate}
+set             atom 21 y 4.15760468816757
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+22
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+21
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      41            0   -1383371.3            0   -1383371.3 -6.6552877e+09 
+      42            0   -1386865.7            0   -1386865.7 -6.6769773e+09 
+Loop time of 0.00524807 on 1 procs for 1 steps with 72 atoms
+
+96.3% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 42
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+variable elast equal $e
+variable elast equal -1386865.66803406
+variable naccept equal ${increment}
+variable naccept equal 6
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 60
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 59 
+variable        z0 equal ${zi}
+variable        z0 equal 10.53
+variable        y0 equal ${yi}
+variable        y0 equal 8.424
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 9.89119318008423
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 7.93860778713226
+
+set             atom $i z ${zupdate}
+set             atom 60 z ${zupdate}
+set             atom 60 z 9.89119318008423
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 60 y ${yupdate}
+set             atom 60 y 7.93860778713226
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 59 z ${zupdate}
+set             atom 59 z 9.89119318008423
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 59 y ${yupdate}
+set             atom 59 y 7.93860778713226
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+60
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+59
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      42            0   -1386865.7            0   -1386865.7 -6.6769773e+09 
+      43            0     -1386860            0     -1386860 -6.6769218e+09 
+Loop time of 0.00379205 on 1 procs for 1 steps with 72 atoms
+
+86.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 43
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+variable elast equal $e
+variable elast equal -1386860.00619896
+variable naccept equal ${increment}
+variable naccept equal 7
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 28
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 27 
+variable        z0 equal ${zi}
+variable        z0 equal 2.106
+variable        y0 equal ${yi}
+variable        y0 equal 4.212
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 3.69094979143143
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 4.97629545879364
+
+set             atom $i z ${zupdate}
+set             atom 28 z ${zupdate}
+set             atom 28 z 3.69094979143143
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 28 y ${yupdate}
+set             atom 28 y 4.97629545879364
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 27 z ${zupdate}
+set             atom 27 z 3.69094979143143
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 27 y ${yupdate}
+set             atom 27 y 4.97629545879364
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+28
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+27
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      43            0     -1386860            0     -1386860 -6.6769218e+09 
+      44            0   -1386788.3            0   -1386788.3 -6.6767018e+09 
+Loop time of 0.00494123 on 1 procs for 1 steps with 72 atoms
+
+97.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 44
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 28 z ${z0}
+set atom 28 z 2.106
+  1 settings made for z
+set atom $i y ${y0}
+set atom 28 y ${y0}
+set atom 28 y 4.212
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 27 z ${z0}
+set atom 27 z 2.106
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 27 y ${y0}
+set atom 27 y 4.212
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 32
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 31 
+variable        z0 equal ${zi}
+variable        z0 equal 6.318
+variable        y0 equal ${yi}
+variable        y0 equal 4.212
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 8.08183048295975
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 2.25558303546905
+
+set             atom $i z ${zupdate}
+set             atom 32 z ${zupdate}
+set             atom 32 z 8.08183048295975
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 32 y ${yupdate}
+set             atom 32 y 2.25558303546905
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 31 z ${zupdate}
+set             atom 31 z 8.08183048295975
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 31 y ${yupdate}
+set             atom 31 y 2.25558303546905
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+32
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+31
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      44            0   -1386788.3            0   -1386788.3 -6.6767018e+09 
+      45            0   -1383352.4            0   -1383352.4 -6.6551352e+09 
+Loop time of 0.00512886 on 1 procs for 1 steps with 72 atoms
+
+96.5% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 45
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 32 z ${z0}
+set atom 32 z 6.318
+  1 settings made for z
+set atom $i y ${y0}
+set atom 32 y ${y0}
+set atom 32 y 4.212
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 31 z ${z0}
+set atom 31 z 6.318
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 31 y ${y0}
+set atom 31 y 4.212
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 18
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 17 
+variable        z0 equal ${zi}
+variable        z0 equal 6.50439881038666
+variable        y0 equal ${yi}
+variable        y0 equal 12.5739674730301
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 5.03980092954636
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 14.7222514910698
+
+set             atom $i z ${zupdate}
+set             atom 18 z ${zupdate}
+set             atom 18 z 5.03980092954636
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 18 y ${yupdate}
+set             atom 18 y 14.7222514910698
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 17 z ${zupdate}
+set             atom 17 z 5.03980092954636
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 17 y ${yupdate}
+set             atom 17 y 14.7222514910698
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+18
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+17
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      45            0   -1383352.4            0   -1383352.4 -6.6551352e+09 
+      46            0   -834537.95            0   -834537.95 -4.0274469e+09 
+Loop time of 0.00542283 on 1 procs for 1 steps with 72 atoms
+
+96.5% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 46
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 18 z ${z0}
+set atom 18 z 6.50439881038666
+  1 settings made for z
+set atom $i y ${y0}
+set atom 18 y ${y0}
+set atom 18 y 12.5739674730301
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 17 z ${z0}
+set atom 17 z 6.50439881038666
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 17 y ${y0}
+set atom 17 y 12.5739674730301
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 60
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 59 
+variable        z0 equal ${zi}
+variable        z0 equal 9.89119318008423
+variable        y0 equal ${yi}
+variable        y0 equal 7.93860778713226
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 9.15285256385803
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 9.62111220264434
+
+set             atom $i z ${zupdate}
+set             atom 60 z ${zupdate}
+set             atom 60 z 9.15285256385803
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 60 y ${yupdate}
+set             atom 60 y 9.62111220264434
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 59 z ${zupdate}
+set             atom 59 z 9.15285256385803
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 59 y ${yupdate}
+set             atom 59 y 9.62111220264434
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+60
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+59
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      46            0   -834537.95            0   -834537.95 -4.0274469e+09 
+      47            0   -1386789.8            0   -1386789.8 -6.6767209e+09 
+Loop time of 0.0049541 on 1 procs for 1 steps with 72 atoms
+
+97.1% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 47
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 60 z ${z0}
+set atom 60 z 9.89119318008423
+  1 settings made for z
+set atom $i y ${y0}
+set atom 60 y ${y0}
+set atom 60 y 7.93860778713226
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 59 z ${z0}
+set atom 59 z 9.89119318008423
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 59 y ${y0}
+set atom 59 y 7.93860778713226
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 70
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 69 
+variable        z0 equal ${zi}
+variable        z0 equal 8.424
+variable        y0 equal ${yi}
+variable        y0 equal 10.53
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 7.29676828289032
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 10.3297748851776
+
+set             atom $i z ${zupdate}
+set             atom 70 z ${zupdate}
+set             atom 70 z 7.29676828289032
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 70 y ${yupdate}
+set             atom 70 y 10.3297748851776
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 69 z ${zupdate}
+set             atom 69 z 7.29676828289032
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 69 y ${yupdate}
+set             atom 69 y 10.3297748851776
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+70
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+69
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      47            0   -1386789.8            0   -1386789.8 -6.6767209e+09 
+      48            0   -1386796.7            0   -1386796.7 -6.6767235e+09 
+Loop time of 0.00496387 on 1 procs for 1 steps with 72 atoms
+
+106.3% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 48
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 70 z ${z0}
+set atom 70 z 8.424
+  1 settings made for z
+set atom $i y ${y0}
+set atom 70 y ${y0}
+set atom 70 y 10.53
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 69 z ${z0}
+set atom 69 z 8.424
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 69 y ${y0}
+set atom 69 y 10.53
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 55
 
 # 0 for even, take away one to get lower layer
 # !=0 for odd, add one to get upper layer
 if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
 variable layeri equal ${upperi} 
-variable layeri equal 58 
+variable layeri equal 56 
 variable        z0 equal ${zi}
-variable        z0 equal 7.98863974714279
+variable        z0 equal 6.318
 variable        y0 equal ${yi}
-variable        y0 equal 9.55291089916229
+variable        y0 equal 8.424
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 5.8471256904602
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 7.07873419427872
 
-set             atom $i z ${znew}
-set             atom 57 z ${znew}
-set             atom 57 z 8.24669483804703
+set             atom $i z ${zupdate}
+set             atom 55 z ${zupdate}
+set             atom 55 z 5.8471256904602
   1 settings made for z
-set             atom $i y ${ynew}
-set             atom 57 y ${ynew}
-set             atom 57 y 9.31032464408874
+set             atom $i y ${yupdate}
+set             atom 55 y ${yupdate}
+set             atom 55 y 7.07873419427872
   1 settings made for y
-
-set             atom ${layeri} z ${znew}
-set             atom 58 z ${znew}
-set             atom 58 z 8.74376741552353
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 56 z ${zupdate}
+set             atom 56 z 5.8471256904602
   1 settings made for z
-set             atom ${layeri} y ${ynew}
-set             atom 58 y ${ynew}
-set             atom 58 y 9.15700862312316
+set             atom ${layeri} y ${yupdate}
+set             atom 56 y ${yupdate}
+set             atom 56 y 7.07873419427872
   1 settings made for y
+#print " ${zupdate}"
 
 print 	"$i"
-57
+55
+#print  "v_y[i]"
+#print z[i]
 print 	"${layeri}"
-58
+56
+
 run             1 pre no post no
 Step Temp E_pair E_mol TotEng Press 
-      19            0   -763.20113            0   -763.20113    1140.3484 
-      20            0   -765.07433            0   -765.07433    1162.0581 
-Loop time of 0.111639 on 1 procs for 1 steps with 72 atoms
+      48            0   -1386796.7            0   -1386796.7 -6.6767235e+09 
+      49            0   -1335214.2            0   -1335214.2 -6.4202152e+09 
+Loop time of 0.00506186 on 1 procs for 1 steps with 72 atoms
 
-99.5% CPU use with 1 MPI tasks x 1 OpenMP threads
+97.3% CPU use with 1 MPI tasks x 1 OpenMP threads
 variable 	nmoves equal ${nmincrement}
-variable 	nmoves equal 20
+variable 	nmoves equal 49
 if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
 set atom $i z ${z0}
-set atom 57 z ${z0}
-set atom 57 z 7.98863974714279
+set atom 55 z ${z0}
+set atom 55 z 6.318
   1 settings made for z
 set atom $i y ${y0}
-set atom 57 y ${y0}
-set atom 57 y 9.55291089916229
+set atom 55 y ${y0}
+set atom 55 y 8.424
   1 settings made for y
 set atom ${layeri} z ${z0}
-set atom 58 z ${z0}
-set atom 58 z 7.98863974714279
+set atom 56 z ${z0}
+set atom 56 z 6.318
   1 settings made for z
 set atom ${layeri} y ${y0}
-set atom 58 y ${y0}
-set atom 58 y 9.55291089916229
+set atom 56 y ${y0}
+set atom 56 y 8.424
+  1 settings made for y
+next            iter
+jump            SELF loop
+
+variable        i equal ${irandom}
+variable        i equal 42
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then                   "variable layeri equal ${loweri} "                 else                   "variable layeri equal ${upperi} "
+variable layeri equal ${loweri} 
+variable layeri equal 41 
+variable        z0 equal ${zi}
+variable        z0 equal 6.49236224842072
+variable        y0 equal ${yi}
+variable        y0 equal 8.19303010034561
+variable 	zupdate equal ${znew}
+variable 	zupdate equal 7.50404976558686
+variable 	yupdate equal ${ynew}
+variable 	yupdate equal 7.14987222480774
+
+set             atom $i z ${zupdate}
+set             atom 42 z ${zupdate}
+set             atom 42 z 7.50404976558686
+  1 settings made for z
+set             atom $i y ${yupdate}
+set             atom 42 y ${yupdate}
+set             atom 42 y 7.14987222480774
+  1 settings made for y
+#print " ${zupdate}"
+set             atom ${layeri} z ${zupdate}
+set             atom 41 z ${zupdate}
+set             atom 41 z 7.50404976558686
+  1 settings made for z
+set             atom ${layeri} y ${yupdate}
+set             atom 41 y ${yupdate}
+set             atom 41 y 7.14987222480774
+  1 settings made for y
+#print " ${zupdate}"
+
+print 	"$i"
+42
+#print  "v_y[i]"
+#print z[i]
+print 	"${layeri}"
+41
+
+run             1 pre no post no
+Step Temp E_pair E_mol TotEng Press 
+      49            0   -1335214.2            0   -1335214.2 -6.4202152e+09 
+      50            0   -1335192.1            0   -1335192.1 -6.4201273e+09 
+Loop time of 0.00555396 on 1 procs for 1 steps with 72 atoms
+
+96.3% CPU use with 1 MPI tasks x 1 OpenMP threads
+variable 	nmoves equal ${nmincrement}
+variable 	nmoves equal 50
+if              "$e <= ${elast}" then                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 elif "${rn} <= ${boltzfactor}"                   "variable elast equal $e"                   "variable naccept equal ${increment}"                 else                   "set atom $i z ${z0}"                   "set atom $i y ${y0}"                   "set atom ${layeri} z ${z0}"                   "set atom ${layeri} y ${y0}"
+set atom $i z ${z0}
+set atom 42 z ${z0}
+set atom 42 z 6.49236224842072
+  1 settings made for z
+set atom $i y ${y0}
+set atom 42 y ${y0}
+set atom 42 y 8.19303010034561
+  1 settings made for y
+set atom ${layeri} z ${z0}
+set atom 41 z ${z0}
+set atom 41 z 6.49236224842072
+  1 settings made for z
+set atom ${layeri} y ${y0}
+set atom 41 y ${y0}
+set atom 41 y 8.19303010034561
   1 settings made for y
 next            iter
 jump            SELF loop
@@ -1366,26 +3722,26 @@ jump            SELF loop
 
 variable       nb equal nbuild
 variable       nbuild equal ${nb}
-variable       nbuild equal 8
+variable       nbuild equal 47
 variable       ratio equal "v_naccept/v_nmoves"
 
 run             0
 WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
 PPPM initialization ...
 WARNING: Using polynomial approximation for long-range coulomb (../kspace.cpp:316)
-  G vector (1/distance) = 0.305703
-  grid = 6 150 150
+  G vector (1/distance) = 0.400041
+  grid = 8 15 15
   stencil order = 5
-  estimated absolute RMS force accuracy = 0.00150384
-  estimated relative force accuracy = 0.000104436
+  estimated absolute RMS force accuracy = 0.000671313
+  estimated relative force accuracy = 4.66201e-05
   using double precision FFTs
-  3d grid and FFT values/proc = 312325 135000
-Memory usage per processor = 30.4074 Mbytes
+  3d grid and FFT values/proc = 8228 1800
+Memory usage per processor = 4.7433 Mbytes
 Step Temp E_pair E_mol TotEng Press 
-      20            0   -762.71903            0   -762.71903    1162.6747 
+      50            0     -1386860            0     -1386860 -6.6769218e+09 
 Loop time of 1.90735e-06 on 1 procs for 0 steps with 72 atoms
 
-209.7% CPU use with 1 MPI tasks x 1 OpenMP threads
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
@@ -1400,13 +3756,13 @@ Other   |            | 1.907e-06  |            |       |100.00
 
 Nlocal:    72 ave 72 max 72 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
-Nghost:    324 ave 324 max 324 min
+Nghost:    2447 ave 2447 max 2447 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
-Neighs:    7583 ave 7583 max 7583 min
+Neighs:    16504 ave 16504 max 16504 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
 
-Total # of neighbors = 7583
-Ave neighs/atom = 105.319
+Total # of neighbors = 16504
+Ave neighs/atom = 229.222
 Neighbor list builds = 0
 Dangerous builds = 0
 
@@ -1414,19 +3770,19 @@ Dangerous builds = 0
 print           "MC stats:"
 MC stats:
 print           "  neighbor list rebuilds = ${nbuild}"
-  neighbor list rebuilds = 8
+  neighbor list rebuilds = 47
 print           "  starting energy = ${estart}"
-  starting energy = -564.3745384091
+  starting energy = -1481.42658366852
 print           "  final energy = $e"
-  final energy = -762.719031520544
+  final energy = -1386860.00619902
 print           "  minimum energy of perfect lattice = ${emin}"
-  minimum energy of perfect lattice = -1461.67011902226
+  minimum energy of perfect lattice = -1481.42658366852
 print           "  accepted MC moves = ${naccept}"
-  accepted MC moves = 10
+  accepted MC moves = 7
 print 		"  Total moves = ${nmoves}"
-  Total moves = 20
+  Total moves = 50
 print 		"  Ratio of accepted/Total = ${ratio}"
-  Ratio of accepted/Total = 0.5
+  Ratio of accepted/Total = 0.14
 
 
 #-----------------------MINIMISATION-------------------------------
@@ -1453,4 +3809,4 @@ print 		"  Ratio of accepted/Total = ${ratio}"
 
 print "Calculation complete"
 Calculation complete
-Total wall time: 0:00:02
+Total wall time: 0:00:00
