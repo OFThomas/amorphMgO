@@ -42,8 +42,8 @@ plt.plot(x, y, 'ro', xp, fit(xp), 'r-')
 #CASE 0 FOR ENERGIES with steps
 if(case==0):
     plt.ylabel('Energy, eV')
-    plt.xlabel('Disorder steps')
-    plt.title('Energy against disorder steps')
+    plt.xlabel('Monte-Carlo steps')
+    plt.title('Final energy of the crystal against number of steps')
     #save graph 
     d_name = datafile + '.png'
     plt.savefig(d_name, format='png')
