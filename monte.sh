@@ -5,7 +5,7 @@ file=in.1dmc
 python insertpair.py > testmc.xyz
 #---- 0 to run lammps
 #---- 1 to skip to plotting
-skip=1
+skip=0
 
 #Fitting params
 num_atoms=72
@@ -31,9 +31,9 @@ rm ./disorderplot.txt
 while [ 0 -lt $(echo $temp $end_temp | awk '{if ($1<=$2) print 1; else print 0;}') ]
 do 
 #--------------------------------------------------------------------------------
-totsteps=500
+totsteps=1500
 stepsinc=500
-end_steps=5500
+end_steps=6000
 #--------------------------------------------------------------------------------
 while [ 0 -lt $(echo $totsteps $end_steps | awk '{if ($1<=$2) print 1; else print 0;}') ]
 do 
@@ -45,6 +45,7 @@ vary=$totsteps
 sed -i "/variable disorder equal/c\variable disorder equal "$disordermoves"" $file	
 sed -i "/variable iter loop/c\variable iter loop "$totsteps"" $file
 sed -i "/variable T equal/c\variable T equal "$temp"" $file
+sed -i "/dump 1 all custom 1 dumpmc/c\dump 1 all custom 1 dumpmc"$temp".lammpstrj id type xs ys zs " $file
 lammps-daily < in.1dmc >temp.txt
 tail -n 14 temp.txt >> ./data/outputT$te.txt
 #rm ./temp.txt
@@ -68,6 +69,7 @@ totsteps=$(echo $totsteps $stepsinc | awk '{print $1+$2}')
 done
 
 temp=$(echo $temp $tinc | awk '{print $1+$2}')
+
 done
 
 else
