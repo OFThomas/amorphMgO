@@ -92,7 +92,6 @@ averages=$(echo $string | awk '{print $3,$4,$5,$6,$7}')
 echo $temp $averages >> "$dest_mean"
 echo "written to meanvals.dat"
 
-
 #incriment Temp
 temp=$(echo $temp $tincr | awk '{print $1+$2}')
 
