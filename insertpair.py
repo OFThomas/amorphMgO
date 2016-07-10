@@ -1,8 +1,10 @@
 #!/usr/bin/env/python
-
+import numpy as np
 #how many atoms in y and z
 ny=6
 nz=6
+#total atoms
+atoms= ny*nz*2
 
 #lattice constant
 lenunit = 4.212
@@ -16,11 +18,10 @@ o=2
 #Initial coords
 xc1=0
 xc2=0.5*lenunit
+
 yc=0
 zc=0
 
-#total atoms
-atoms= ny*nz*2
 #for output in .xyz format
 print atoms
 print "0"
@@ -40,9 +41,6 @@ for i in range (0, ny):
 			element1=o
 			element2=mg
 		#1st element is bottom of column
-		print element1, xc1, yc+(delx*i), zc+(dely*j)
 		#2nd element is on top of column
+		print element1, xc1, yc+(delx*i), zc+(dely*j)
 		print element2, xc2, yc+(delx*i), zc+(dely*j)
-	
-
- 

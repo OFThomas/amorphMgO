@@ -37,8 +37,6 @@ c	declarations
 	real :: Deltax,Deltay
 	logical :: togglecryst2
 	
-	
-	
 c	read in triple junction triangle specification
 c	note that n2+n3 > n1 is required
 c	also n2+n3 not too large
@@ -64,7 +62,7 @@ c         nbmax=-1
 c         to generate hollow core
           nbmin=2
 	  nbmax=20
-	nbmin=-5
+c	nbmin=-5
 c	number of layers in a directions (tangent to perp)	
 	namin=-30
 	namax=30

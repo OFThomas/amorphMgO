@@ -23,7 +23,7 @@ variable iter loop 6000
 variable disorder equal 500
 
 #Temperature
-variable T equal 0.825
+variable T equal 1.225
 #Inf temp for disordering
 variable kT equal 1000 		#inf T for disorder phase
 
@@ -73,7 +73,7 @@ variable        y atom y
 set             group all z v_z
 set             group all y v_y
 #-------------------------------------------------------------------------------------
-dump 1 all custom 1 dumpmc0.825.lammpstrj id type xs ys zs 
+dump 1 all custom 1 dumpmc1.225.lammpstrj id type xs ys zs 
 
 run             0
 
