@@ -36,11 +36,12 @@ xp=np.linspace(min(x),max(x), 100)
 
 #PLOT ENERGY DATA
 plt.plot(x, y, 'ro', xp, fit(xp), 'r-')
-
+plt.plot((min(x), max(x)), (-1481.42658366852, -1481.42658366852), 'b-')
 ########## Then change title and axis respectively #################
 
 #CASE 0 FOR ENERGIES with steps
 if(case==0):
+
     plt.ylabel('Energy, eV')
     plt.xlabel('Monte-Carlo steps')
     plt.title('Final energy of the crystal against number of steps')

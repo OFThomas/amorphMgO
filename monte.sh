@@ -5,7 +5,7 @@ file=in.1dmc
 python insertpair.py > testmc.xyz
 #---- 0 to run lammps
 #---- 1 to skip to plotting
-skip=0
+skip=1
 
 #Fitting params
 num_atoms=72
