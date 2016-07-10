@@ -628,3 +628,17 @@ MC stats:
 
 Calculation complete
 Total wall time: 0:00:20
+MC stats:
+  	neighbor list rebuilds = 2445
+  	starting energy = -1481.42658366852
+  	final energy = -1473.24355800472
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 227
+  Disordered total moves = 500
+  accepted MC moves = 193
+  Total moves = 5500
+  	Ratio of accepted/Total = 3.50909090909091 %
+
+Calculation complete
+Total wall time: 0:00:20

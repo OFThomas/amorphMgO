@@ -14,15 +14,15 @@ DOF=9
 system=0
 i=0
 te=0
-
+tcount=0
 #---------------------------------------------------------------------------------------
 disordermoves=500
 disinc=100
 end_dis=1000
 
 temp=0.025
-end_temp=0.03
-tinc=0.1
+end_temp=1.00
+tinc=0.2
 #------------------------------------------------------------------------------------
 
 if [ $skip -eq 0 ]; then
@@ -30,10 +30,11 @@ rm ./disorderplot.txt
 
 while [ 0 -lt $(echo $temp $end_temp | awk '{if ($1<=$2) print 1; else print 0;}') ]
 do 
+tcount=$((tcount+1))
 #--------------------------------------------------------------------------------
-totsteps=1500
+totsteps=6000
 stepsinc=500
-end_steps=6000
+end_steps=6001
 #--------------------------------------------------------------------------------
 while [ 0 -lt $(echo $totsteps $end_steps | awk '{if ($1<=$2) print 1; else print 0;}') ]
 do 
@@ -66,7 +67,7 @@ echo $vary $energy >> disorderplot.txt
 #more disorderplot.txt
 
 #----------------- Energy plot every step--------------
-rm ./energyplot$i.txt
+rm ./energyplot$i+$tcount.txt
 for j in $(eval echo "{501..$totsteps}")
 do
 if [ $j -lt 1000 ]; then 
@@ -75,7 +76,7 @@ else
 	searchenergy=$(grep "^    $j" ./temp.txt)
 fi
 stepenergy=$(echo $searchenergy | awk '{print $5}')
-echo $j $stepenergy >> energyplot$i.txt
+echo $j $stepenergy >> energyplot$i+$tcount.txt
 done 
 #-----------------------------------------------------------------
 
