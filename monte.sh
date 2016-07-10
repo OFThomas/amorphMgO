@@ -76,7 +76,7 @@ else
 	searchenergy=$(grep "^    $j" ./temp.txt)
 fi
 stepenergy=$(echo $searchenergy | awk '{print $5}')
-echo $j $stepenergy >> energyplot$i+$tcount.txt
+echo $j $stepenergy >> energyplot$i+$te.txt
 done 
 #-----------------------------------------------------------------
 
