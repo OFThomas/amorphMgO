@@ -23,7 +23,7 @@ variable iter loop 6000
 variable disorder equal 500
 
 #Temperature
-variable T equal 1.225
+variable T equal 0.025
 #Inf temp for disordering
 variable kT equal 1000 		#inf T for disorder phase
 
@@ -73,7 +73,7 @@ variable        y atom y
 set             group all z v_z
 set             group all y v_y
 #-------------------------------------------------------------------------------------
-dump 1 all custom 1 dumpmc1.225.lammpstrj id type xs ys zs 
+dump 1 all custom 1 dumpmc0.025.lammpstrj id type xs ys zs 
 
 run             0
 
@@ -88,6 +88,7 @@ variable 	nmoves equal 0.0
 variable 	nmincrement equal v_nmoves+1
 variable 	disordercounter equal 0
 variable 	disincrement equal v_disordercounter+1
+variable 	dismoves equal 0
 
 variable        irandom equal floor(atoms*random(0.0,1.0,${seed})+1)
 variable        rn equal random(0.0,1.0,${seed})
@@ -142,6 +143,7 @@ if              "$e <= ${elast}" then &
                   "set atom $i y ${y0}" &
                   "set atom ${layeri} z ${z0}" &
                   "set atom ${layeri} y ${y0}" &
+
 #--------------------------------------------------------------
 variable nmoves equal ${nmincrement}
 
@@ -153,7 +155,16 @@ if		"${disordercounter} == ${disorder}" then &
 		"variable kT equal $T" &
 		"variable dismoves equal ${nmoves}" &
 		"variable disaccept equal ${naccept}" &
+
 #--------------------------------------------------------------------------
+
+if		"${disordercounter} > ${disorder}" then &
+		'print "Why are you not working!????"' & 
+		'variable totnmoves equal "v_nmoves - v_dismoves"' &
+		'variable totnaccept equal "v_naccept - v_disaccept"' & 
+		'variable ratio equal "100*v_totnaccept/v_totnmoves"' &
+		'print "moves = ${totnmoves} Ratio of accepted/Total = ${ratio} %"' &
+
 next            iter
 jump            SELF loop
 
@@ -166,6 +177,7 @@ variable       totnaccept equal "v_naccept - v_disaccept"
 variable       ratio equal "100*v_totnaccept/v_totnmoves"
 
 run             0
+
 #-------------------------END OF MONTE CARLO------------------------
 print ""
 print           "MC stats:"

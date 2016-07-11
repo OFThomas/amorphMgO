@@ -656,3 +656,647 @@ MC stats:
 
 Calculation complete
 Total wall time: 0:00:21
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00195909 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR: Input line quote not followed by whitespace (../input.cpp:437)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00197721 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR on proc 0: Substitution for illegal variable (../input.cpp:530)
+MC stats:
+  	neighbor list rebuilds = 2445
+  	starting energy = -1481.42658366852
+  	final energy = -1473.24355800472
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 227
+  Disordered total moves = 500
+  accepted MC moves = 193
+  Total moves = 5500
+  	Ratio of accepted/Total = 3.50909090909091 %
+
+Calculation complete
+Total wall time: 0:00:21
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00196981 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR: Illegal if command (../input.cpp:765)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00199199 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR on proc 0: Substitution for illegal variable (../input.cpp:530)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00196886 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR on proc 0: Substitution for illegal variable (../input.cpp:530)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00198007 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR: Input line quote not followed by whitespace (../input.cpp:437)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00198793 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR: Input line quote not followed by whitespace (../input.cpp:437)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00195599 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR on proc 0: Substitution for illegal variable (../input.cpp:530)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00194883 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR on proc 0: Substitution for illegal variable (../input.cpp:530)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00197005 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR: Input line quote not followed by whitespace (../input.cpp:437)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.0022018 on 1 procs for 1 steps with 72 atoms
+
+181.7% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR: Input line quote not followed by whitespace (../input.cpp:437)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00199103 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR on proc 0: Substitution for illegal variable (../input.cpp:530)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00218296 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR: Input line quote not followed by whitespace (../input.cpp:437)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00199199 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR: Input line quote not followed by whitespace (../input.cpp:437)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.001966 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR: Input line quote not followed by whitespace (../input.cpp:437)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00197005 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR: Input line quote not followed by whitespace (../input.cpp:437)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00198197 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR on proc 0: Substitution for illegal variable (../input.cpp:530)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00199986 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR: Input line quote not followed by whitespace (../input.cpp:437)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00194907 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR: Input line quote not followed by whitespace (../input.cpp:437)
+MC stats:
+  	neighbor list rebuilds = 2445
+  	starting energy = -1481.42658366852
+  	final energy = -1473.24355800472
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 227
+  Disordered total moves = 500
+  accepted MC moves = 193
+  Total moves = 5500
+  	Ratio of accepted/Total = 3.50909090909091 %
+
+Calculation complete
+Total wall time: 0:00:21
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.001966 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR on proc 0: Substitution for illegal variable (../input.cpp:530)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00198889 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR: Input line quote not followed by whitespace (../input.cpp:437)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00195408 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR: Input line quote not followed by whitespace (../input.cpp:437)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00197482 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR: Input line quote not followed by whitespace (../input.cpp:437)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00198007 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR: Input line quote not followed by whitespace (../input.cpp:437)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00195003 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR: Input line quote not followed by whitespace (../input.cpp:437)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00197983 on 1 procs for 1 steps with 72 atoms
+
+202.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR: Input line quote not followed by whitespace (../input.cpp:437)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00197506 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR: Input line quote not followed by whitespace (../input.cpp:437)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00198913 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR: Input line quote not followed by whitespace (../input.cpp:437)
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     500            0    -1132.053            0    -1132.053    1445963.8 
+     501            0   -1152.8758            0   -1152.8758      1296146 
+Loop time of 0.00266695 on 1 procs for 1 steps with 72 atoms
+
+150.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Illegal print command (../input.cpp:1022)
+       0            0   -1481.4266            0   -1481.4266    672.06402 
+       1            0    -1460.918            0    -1460.918    91971.329 
+Loop time of 0.00196385 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+ERROR: Input line quote not followed by whitespace (../input.cpp:437)
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     500            0    -1132.053            0    -1132.053    1445963.8 
+     501            0   -1152.8758            0   -1152.8758      1296146 
+Loop time of 0.0028379 on 1 procs for 1 steps with 72 atoms
+
+140.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Illegal print command (../input.cpp:1022)
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     500            0    -1132.053            0    -1132.053    1445963.8 
+     501            0   -1152.8758            0   -1152.8758      1296146 
+Loop time of 0.00270391 on 1 procs for 1 steps with 72 atoms
+
+147.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Illegal print command (../input.cpp:1022)
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     500            0    -1132.053            0    -1132.053    1445963.8 
+     501            0   -1152.8758            0   -1152.8758      1296146 
+Loop time of 0.002738 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Why are you not working!????
+ERROR on proc 0: Substitution for illegal variable (../input.cpp:530)
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     500            0    -1132.053            0    -1132.053    1445963.8 
+     501            0   -1152.8758            0   -1152.8758      1296146 
+Loop time of 0.00261712 on 1 procs for 1 steps with 72 atoms
+
+152.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+Why are you not working!????
+1
+ERROR on proc 0: Substitution for illegal variable (../input.cpp:530)
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     500            0    -1132.053            0    -1132.053    1445963.8 
+     501            0   -1152.8758            0   -1152.8758      1296146 
+Loop time of 0.00299001 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+Why are you not working!????
+501
+ERROR on proc 0: Substitution for illegal variable (../input.cpp:530)
+MC stats:
+  	neighbor list rebuilds = 2445
+  	starting energy = -1481.42658366852
+  	final energy = -1473.24355800472
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 227
+  Disordered total moves = 500
+  accepted MC moves = 193
+  Total moves = 5500
+  	Ratio of accepted/Total = 3.50909090909091 %
+
+Calculation complete
+Total wall time: 0:00:21
+MC stats:
+  	neighbor list rebuilds = 2445
+  	starting energy = -1481.42658366852
+  	final energy = -1473.24355800472
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 227
+  Disordered total moves = 500
+  accepted MC moves = 193
+  Total moves = 5500
+  	Ratio of accepted/Total = 3.50909090909091 %
+
+Calculation complete
+Total wall time: 0:00:21
+MC stats:
+  	neighbor list rebuilds = 2445
+  	starting energy = -1481.42658366852
+  	final energy = -1473.24355800472
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 227
+  Disordered total moves = 500
+  accepted MC moves = 193
+  Total moves = 5500
+  	Ratio of accepted/Total = 3.50909090909091 %
+
+Calculation complete
+Total wall time: 0:00:21
+MC stats:
+  	neighbor list rebuilds = 2445
+  	starting energy = -1481.42658366852
+  	final energy = -1473.24355800472
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 227
+  Disordered total moves = 500
+  accepted MC moves = 193
+  Total moves = 5500
+  	Ratio of accepted/Total = 3.50909090909091 %
+
+Calculation complete
+Total wall time: 0:00:21
+MC stats:
+  	neighbor list rebuilds = 2445
+  	starting energy = -1481.42658366852
+  	final energy = -1473.24355800472
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 227
+  Disordered total moves = 500
+  accepted MC moves = 193
+  Total moves = 5500
+  	Ratio of accepted/Total = 3.50909090909091 %
+
+Calculation complete
+Total wall time: 0:00:21
+MC stats:
+  	neighbor list rebuilds = 2445
+  	starting energy = -1481.42658366852
+  	final energy = -1473.24355800472
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 227
+  Disordered total moves = 500
+  accepted MC moves = 193
+  Total moves = 5500
+  	Ratio of accepted/Total = 3.50909090909091 %
+
+Calculation complete
+Total wall time: 0:00:21
+MC stats:
+  	neighbor list rebuilds = 2445
+  	starting energy = -1481.42658366852
+  	final energy = -1473.24355800472
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 227
+  Disordered total moves = 500
+  accepted MC moves = 193
+  Total moves = 5500
+  	Ratio of accepted/Total = 3.50909090909091 %
+
+Calculation complete
+Total wall time: 0:00:21
+MC stats:
+  	neighbor list rebuilds = 2445
+  	starting energy = -1481.42658366852
+  	final energy = -1473.24355800472
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 227
+  Disordered total moves = 500
+  accepted MC moves = 193
+  Total moves = 5500
+  	Ratio of accepted/Total = 3.50909090909091 %
+
+Calculation complete
+Total wall time: 0:00:21
+MC stats:
+  	neighbor list rebuilds = 2445
+  	starting energy = -1481.42658366852
+  	final energy = -1473.24355800472
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 227
+  Disordered total moves = 500
+  accepted MC moves = 193
+  Total moves = 5500
+  	Ratio of accepted/Total = 3.50909090909091 %
+
+Calculation complete
+Total wall time: 0:00:21

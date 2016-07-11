@@ -36,7 +36,7 @@ xp=np.linspace(min(x),max(x), 100)
 
 #PLOT ENERGY DATA
 plt.plot(x, y, 'ro', xp, fit(xp), 'r-')
-plt.plot((min(x), max(x)), (-1481.42658366852, -1481.42658366852), 'b-')
+
 ########## Then change title and axis respectively #################
 
 #CASE 0 FOR ENERGIES with steps
@@ -48,7 +48,7 @@ if(case==0):
     #save graph 
     d_name = datafile + '.png'
     plt.savefig(d_name, format='png')
-
+    plt.plot((min(x), max(x)), (-1481.42658366852, -1481.42658366852), 'b-')
 #CASE 1 FOR ENERGY with temperature
 elif (case==1):
     plt.ylabel('Energy, eV')
@@ -57,7 +57,7 @@ elif (case==1):
     #save graph 
     d_name = datafile + '.png'
     plt.savefig(d_name, format='png')
-    plt.clf()
+#    plt.clf()
 
 #Not needed yet, can use for lowest formation energy calc
 """

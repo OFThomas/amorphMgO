@@ -9,7 +9,6 @@ skip=0
 
 #Fitting params
 num_atoms=72
-filetoplot=disorderplot.txt
 DOF=9
 system=0
 i=0
@@ -20,8 +19,8 @@ disordermoves=500
 disinc=100
 end_dis=1000
 
-temp=1.025
-end_temp=1.225
+temp=0.025
+end_temp=0.035
 tinc=0.2
 #------------------------------------------------------------------------------------
 
@@ -67,7 +66,8 @@ echo $vary $energy >> disorderplot.txt
 #more disorderplot.txt
 
 #----------------- Energy plot every step--------------
-rm ./energyplot$i+$tcount.txt
+rm ./energyplot$i+$te.txt
+rm ./ratioplot$i+$te.txt
 for j in $(eval echo "{501..$totsteps}")
 do
 if [ $j -lt 1000 ]; then 
@@ -77,6 +77,10 @@ else
 fi
 stepenergy=$(echo $searchenergy | awk '{print $5}')
 echo $j $stepenergy >> energyplot$i+$te.txt
+
+searchratio=$(grep "^moves = $((j-500))" ./temp.txt )
+accpt_moves=$(echo $searchratio | awk '{print $8}')
+echo $j $accpt_moves >> ratioplot$i+$te.txt
 done 
 #-----------------------------------------------------------------
 
@@ -92,13 +96,16 @@ else
 echo "Skipping to plotting"
 fi
 
-filetoplot2=energyplot.txt
+for filetoplot in ./ratioplot*
+do
 python2 plot.py << EOF
 $num_atoms
 $filetoplot
 $DOF
-$system
+1
 EOF
+done
+
 for filetoplot2 in ./energyplot*
 do
 python2 plot.py << EOF
@@ -107,6 +114,16 @@ $filetoplot2
 $DOF
 $system
 EOF
+done
+
+for filetoplot3 in ./disorderplot*
+do
+python2 plot.py << EOF
+$num_atoms
+$filetoplot3
+$DOF
+$system
+EOF
 #display $filetoplot2.png &
 done
-#display $filetoplot.png &	#Show percentage to total energy
+display $filetoplot &	#Show percentage to total energy
