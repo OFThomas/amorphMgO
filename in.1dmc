@@ -18,7 +18,7 @@ create_box 2 box  #generate simulation box
 
 #---------------------------- Parameters ----------------------------------------
 #Number of montecarlo steps to run for
-variable iter loop 500
+variable iter loop 600
 #number of steps to disorder system (inf temp)
 variable disorder equal 600
 

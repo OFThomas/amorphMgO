@@ -44,7 +44,8 @@ vary=$disordermoves
 #vary=$totsteps
 
 sed -i "/variable disorder equal/c\variable disorder equal "$disordermoves"" $file	
-sed -i "/variable iter loop/c\variable iter loop "$totsteps"" $file
+#sed -i "/variable iter loop/c\variable iter loop "$totsteps"" $file
+sed -i "/variable iter loop/c\variable iter loop "$disordermoves"" $file
 sed -i "/variable T equal/c\variable T equal "$temp"" $file
 sed -i "/dump 1 all custom 1 dumpmc/c\dump 1 all custom 1 dumpmc"$temp".lammpstrj id type xs ys zs " $file
 lammps-daily < in.1dmc >temp.txt
