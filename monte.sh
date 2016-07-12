@@ -5,7 +5,7 @@ file=in.1dmc
 python insertpair.py > testmc.xyz
 #---- 0 to run lammps
 #---- 1 to skip to plotting
-skip=0
+skip=1
 
 #Fitting params
 num_atoms=72
@@ -15,9 +15,9 @@ i=0
 te=0
 tcount=0
 #---------------------------------------------------------------------------------------
-disordermoves=500
-disinc=100
-end_dis=1000
+disordermoves=50
+disinc=50
+end_dis=601
 
 temp=0.025
 end_temp=0.035
@@ -31,16 +31,17 @@ while [ 0 -lt $(echo $temp $end_temp | awk '{if ($1<=$2) print 1; else print 0;}
 do 
 tcount=$((tcount+1))
 #--------------------------------------------------------------------------------
-totsteps=6000
+totsteps=500
 stepsinc=500
-end_steps=6001
+end_steps=501
 #--------------------------------------------------------------------------------
-while [ 0 -lt $(echo $totsteps $end_steps | awk '{if ($1<=$2) print 1; else print 0;}') ]
+#while [ 0 -lt $(echo $totsteps $end_steps | awk '{if ($1<=$2) print 1; else print 0;}') ]
+while [ 0 -lt $(echo $disordermoves $end_dis | awk '{if ($1<=$2) print 1; else print 0;}') ]
 do 
 i=$((i+1))
 te=$(echo $temp | awk '{print $1*1000}')
-#vary=$disordermoves
-vary=$totsteps
+vary=$disordermoves
+#vary=$totsteps
 
 sed -i "/variable disorder equal/c\variable disorder equal "$disordermoves"" $file	
 sed -i "/variable iter loop/c\variable iter loop "$totsteps"" $file
@@ -68,7 +69,8 @@ echo $vary $energy >> disorderplot.txt
 #----------------- Energy plot every step--------------
 rm ./energyplot$i+$te.txt
 rm ./ratioplot$i+$te.txt
-for j in $(eval echo "{501..$totsteps}")
+#for j in $(eval echo "{501..$totsteps}")
+for j in {1..500}
 do
 if [ $j -lt 1000 ]; then 
 	searchenergy=$(grep "^     $j" ./temp.txt)
@@ -78,14 +80,14 @@ fi
 stepenergy=$(echo $searchenergy | awk '{print $5}')
 echo $j $stepenergy >> energyplot$i+$te.txt
 
-searchratio=$(grep "^moves = $((j-500))" ./temp.txt )
-accpt_moves=$(echo $searchratio | awk '{print $8}')
-echo $j $accpt_moves >> ratioplot$i+$te.txt
+#searchratio=$(grep "^moves = $((j-500))" ./temp.txt )
+#accpt_moves=$(echo $searchratio | awk '{print $8}')
+#echo $j $accpt_moves >> ratioplot$i+$te.txt
 done 
 #-----------------------------------------------------------------
 
-#disordermoves=$(echo $disordermoves $disinc | awk '{print $1+$2}')
-totsteps=$(echo $totsteps $stepsinc | awk '{print $1+$2}')
+disordermoves=$(echo $disordermoves $disinc | awk '{print $1+$2}')
+#totsteps=$(echo $totsteps $stepsinc | awk '{print $1+$2}')
 done
 
 temp=$(echo $temp $tinc | awk '{print $1+$2}')
@@ -126,4 +128,4 @@ $system
 EOF
 #display $filetoplot2.png &
 done
-display $filetoplot &	#Show percentage to total energy
+display $filetoplot3 &	#Show percentage to total energy
