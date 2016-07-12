@@ -51,9 +51,9 @@ if(case==0):
     plt.plot((min(x), max(x)), (-1481.42658366852, -1481.42658366852), 'b-')
 #CASE 1 FOR ENERGY with temperature
 elif (case==1):
-    plt.ylabel('Energy, eV')
-    plt.xlabel('Temperature of Monte-carlo run')
-    plt.title('Energy against increasing system temperature')
+    plt.ylabel('Percentage of Accepted/Total moves')
+    plt.xlabel('Move number')
+    plt.title('Variation of Accepted/Total moves with move number')
     #save graph 
     d_name = datafile + '.png'
     plt.savefig(d_name, format='png')
