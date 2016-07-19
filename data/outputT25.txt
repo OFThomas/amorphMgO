@@ -2840,3 +2840,199 @@ MC stats:
   accepted MC moves = 0
   Total moves = 0
 ERROR: Divide by 0 in variable formula (../variable.cpp:2114)
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 18
+  	starting energy = -1481.42658366852
+  	final energy = -1322.95210603486
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 24
+  Disordered total moves = 50
+  accepted MC moves = 0
+  Total moves = 0
+ERROR: Divide by 0 in variable formula (../variable.cpp:2114)
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 38
+  	starting energy = -1481.42658366852
+  	final energy = -1270.46991856135
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 47
+  Disordered total moves = 100
+  accepted MC moves = 0
+  Total moves = 0
+ERROR: Divide by 0 in variable formula (../variable.cpp:2114)
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 55
+  	starting energy = -1481.42658366852
+  	final energy = -1172.53816901923
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 71
+  Disordered total moves = 150
+  accepted MC moves = 0
+  Total moves = 0
+ERROR: Divide by 0 in variable formula (../variable.cpp:2114)
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 68
+  	starting energy = -1481.42658366852
+  	final energy = -1395.03889425803
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 96
+  Disordered total moves = 200
+  accepted MC moves = 0
+  Total moves = 0
+ERROR: Divide by 0 in variable formula (../variable.cpp:2114)
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 90
+  	starting energy = -1481.42658366852
+  	final energy = -1379.1999801524
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 118
+  Disordered total moves = 250
+  accepted MC moves = 0
+  Total moves = 0
+ERROR: Divide by 0 in variable formula (../variable.cpp:2114)
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 104
+  	starting energy = -1481.42658366852
+  	final energy = -1414.48227026753
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 137
+  Disordered total moves = 300
+  accepted MC moves = 0
+  Total moves = 0
+ERROR: Divide by 0 in variable formula (../variable.cpp:2114)
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 119
+  	starting energy = -1481.42658366852
+  	final energy = -1523.85009488228
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 163
+  Disordered total moves = 350
+  accepted MC moves = 0
+  Total moves = 0
+ERROR: Divide by 0 in variable formula (../variable.cpp:2114)
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 132
+  	starting energy = -1481.42658366852
+  	final energy = -1747.30438348635
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 184
+  Disordered total moves = 400
+  accepted MC moves = 0
+  Total moves = 0
+ERROR: Divide by 0 in variable formula (../variable.cpp:2114)
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 149
+  	starting energy = -1481.42658366852
+  	final energy = -1856.8236018272
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 205
+  Disordered total moves = 450
+  accepted MC moves = 0
+  Total moves = 0
+ERROR: Divide by 0 in variable formula (../variable.cpp:2114)
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 167
+  	starting energy = -1481.42658366852
+  	final energy = -159693.663112185
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 228
+  Disordered total moves = 500
+  accepted MC moves = 0
+  Total moves = 0
+ERROR: Divide by 0 in variable formula (../variable.cpp:2114)
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 191
+  	starting energy = -1481.42658366852
+  	final energy = -159707.812388647
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 246
+  Disordered total moves = 550
+  accepted MC moves = 0
+  Total moves = 0
+ERROR: Divide by 0 in variable formula (../variable.cpp:2114)
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 207
+  	starting energy = -1481.42658366852
+  	final energy = -165399.49673384
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 269
+  Disordered total moves = 600
+  accepted MC moves = 0
+  Total moves = 0
+ERROR: Divide by 0 in variable formula (../variable.cpp:2114)
+MC stats:
+  	neighbor list rebuilds = 2019
+  	starting energy = -1481.42658366852
+  	final energy = -8615271319.67696
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 228
+  Disordered total moves = 500
+  accepted MC moves = 163
+  Total moves = 4500
+  	Ratio of accepted/Total = 3.62222222222222 %
+
+Calculation complete
+Total wall time: 0:00:18
+MC stats:
+  	neighbor list rebuilds = 2048
+  	starting energy = -1481.42658366852
+  	final energy = -1468.72144637524
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 227
+  Disordered total moves = 500
+  accepted MC moves = 174
+  Total moves = 4500
+  	Ratio of accepted/Total = 3.86666666666667 %
+
+Calculation complete
+Total wall time: 0:00:18
