@@ -21,7 +21,7 @@ disordermoves=500
 disinc=50
 end_dis=601
 
-temp=0.025
+temp=0.026
 end_temp=0.035
 tinc=0.2
 #------------------------------------------------------------------------------------
@@ -122,7 +122,7 @@ $DOF
 $system
 EOF
 done
-
+display $filetoplot2 &
 #for filetoplot3 in ./disorderplot*
 #do
 #python2 plot.py << EOF

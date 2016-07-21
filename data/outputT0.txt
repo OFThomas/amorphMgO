@@ -1,0 +1,56 @@
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     500            0    -1132.053            0    -1132.053    1445963.8 
+     501            0   -1152.8758            0   -1152.8758      1296146 
+Loop time of 0.00475097 on 1 procs for 1 steps with 72 atoms
+
+99.7% CPU use with 1 MPI tasks x 1 OpenMP threads
+moves = 1 Ratio of accepted/Total = 100 %
+ERROR: Illegal next command (../variable.cpp:546)
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     501            0   -1152.8758            0   -1152.8758      1296146 
+     502            0   -1144.2813            0   -1144.2813    1309459.4 
+Loop time of 0.00366998 on 1 procs for 1 steps with 72 atoms
+
+100.2% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Divide by 0 in variable formula (../variable.cpp:2114)
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     501            0   -1152.8758            0   -1152.8758      1296146 
+     502            0   -1144.2813            0   -1144.2813    1309459.4 
+Loop time of 0.00359797 on 1 procs for 1 steps with 72 atoms
+
+100.3% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Divide by 0 in variable formula (../variable.cpp:2114)
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     501            0   -1152.8758            0   -1152.8758      1296146 
+     502            0   -1144.2813            0   -1144.2813    1309459.4 
+Loop time of 0.00371909 on 1 procs for 1 steps with 72 atoms
+
+100.1% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Divide by 0 in variable formula (../variable.cpp:2114)
