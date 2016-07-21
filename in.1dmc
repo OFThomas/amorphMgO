@@ -27,7 +27,7 @@ variable disorder equal 500
 #Temperature
 variable T equal 0.026
 #Inf temp for disordering
-variable kT equal 1000 		#inf T for disorder phase
+variable kT equal 1 		#inf T for disorder phase
 
 variable deltaperturb equal 0.0    #0.2 max size of initial perturbation per dim
 variable deltamove equal 1      #0.1 max size of MC move in one dimension
@@ -135,10 +135,13 @@ set             atom ${layeri} y ${yupdate}
 run             1 pre no post no
 
 #--------------------- Energy check ------------------------
+variable 	rand equal ${rn}
+
 if              "$e <= ${elast}" then &
                   "variable elast equal $e" &
                   "variable naccept equal ${increment}" &
-                elif "${rn} <= ${boltzfactor}" &
+                elif "${rand} <= ${boltzfactor}" &
+		  'print "boltz ${boltzfactor} ${rand}"' &
                   "variable elast equal $e" &
                   "variable naccept equal ${increment}" &
                 else & 

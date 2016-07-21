@@ -27,7 +27,7 @@ tinc=0.2
 #------------------------------------------------------------------------------------
 
 if [ $skip -eq 0 ]; then
-rm ./disorderplot.txt
+rm ./disorderplot.dat
 
 sed -i "/variable seed equal/c\variable seed equal "$seed"" $file	
 while [ 0 -lt $(echo $temp $end_temp | awk '{if ($1<=$2) print 1; else print 0;}') ]
@@ -60,7 +60,7 @@ search=$(grep "final energy" ./temp.txt)
 energy=$(echo $search | awk '{print $4}')
 #echo "Disorder moves: "$vary "Temp: " $temp "Energy: " $energy
 echo "total moves: "$vary "Temp: " $temp "Energy: " $energy
-echo $vary $energy >> disorderplot.txt
+#echo $vary $energy >> disorderplot.dat
 
 #mv output.txt ./data/output.txt
 #if [ $skip -eq 1 ] ; then
@@ -71,8 +71,8 @@ echo $vary $energy >> disorderplot.txt
 #more disorderplot.txt
 
 #----------------- Energy plot every step--------------
-rm ./energyplot$i+$te.txt
-rm ./ratioplot$i+$te.txt
+rm ./energyplot$i+$te.dat
+rm ./ratioplot$i+$te.dat
 
 for j in $(eval echo "{501..$totsteps}")
 #for j in {1..500}
@@ -83,11 +83,11 @@ else
 	searchenergy=$(grep "^    $j" ./temp.txt)
 fi
 stepenergy=$(echo $searchenergy | awk '{print $5}')
-echo $j $stepenergy >> energyplot$i+$te.txt
+echo $j $stepenergy >> energyplot$i+$te.dat
 
 searchratio=$(grep "^moves = $((j-500))" ./temp.txt )
 accpt_moves=$(echo $searchratio | awk '{print $8}')
-echo $j $accpt_moves >> ratioplot$i+$te.txt
+echo $j $accpt_moves >> ratioplot$i+$te.dat
 done 
 #-----------------------------------------------------------------
 
@@ -103,7 +103,7 @@ else
 echo "Skipping to plotting"
 fi
 
-for filetoplot in ./ratioplot*
+for filetoplot in ./*.dat
 do
 python2 plot.py << EOF
 $num_atoms
@@ -111,18 +111,20 @@ $filetoplot
 $DOF
 1
 EOF
+display $filetoplot.png &
 done
 
-for filetoplot2 in ./energyplot*
-do
-python2 plot.py << EOF
-$num_atoms
-$filetoplot2
-$DOF
-$system
-EOF
-done
-display $filetoplot2 &
+#for filetoplot2 in ./energyplot*
+#do
+#python2 plot.py << EOF
+#$num_atoms
+#$filetoplot2
+#$DOF
+#$system
+#EOF
+#done
+#display $filetoplot2 &
+
 #for filetoplot3 in ./disorderplot*
 #do
 #python2 plot.py << EOF
@@ -134,3 +136,4 @@ display $filetoplot2 &
 #display $filetoplot2.png &
 #done
 #display $filetoplot3 &	#Show percentage to total energy
+tail -n 14 temp.txt
