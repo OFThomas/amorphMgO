@@ -12,7 +12,7 @@ seed=582783
 #Fitting params
 Ny=6
 Nz=6
-num_atoms=$Ny*$Nz*2
+num_atoms=72
 
 DOF=9
 system=0
@@ -41,9 +41,10 @@ while [ 0 -lt $(echo $temp $end_temp | awk '{if ($1<=$2) print 1; else print 0;}
 do 
 tcount=$((tcount+1))
 #--------------------------------------------------------------------------------
-totsteps=6000
+totsteps=19
 stepsinc=500
-end_steps=6001
+end_steps=$((totsteps +1))
+steps=$(awk '{print 19*144}')
 #--------------------------------------------------------------------------------
 while [ 0 -lt $(echo $totsteps $end_steps | awk '{if ($1<=$2) print 1; else print 0;}') ]
 #while [ 0 -lt $(echo $disordermoves $end_dis | awk '{if ($1<=$2) print 1; else print 0;}') ]
@@ -81,7 +82,7 @@ echo "total moves: "$vary "Temp: " $temp "Energy: " $energy
 rm ./energyplot$i+$te.dat
 rm ./ratioplot$i+$te.dat
 
-for j in $(eval echo "{501..$totsteps}")
+for j in $(eval echo "{501..$steps}")
 #for j in {1..500}
 do
 if [ $j -lt 1000 ]; then 
@@ -118,7 +119,7 @@ $filetoplot
 $DOF
 0
 EOF
-display $filetoplot.png &
+#display $filetoplot.png &
 done
 
 for filetoplot2 in ./ratioplot*
@@ -129,7 +130,7 @@ $filetoplot2
 $DOF
 1
 EOF
-display $filetoplot2 &
+#display $filetoplot2.png &
 done
 #for filetoplot3 in ./disorderplot*
 #do

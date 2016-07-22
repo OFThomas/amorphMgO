@@ -35,13 +35,15 @@ fit =np.poly1d(p)
 xp=np.linspace(min(x),max(x), 100)
 
 #PLOT ENERGY DATA
-plt.plot(x, y, 'ro', xp, fit(xp), 'r-')
+plt.plot(x, y/num_atoms, 'ro', xp, fit(xp), 'r-')
 
 ########## Then change title and axis respectively #################
 
 #CASE 0 FOR ENERGIES with steps
 if(case==0):
-
+    #PLOT ENERGY DATA
+    plt.plot(x, y/num_atoms, 'ro', xp, fit(xp), 'r-')
+    
     plt.ylabel('Energy, eV')
     plt.xlabel('Monte-Carlo steps')
     plt.title('Final energy of the crystal against number of steps')
@@ -52,6 +54,9 @@ if(case==0):
 
 #CASE 1 FOR ENERGY with temperature
 elif (case==1):
+    #PLOT ENERGY DATA
+    plt.plot(x, y, 'ro', xp, fit(xp), 'r-')
+
     plt.ylabel('Percentage of Accepted/Total moves')
     plt.xlabel('Move number')
     plt.title('Variation of Accepted/Total moves with move number')

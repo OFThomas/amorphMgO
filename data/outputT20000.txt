@@ -68,3 +68,304 @@ MC stats:
 
 Calculation complete
 Total wall time: 0:02:15
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -31984823.5916802
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 227
+  Disordered total moves = 500
+  accepted MC moves = 260
+  Total moves = 5500
+  	Ratio of accepted/Total = 4.72727272727273 %
+
+Calculation complete
+Total wall time: 0:00:42
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     143            0   -1153.9375            0   -1153.9375    1089642.5 
+     144            0    -31984701            0    -31984701 -1.5242039e+11 
+Loop time of 0.00191522 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Illegal if command (../input.cpp:782)
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     143            0   -1153.9375            0   -1153.9375    1089642.5 
+     144            0    -31984701            0    -31984701 -1.5242039e+11 
+Loop time of 0.00195217 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Invalid variable name in variable formula (../variable.cpp:1790)
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     143            0   -1153.9375            0   -1153.9375    1089642.5 
+     144            0    -31984701            0    -31984701 -1.5242039e+11 
+Loop time of 0.00192499 on 1 procs for 1 steps with 72 atoms
+
+207.8% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Invalid variable name in variable formula (../variable.cpp:1790)
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     143            0   -1153.9375            0   -1153.9375    1089642.5 
+     144            0    -31984701            0    -31984701 -1.5242039e+11 
+Loop time of 0.00194407 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Invalid variable name in variable formula (../variable.cpp:1790)
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     144            0    -31984691            0    -31984691 -1.5242035e+11 
+     145            0    -31984701            0    -31984701 -1.5242039e+11 
+Loop time of 0.0019722 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Invalid variable in next command (../variable.cpp:553)
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     144            0    -31984691            0    -31984691 -1.5242035e+11 
+     145            0    -31984701            0    -31984701 -1.5242039e+11 
+Loop time of 0.00195909 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Invalid variable in next command (../variable.cpp:553)
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+       0            0    -1460.918            0    -1460.918    91971.329 
+       1            0   -1481.4266            0   -1481.4266    672.06402 
+Loop time of 0.00196195 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR on proc 0: Cannot open input script loop_allsites (../input.cpp:926)
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     144            0    -31984691            0    -31984691 -1.5242035e+11 
+     145            0    -31984701            0    -31984701 -1.5242039e+11 
+Loop time of 0.00190997 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Invalid variable in next command (../variable.cpp:553)
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 16408
+Ave neighs/atom = 227.889
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 1
+  	starting energy = -1481.42658366852
+  	final energy = -1441.02098084886
+  	minimum energy of perfect lattice = -1481.42658366852
+
+ERROR on proc 0: Substitution for illegal variable (../input.cpp:530)
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 16408
+Ave neighs/atom = 227.889
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 1
+  	starting energy = -1481.42658366852
+  	final energy = -1441.02098084886
+  	minimum energy of perfect lattice = -1481.42658366852
+
+ERROR on proc 0: Substitution for illegal variable (../input.cpp:530)
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 16408
+Ave neighs/atom = 227.889
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 1
+  	starting energy = -1481.42658366852
+  	final energy = -1441.02098084886
+  	minimum energy of perfect lattice = -1481.42658366852
+
+ERROR on proc 0: Substitution for illegal variable (../input.cpp:530)
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 16408
+Ave neighs/atom = 227.889
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 1
+  	starting energy = -1481.42658366852
+  	final energy = -1441.02098084886
+  	minimum energy of perfect lattice = -1481.42658366852
+
+ERROR on proc 0: Substitution for illegal variable (../input.cpp:530)
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     144            0    -31984691            0    -31984691 -1.5242035e+11 
+     145            0    -31984701            0    -31984701 -1.5242039e+11 
+Loop time of 0.00192904 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Invalid variable in next command (../variable.cpp:553)
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     144            0    -31984691            0    -31984691 -1.5242035e+11 
+     145            0    -31984701            0    -31984701 -1.5242039e+11 
+Loop time of 0.00191498 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Invalid variable in next command (../variable.cpp:553)
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     144            0    -31984691            0    -31984691 -1.5242035e+11 
+     145            0    -31984701            0    -31984701 -1.5242039e+11 
+Loop time of 0.00191593 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Invalid variable in next command (../variable.cpp:553)
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     144            0    -31984691            0    -31984691 -1.5242035e+11 
+     145            0    -31984701            0    -31984701 -1.5242039e+11 
+Loop time of 0.00190902 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Invalid variable in next command (../variable.cpp:553)
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -31984810.3302195
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 227
+  Disordered total moves = 500
+  accepted MC moves = 154
+  Total moves = 2236
+  	Ratio of accepted/Total = 6.88729874776386 %
+
+Calculation complete
+Total wall time: 0:00:19
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     143            0   -1153.9375            0   -1153.9375    1089642.5 
+     144            0    -31984701            0    -31984701 -1.5242039e+11 
+Loop time of 0.00200891 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+adjusted kt is 999
+ERROR: Illegal if command (../input.cpp:782)
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     143            0   -1153.9375            0   -1153.9375    1089642.5 
+     144            0    -31984701            0    -31984701 -1.5242039e+11 
+Loop time of 0.00192189 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+adjusted kt is 999
+ERROR: Illegal if command (../input.cpp:765)
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -31984815.9669565
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 227
+  Disordered total moves = 500
+  accepted MC moves = 134
+  Total moves = 2236
+  	Ratio of accepted/Total = 5.99284436493739 %
+
+Calculation complete
+Total wall time: 0:00:19
+LAMMPS (1 Jul 2016-ICMS)
+WARNING: OMP_NUM_THREADS environment is not set. (../comm.cpp:90)
+  using 1 OpenMP thread(s) per MPI task
+Optimise lattice constant of MgO crystal
+Created orthogonal box = (0 0 0) to (4.212 12.636 12.636)
+  1 by 1 by 1 MPI processor grid
+ERROR: Expected integer parameter in input script or data file (../variable.cpp:191)
