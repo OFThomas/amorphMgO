@@ -10,7 +10,10 @@ skip=0
 seed=582783
 #seed=4827938
 #Fitting params
-num_atoms=72
+Ny=6
+Nz=6
+num_atoms=$Ny*$Nz*2
+
 DOF=9
 system=0
 i=0
@@ -19,12 +22,16 @@ tcount=0
 #---------------------------------------------------------------------------------------
 disordermoves=500
 disinc=50
-end_dis=601
+end_dis=501
 
-temp=0.026
-end_temp=0.035
+temp=20
+end_temp=20.035
 tinc=0.2
 #------------------------------------------------------------------------------------
+ydim=$(echo $Ny | awk '{print $1*2.106}')
+zdim=$(echo $Nz | awk '{print $1*2.106}')
+
+sed -i "/region box block/c\region box block 0.0 4.212 0.0 "$ydim" 0.0 "$zdim" units box" $file
 
 if [ $skip -eq 0 ]; then
 rm ./disorderplot.dat
@@ -34,9 +41,9 @@ while [ 0 -lt $(echo $temp $end_temp | awk '{if ($1<=$2) print 1; else print 0;}
 do 
 tcount=$((tcount+1))
 #--------------------------------------------------------------------------------
-totsteps=5000
+totsteps=6000
 stepsinc=500
-end_steps=5001
+end_steps=6001
 #--------------------------------------------------------------------------------
 while [ 0 -lt $(echo $totsteps $end_steps | awk '{if ($1<=$2) print 1; else print 0;}') ]
 #while [ 0 -lt $(echo $disordermoves $end_dis | awk '{if ($1<=$2) print 1; else print 0;}') ]
@@ -47,7 +54,7 @@ te=$(echo $temp | awk '{print $1*1000}')
 vary=$totsteps
 
 sed -i "/variable disorder equal/c\variable disorder equal "$disordermoves"" $file	
-sed -i "/variable iter loop/c\variable iter loop "$totsteps"" $file
+sed -i "/variable iter_steps loop/c\variable iter_steps loop "$totsteps"" $file
 #sed -i "/variable iter loop/c\variable iter loop "$disordermoves"" $file
 sed -i "/variable T equal/c\variable T equal "$temp"" $file
 sed -i "/dump 1 all custom 1 dumpmc/c\dump 1 all custom 1 dumpmc"$temp".lammpstrj id type xs ys zs " $file
@@ -103,7 +110,7 @@ else
 echo "Skipping to plotting"
 fi
 
-for filetoplot in ./energy*
+for filetoplot in ./energyplot*
 do
 python2 plot.py << EOF
 $num_atoms
@@ -114,7 +121,7 @@ EOF
 display $filetoplot.png &
 done
 
-for filetoplot2 in ./ratio*
+for filetoplot2 in ./ratioplot*
 do
 python2 plot.py << EOF
 $num_atoms

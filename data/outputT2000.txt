@@ -1,0 +1,42 @@
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     500            0    -31984530            0    -31984530 -1.5241995e+11 
+     501            0    -31984574            0    -31984574 -1.5242008e+11 
+Loop time of 0.00196195 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+moves = 1 Ratio of accepted/Total = 0 %
+ERROR: Illegal next command (../variable.cpp:546)
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+     500            0    -31984530            0    -31984530 -1.5241995e+11 
+     501            0    -31984574            0    -31984574 -1.5242008e+11 
+Loop time of 0.00193286 on 1 procs for 1 steps with 72 atoms
+
+206.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+moves = 1 Ratio of accepted/Total = 0 %
+ERROR: Illegal next command (../variable.cpp:546)
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -31984824.1783894
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 227
+  Disordered total moves = 500
+  accepted MC moves = 171
+  Total moves = 5500
+  	Ratio of accepted/Total = 3.10909090909091 %
+
+Calculation complete
+Total wall time: 0:00:42
