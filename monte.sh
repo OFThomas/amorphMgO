@@ -103,28 +103,27 @@ else
 echo "Skipping to plotting"
 fi
 
-for filetoplot in ./*.dat
+for filetoplot in ./energy*
 do
 python2 plot.py << EOF
 $num_atoms
 $filetoplot
 $DOF
-1
+0
 EOF
 display $filetoplot.png &
 done
 
-#for filetoplot2 in ./energyplot*
-#do
-#python2 plot.py << EOF
-#$num_atoms
-#$filetoplot2
-#$DOF
-#$system
-#EOF
-#done
-#display $filetoplot2 &
-
+for filetoplot2 in ./ratio*
+do
+python2 plot.py << EOF
+$num_atoms
+$filetoplot2
+$DOF
+1
+EOF
+display $filetoplot2 &
+done
 #for filetoplot3 in ./disorderplot*
 #do
 #python2 plot.py << EOF

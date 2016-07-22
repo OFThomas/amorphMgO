@@ -45,7 +45,7 @@ if(case==0):
     plt.ylabel('Energy, eV')
     plt.xlabel('Monte-Carlo steps')
     plt.title('Final energy of the crystal against number of steps')
-    plt.plot((min(x), max(x)), (-1481.42658366852, -1481.42658366852), 'b-')
+    #plt.plot((min(x), max(x)), (-1481.42658366852, -1481.42658366852), 'b-')
     #save graph 
     d_name = datafile + '.png'
     plt.savefig(d_name, format='png')
