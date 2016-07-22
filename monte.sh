@@ -26,7 +26,7 @@ end_dis=501
 
 temp=20
 end_temp=20.035
-tinc=0.2
+tinc=2
 #------------------------------------------------------------------------------------
 ydim=$(echo $Ny | awk '{print $1*2.106}')
 zdim=$(echo $Nz | awk '{print $1*2.106}')
@@ -41,10 +41,12 @@ while [ 0 -lt $(echo $temp $end_temp | awk '{if ($1<=$2) print 1; else print 0;}
 do 
 tcount=$((tcount+1))
 #--------------------------------------------------------------------------------
-totsteps=19
+tempsteps=500
+totsteps=10
 stepsinc=500
 end_steps=$((totsteps +1))
-steps=$(awk '{print 19*144}')
+steps=$((totsteps*tempsteps))
+
 #--------------------------------------------------------------------------------
 while [ 0 -lt $(echo $totsteps $end_steps | awk '{if ($1<=$2) print 1; else print 0;}') ]
 #while [ 0 -lt $(echo $disordermoves $end_dis | awk '{if ($1<=$2) print 1; else print 0;}') ]
@@ -56,9 +58,12 @@ vary=$totsteps
 
 sed -i "/variable disorder equal/c\variable disorder equal "$disordermoves"" $file	
 sed -i "/variable iter_steps loop/c\variable iter_steps loop "$totsteps"" $file
+sed -i "/variable iter_sitemax loop/c\variable iter_sitemax loop "$tempsteps"" $file
 #sed -i "/variable iter loop/c\variable iter loop "$disordermoves"" $file
 sed -i "/variable T equal/c\variable T equal "$temp"" $file
+sed -i "/variable Tdecrease equal/c\variable Tdecrease equal v_kT-"$tinc"" $file
 sed -i "/dump 1 all custom 1 dumpmc/c\dump 1 all custom 1 dumpmc"$temp".lammpstrj id type xs ys zs " $file
+
 lammps-daily < in.1dmc >temp.txt
 tail -n 14 temp.txt >> ./data/outputT$te.txt
 

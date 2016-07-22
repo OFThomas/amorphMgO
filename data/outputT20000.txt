@@ -369,3 +369,108 @@ Optimise lattice constant of MgO crystal
 Created orthogonal box = (0 0 0) to (4.212 12.636 12.636)
   1 by 1 by 1 MPI processor grid
 ERROR: Expected integer parameter in input script or data file (../variable.cpp:191)
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -31984815.9669565
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 227
+  Disordered total moves = 500
+  accepted MC moves = 134
+  Total moves = 2236
+  	Ratio of accepted/Total = 5.99284436493739 %
+
+Calculation complete
+Total wall time: 0:00:19
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -31984798.6919448
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 227
+  Disordered total moves = 500
+  accepted MC moves = 92
+  Total moves = 940
+  	Ratio of accepted/Total = 9.78723404255319 %
+
+Calculation complete
+Total wall time: 0:00:09
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -31984798.6919448
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 227
+  Disordered total moves = 500
+  accepted MC moves = 92
+  Total moves = 940
+  	Ratio of accepted/Total = 9.78723404255319 %
+
+Calculation complete
+Total wall time: 0:00:10
+LAMMPS (1 Jul 2016-ICMS)
+WARNING: OMP_NUM_THREADS environment is not set. (../comm.cpp:90)
+  using 1 OpenMP thread(s) per MPI task
+Optimise lattice constant of MgO crystal
+Created orthogonal box = (0 0 0) to (4.212 12.636 12.636)
+  1 by 1 by 1 MPI processor grid
+ERROR: Illegal variable command (../variable.cpp:390)
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -31984798.6495224
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 227
+  Disordered total moves = 500
+  accepted MC moves = 91
+  Total moves = 940
+  	Ratio of accepted/Total = 9.68085106382979 %
+
+Calculation complete
+Total wall time: 0:00:09
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+    4999            0    -31984816            0    -31984816 -1.5242089e+11 
+    5000            0    -31984824            0    -31984824 -1.5242093e+11 
+Loop time of 0.0019381 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Unknown command: "variable ${kT} equal 0.026" (../input.cpp:312)
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Setting atom values ...
+  1 settings made for z
+Setting atom values ...
+  1 settings made for y
+Step Temp E_pair E_mol TotEng Press 
+    4999            0    -31984816            0    -31984816 -1.5242089e+11 
+    5000            0    -31984824            0    -31984824 -1.5242093e+11 
+Loop time of 0.00192404 on 1 procs for 1 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Unknown command: "variable kT equal 0.026" (../input.cpp:312)
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -31984823.9791589
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 227
+  Disordered total moves = 500
+  accepted MC moves = 175
+  Total moves = 4500
+  	Ratio of accepted/Total = 3.88888888888889 %
+
+Calculation complete
+Total wall time: 0:00:34
