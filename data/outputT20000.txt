@@ -474,3 +474,143 @@ MC stats:
 
 Calculation complete
 Total wall time: 0:00:34
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -58336396.1045913
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 251
+  Disordered total moves = 500
+  accepted MC moves = 218
+  Total moves = 4500
+  	Ratio of accepted/Total = 4.84444444444444 %
+
+Calculation complete
+Total wall time: 0:00:35
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -58336396.1045913
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 251
+  Disordered total moves = 500
+  accepted MC moves = 218
+  Total moves = 4500
+  	Ratio of accepted/Total = 4.84444444444444 %
+
+Calculation complete
+Total wall time: 0:00:33
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -1480.43980386466
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 443
+  Disordered total moves = 500
+  accepted MC moves = 2601
+  Total moves = 4500
+  	Ratio of accepted/Total = 57.8 %
+
+Calculation complete
+Total wall time: 0:00:33
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -1480.67497705064
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 482
+  Disordered total moves = 500
+  accepted MC moves = 2572
+  Total moves = 4500
+  	Ratio of accepted/Total = 57.1555555555556 %
+
+Calculation complete
+Total wall time: 0:00:33
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -1472.58730825962
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 166
+  Disordered total moves = 500
+  accepted MC moves = 192
+  Total moves = 4500
+  	Ratio of accepted/Total = 4.26666666666667 %
+
+Calculation complete
+Total wall time: 0:00:34
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -1472.58730825962
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 166
+  Disordered total moves = 500
+  accepted MC moves = 192
+  Total moves = 4500
+  	Ratio of accepted/Total = 4.26666666666667 %
+
+Calculation complete
+Total wall time: 0:00:34
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -1472.58730825962
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 166
+  Disordered total moves = 500
+  accepted MC moves = 192
+  Total moves = 4500
+  	Ratio of accepted/Total = 4.26666666666667 %
+
+Calculation complete
+Total wall time: 0:00:34
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -1472.58730825962
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 166
+  Disordered total moves = 500
+  accepted MC moves = 192
+  Total moves = 4500
+  	Ratio of accepted/Total = 4.26666666666667 %
+
+Calculation complete
+Total wall time: 0:00:34
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -1469.26713323831
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 166
+  Disordered total moves = 500
+  accepted MC moves = 169
+  Total moves = 3500
+  	Ratio of accepted/Total = 4.82857142857143 %
+
+Calculation complete
+Total wall time: 0:00:27
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -1478.0384285259
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 166
+  Disordered total moves = 500
+  accepted MC moves = 291
+  Total moves = 9500
+  	Ratio of accepted/Total = 3.06315789473684 %
+
+Calculation complete
+Total wall time: 0:01:09

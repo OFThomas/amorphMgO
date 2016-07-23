@@ -5,7 +5,7 @@ file=in.1dmc
 python insertpair.py > testmc.xyz
 #---- 0 to run lammps
 #---- 1 to skip to plotting
-skip=0
+skip=1
 
 seed=582783
 #seed=4827938
@@ -41,9 +41,9 @@ while [ 0 -lt $(echo $temp $end_temp | awk '{if ($1<=$2) print 1; else print 0;}
 do 
 tcount=$((tcount+1))
 #--------------------------------------------------------------------------------
-tempsteps=500
+tempsteps=1000
 totsteps=10
-stepsinc=500
+stepsinc=1000
 end_steps=$((totsteps +1))
 steps=$((totsteps*tempsteps))
 
@@ -87,7 +87,7 @@ echo "total moves: "$vary "Temp: " $temp "Energy: " $energy
 rm ./energyplot$i+$te.dat
 rm ./ratioplot$i+$te.dat
 
-for j in $(eval echo "{501..$steps}")
+for j in $(eval echo "{5001..$steps}")
 #for j in {1..500}
 do
 if [ $j -lt 1000 ]; then 
@@ -124,7 +124,7 @@ $filetoplot
 $DOF
 0
 EOF
-#display $filetoplot.png &
+display $filetoplot.png &
 done
 
 for filetoplot2 in ./ratioplot*

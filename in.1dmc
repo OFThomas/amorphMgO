@@ -27,11 +27,11 @@ variable disorder equal 500
 #Temperature
 variable T equal 20
 #Inf temp for disordering
-variable kT equal 1000 		#inf T for disorder phase
+variable kT equal 500 		#inf T for disorder phase
 variable Tdecrease equal v_kT-2
 
 variable deltaperturb equal 0.0    #0.2 max size of initial perturbation per dim
-variable deltamove equal 1      #0.1 max size of MC move in one dimension
+variable deltamove equal 1.0    #0.1 max size of MC move in one dimension
 
 variable seed equal 582783
 #-------------------------------------------------------------------------------------
@@ -110,7 +110,7 @@ variable 	upperi equal "v_i + 1"
 #--------------------- LOOP -----------------------------------
 label           loop
 label 		loop_allsites
-variable iter_sitemax loop 500
+variable iter_sitemax loop 1000
 
 #print "initial kt ${kT}"
 variable        i equal ${irandom}

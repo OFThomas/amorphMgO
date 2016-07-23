@@ -35,14 +35,14 @@ fit =np.poly1d(p)
 xp=np.linspace(min(x),max(x), 100)
 
 #PLOT ENERGY DATA
-plt.plot(x, y/num_atoms, 'ro', xp, fit(xp), 'r-')
+#plt.plot(x, y/num_atoms, 'ro', xp, fit(xp), 'r-')
 
 ########## Then change title and axis respectively #################
 
 #CASE 0 FOR ENERGIES with steps
 if(case==0):
     #PLOT ENERGY DATA
-    plt.plot(x, y/num_atoms, 'ro', xp, fit(xp), 'r-')
+    plt.plot(x, y/num_atoms, 'ro', xp, fit(xp)/num_atoms, 'r-')
     
     plt.ylabel('Energy, eV')
     plt.xlabel('Monte-Carlo steps')
