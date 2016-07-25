@@ -5,8 +5,9 @@ te=$2
 steps=$3
 echo $i $te $steps
 
+rm ./energyplot$i+$te.dat && rm ./ratioplot$i+$te.dat
 gnome-terminal -e "tail -f energyplot$i+$te.dat" --window-with-profile=tails &
-for j in $(eval echo "{3501..$steps}")
+for j in $(eval echo "{3500..$steps..4}")
     ###for j in {1..500}
     do
     if [ $j -lt 1000 ]; then 
@@ -24,3 +25,24 @@ for j in $(eval echo "{3501..$steps}")
   echo $j $accpt_moves >> ratioplot$i+$te.dat
 done 
 
+for filetoplot in ./energyplot$i+$te.dat
+do
+python2 plot.py << EOF
+72
+$filetoplot
+9
+0
+EOF
+display $filetoplot.png &
+done
+
+for filetoplot2 in ./ratioplot$i+$te.dat
+do
+python2 plot.py << EOF
+72
+$filetoplot2
+9
+1
+EOF
+display $filetoplot2.png &
+done

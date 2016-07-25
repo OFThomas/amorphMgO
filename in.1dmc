@@ -18,14 +18,14 @@ create_box 2 box  #generate simulation box
 
 #---------------------------- Parameters ----------------------------------------
 #Number of montecarlo steps to run for
-variable iter_steps loop 10
+variable iter_steps loop 20
 #number of steps to disorder system (inf temp)
 variable disorder equal 500
 #number of sites in one Montecarlo step
 
 
 #Temperature
-variable T equal 0.26
+variable T equal 0.026
 #Inf temp for disordering
 variable kT equal 500 		#inf T for disorder phase
 variable Tdecrease equal v_kT-0.026
@@ -76,7 +76,7 @@ variable        y atom y
 set             group all z v_z
 set             group all y v_y
 #-------------------------------------------------------------------------------------
-dump 1 all custom 1 dumpmc0.26.lammpstrj id type xs ys zs 
+dump 1 all custom 1 dumpmc0.026.lammpstrj id type xs ys zs 
 
 run             0
 
@@ -171,7 +171,7 @@ if		"${disordercounter} > ${disorder}" then &
 		'variable totnmoves equal "v_nmoves - v_dismoves"' &
 		'variable totnaccept equal "v_naccept - v_disaccept"' & 
 		'variable ratio equal "100*v_totnaccept/v_totnmoves"' &
-		#'print "moves = ${totnmoves} Ratio of accepted/Total = ${ratio} %"' &	
+		'print "moves = ${totnmoves} Ratio of accepted/Total = ${ratio} %"' &	
 
 next 		iter_sitemax
 jump 		SELF loop_allsites

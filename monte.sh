@@ -24,8 +24,8 @@ disordermoves=500
 disinc=50
 end_dis=501
 
-temp=0.26
-end_temp=0.27
+temp=0.026
+end_temp=0.027
 tinc=0.026
 #------------------------------------------------------------------------------------
 ydim=$(echo $Ny | awk '{print $1*2.106}')
@@ -42,7 +42,7 @@ if [ $skip -eq 0 ]; then
     tcount=$((tcount+1))
 #--------------------------------------------------------------------------------
     tempsteps=500
-    totsteps=10
+    totsteps=20
     stepsinc=1000
     end_steps=$((totsteps +1))
     steps=$((totsteps*tempsteps))
@@ -120,27 +120,27 @@ else
 echo "Skipping to plotting"
 fi
 
-for filetoplot in ./energyplot*
-do
-python2 plot.py << EOF
-$num_atoms
-$filetoplot
-$DOF
-0
-EOF
-display $filetoplot.png &
-done
+#for filetoplot in ./energyplot*
+#do
+#python2 plot.py << EOF
+#$num_atoms
+#$filetoplot
+#$DOF
+#0
+#EOF
+#display $filetoplot.png &
+#done
 
-for filetoplot2 in ./ratioplot*
-do
-python2 plot.py << EOF
-$num_atoms
-$filetoplot2
-$DOF
-1
-EOF
+#for filetoplot2 in ./ratioplot*
+#do
+#python2 plot.py << EOF
+#$num_atoms
+#$filetoplot2
+#$DOF
+#1
+#EOF
 #display $filetoplot2.png &
-done
+#done
 #for filetoplot3 in ./disorderplot*
 #do
 #python2 plot.py << EOF
