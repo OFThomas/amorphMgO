@@ -25,10 +25,10 @@ variable disorder equal 500
 
 
 #Temperature
-variable T equal 20
+variable T equal 0.26
 #Inf temp for disordering
 variable kT equal 500 		#inf T for disorder phase
-variable Tdecrease equal v_kT-2
+variable Tdecrease equal v_kT-0.026
 
 variable deltaperturb equal 0.0    #0.2 max size of initial perturbation per dim
 variable deltamove equal 1.0    #0.1 max size of MC move in one dimension
@@ -76,7 +76,7 @@ variable        y atom y
 set             group all z v_z
 set             group all y v_y
 #-------------------------------------------------------------------------------------
-dump 1 all custom 1 dumpmc20.lammpstrj id type xs ys zs 
+dump 1 all custom 1 dumpmc0.26.lammpstrj id type xs ys zs 
 
 run             0
 
@@ -110,7 +110,7 @@ variable 	upperi equal "v_i + 1"
 #--------------------- LOOP -----------------------------------
 label           loop
 label 		loop_allsites
-variable iter_sitemax loop 1000
+variable iter_sitemax loop 500
 
 #print "initial kt ${kT}"
 variable        i equal ${irandom}

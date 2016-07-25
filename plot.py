@@ -42,12 +42,12 @@ xp=np.linspace(min(x),max(x), 100)
 #CASE 0 FOR ENERGIES with steps
 if(case==0):
     #PLOT ENERGY DATA
-    plt.plot(x, y/num_atoms, 'ro', xp, fit(xp)/num_atoms, 'r-')
+    plt.plot(x, y, 'ro', xp, fit(xp), 'r-')
     
     plt.ylabel('Energy, eV')
     plt.xlabel('Monte-Carlo steps')
     plt.title('Final energy of the crystal against number of steps')
-    #plt.plot((min(x), max(x)), (-1481.42658366852, -1481.42658366852), 'b-')
+    plt.plot((min(x), max(x)), (-1481.42658366852, -1481.42658366852), 'b-')
     #save graph 
     d_name = datafile + '.png'
     plt.savefig(d_name, format='png')
