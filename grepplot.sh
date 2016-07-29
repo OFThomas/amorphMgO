@@ -7,7 +7,8 @@ echo $i $te $steps
 
 rm ./energyplot$i+$te.dat && rm ./ratioplot$i+$te.dat
 gnome-terminal -e "tail -f energyplot$i+$te.dat" --window-with-profile=tails &
-for j in $(eval echo "{3500..$steps..4}")
+gnome-terminal -e "tail -f ratioplot$i+$te.dat" --window-with-profile=tails &
+for j in $(eval echo "{20000..$steps..4}")
     ###for j in {1..500}
     do
     if [ $j -lt 1000 ]; then 
@@ -20,7 +21,7 @@ for j in $(eval echo "{3500..$steps..4}")
   stepenergy=$(echo $searchenergy | awk '{print $5}')
   echo $j $stepenergy >> energyplot$i+$te.dat
 
-  searchratio=$(grep "^moves = $((j-500))" ./temp$i.txt )
+  searchratio=$(grep "^moves = $((j-4999))" ./temp$i.txt )
   accpt_moves=$(echo $searchratio | awk '{print $8}')
   echo $j $accpt_moves >> ratioplot$i+$te.dat
 done 

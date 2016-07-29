@@ -20,9 +20,9 @@ i=0
 te=0
 tcount=0
 #---------------------------------------------------------------------------------------
-disordermoves=500
+disordermoves=5000
 disinc=50
-end_dis=501
+end_dis=$((disordermoves+1))
 
 temp=0.026
 end_temp=0.027
@@ -41,8 +41,8 @@ if [ $skip -eq 0 ]; then
     do 
     tcount=$((tcount+1))
 #--------------------------------------------------------------------------------
-    tempsteps=5000
-    totsteps=1
+    tempsteps=288
+    totsteps=100
     stepsinc=1000
     end_steps=$((totsteps +1))
     steps=$((totsteps*tempsteps))
@@ -64,7 +64,7 @@ if [ $skip -eq 0 ]; then
       sed -i "/variable Tdecrease equal/c\variable Tdecrease equal v_kT-"$tinc"" $file
       sed -i "/dump 1 all custom 1 dumpmc/c\dump 1 all custom 1 dumpmc"$temp".lammpstrj id type xs ys zs " $file
 
-      mpirun -np 6 lammps-daily < in.1dmc >temp$i.txt
+      lammps-daily < in.1dmc >temp$i.txt
       tail -n 14 temp$i.txt >> ./data/outputT$te.txt
 
       #rm ./temp.txt

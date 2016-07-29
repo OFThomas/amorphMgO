@@ -12,3 +12,143 @@ Ave neighs/atom = 229.896
 Neighbor list builds = 0
 Dangerous builds = 0
 ERROR: Invalid Boolean syntax in if command (../variable.cpp:4601)
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -5925.67122146364
+  	final energy = -5904.09665842597
+  	minimum energy of perfect lattice = -5925.67122146364
+
+  Disordered accepted MC moves = 65
+  Disordered total moves = 500
+  accepted MC moves = 72
+  Total moves = 4500
+  	Ratio of accepted/Total = 1.6 %
+
+Calculation complete
+Total wall time: 0:03:13
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -5925.67122146364
+  	final energy = -5904.09665842597
+  	minimum energy of perfect lattice = -5925.67122146364
+
+  Disordered accepted MC moves = 65
+  Disordered total moves = 500
+  accepted MC moves = 72
+  Total moves = 4500
+  	Ratio of accepted/Total = 1.6 %
+
+Calculation complete
+Total wall time: 0:03:13
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -5925.67122146364
+  	final energy = -5880.21591763434
+  	minimum energy of perfect lattice = -5925.67122146364
+
+  Disordered accepted MC moves = 598
+  Disordered total moves = 4000
+  accepted MC moves = 227
+  Total moves = 6000
+  	Ratio of accepted/Total = 3.78333333333333 %
+
+Calculation complete
+Total wall time: 0:06:18
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -5925.67122146364
+  	final energy = -5842.23461508067
+  	minimum energy of perfect lattice = -5925.67122146364
+
+  Disordered accepted MC moves = 990
+  Disordered total moves = 4000
+  accepted MC moves = 284
+  Total moves = 6000
+  	Ratio of accepted/Total = 4.73333333333333 %
+
+Calculation complete
+Total wall time: 0:06:18
+MC stats:
+  	neighbor list rebuilds = 1
+  	starting energy = -5925.67122146364
+  	final energy = -5875.6855769184
+  	minimum energy of perfect lattice = -5925.67122146364
+
+  Disordered accepted MC moves = 1272
+  Disordered total moves = 5000
+  accepted MC moves = 461
+  Total moves = 15000
+  	Ratio of accepted/Total = 3.07333333333333 %
+
+Calculation complete
+Total wall time: 0:12:32
+MC stats:
+  	neighbor list rebuilds = 1
+  	starting energy = -5925.67122146364
+  	final energy = -5822.02495236011
+  	minimum energy of perfect lattice = -5925.67122146364
+
+  Disordered accepted MC moves = 1272
+  Disordered total moves = 5000
+  accepted MC moves = 271
+  Total moves = 5080
+  	Ratio of accepted/Total = 5.33464566929134 %
+
+Calculation complete
+Total wall time: 0:06:17
+MC stats:
+  	neighbor list rebuilds = 1
+  	starting energy = -5925.67122146364
+  	final energy = -5868.04344755083
+  	minimum energy of perfect lattice = -5925.67122146364
+
+  Disordered accepted MC moves = 1272
+  Disordered total moves = 5000
+  accepted MC moves = 425
+  Total moves = 12280
+  	Ratio of accepted/Total = 3.46091205211726 %
+
+Calculation complete
+Total wall time: 0:10:52
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -5925.67122146364
+  	final energy = -5884.86752075528
+  	minimum energy of perfect lattice = -5925.67122146364
+
+  Disordered accepted MC moves = 1272
+  Disordered total moves = 5000
+  accepted MC moves = 525
+  Total moves = 23800
+  	Ratio of accepted/Total = 2.20588235294118 %
+
+Calculation complete
+Total wall time: 0:18:05
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -5925.67122146364
+  	final energy = -5852.47041112352
+  	minimum energy of perfect lattice = -5925.67122146364
+
+  Disordered accepted MC moves = 1272
+  Disordered total moves = 5000
+  accepted MC moves = 371
+  Total moves = 9400
+  	Ratio of accepted/Total = 3.9468085106383 %
+
+Calculation complete
+Total wall time: 0:05:56
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -5925.67122146364
+  	final energy = -5884.86752075528
+  	minimum energy of perfect lattice = -5925.67122146364
+
+  Disordered accepted MC moves = 1272
+  Disordered total moves = 5000
+  accepted MC moves = 525
+  Total moves = 23800
+  	Ratio of accepted/Total = 2.20588235294118 %
+
+Calculation complete
+Total wall time: 0:11:36
