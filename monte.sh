@@ -10,9 +10,9 @@ skip=0
 seed=582783
 #seed=4827938
 #Fitting params
-Ny=12
-Nz=12
-num_atoms=288
+Ny=6
+Nz=6
+num_atoms=72
 
 DOF=9
 system=0
@@ -20,7 +20,7 @@ i=0
 te=0
 tcount=0
 #---------------------------------------------------------------------------------------
-disordermoves=$((num_atoms*20))
+disordermoves=$((num_atoms*100))
 disinc=50
 end_dis=$((disordermoves+1))
 
@@ -42,7 +42,7 @@ if [ $skip -eq 0 ]; then
     tcount=$((tcount+1))
 #--------------------------------------------------------------------------------
     tempsteps=$num_atoms
-    totsteps=60
+    totsteps=100
     stepsinc=1000
     end_steps=$((totsteps +1))
     steps=$((totsteps*tempsteps))
@@ -64,8 +64,8 @@ if [ $skip -eq 0 ]; then
       sed -i "/variable Tdecrease equal/c\variable Tdecrease equal v_kT-"$tinc"" $file
       sed -i "/dump 1 all custom 1 dumpmc/c\dump 1 all custom 1 dumpmc"$temp".lammpstrj id type xs ys zs " $file
 
-      mpirun -np 2 lammps-daily <in.1dmc >temp$i.txt
-      #lammps-daily < in.1dmc >temp$i.txt
+      #mpirun -np 2 lammps-daily <in.1dmc >temp$i.txt
+      lammps-daily < in.1dmc >temp$i.txt
       tail -n 14 temp$i.txt >> ./data/outputT$te.txt
 
       #rm ./temp.txt
