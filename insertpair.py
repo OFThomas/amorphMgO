@@ -1,8 +1,8 @@
 #!/usr/bin/env/python
 import numpy as np
 #how many atoms in y and z
-ny=12
-nz=12
+ny=18
+nz=18
 #total atoms
 atoms= ny*nz*2
 

@@ -10,9 +10,9 @@ skip=0
 seed=582783
 #seed=4827938
 #Fitting params
-Ny=12
-Nz=12
-num_atoms=288
+Ny=18
+Nz=18
+num_atoms=648
 
 DOF=9
 system=0
@@ -20,7 +20,7 @@ i=0
 te=0
 tcount=0
 #---------------------------------------------------------------------------------------
-disordermoves=5000
+disordermoves=$((num_atoms*20))
 disinc=50
 end_dis=$((disordermoves+1))
 
@@ -41,7 +41,7 @@ if [ $skip -eq 0 ]; then
     do 
     tcount=$((tcount+1))
 #--------------------------------------------------------------------------------
-    tempsteps=288
+    tempsteps=$num_atoms
     totsteps=100
     stepsinc=1000
     end_steps=$((totsteps +1))
