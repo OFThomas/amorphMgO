@@ -6,8 +6,8 @@ steps=$3
 echo $i $te $steps
 
 rm ./energyplot$i+$te.dat && rm ./ratioplot$i+$te.dat
-gnome-terminal -e "tail -f energyplot$i+$te.dat" --window-with-profile=tails &
-gnome-terminal -e "tail -f ratioplot$i+$te.dat" --window-with-profile=tails &
+#gnome-terminal -e "tail -f energyplot$i+$te.dat" --window-with-profile=tails &
+#gnome-terminal -e "tail -f ratioplot$i+$te.dat" --window-with-profile=tails &
 for j in $(eval echo "{20000..$steps..4}")
     ###for j in {1..500}
     do

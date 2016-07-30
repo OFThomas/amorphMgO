@@ -166,3 +166,31 @@ MC stats:
 
 Calculation complete
 Total wall time: 0:53:17
+  estimated relative force accuracy = 9.96919e-05
+  using double precision FFTs
+  3d grid and FFT values/proc = 16337 4608
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 0
+  Time step     : 0.001
+Memory usage per processor = 5.38607 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -5924.0502            0   -5924.0502    3520.5441 
+Loop time of 1.90735e-06 on 1 procs for 0 steps with 288 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Expected integer parameter in input script or data file (../run.cpp:48)
+  estimated relative force accuracy = 9.96919e-05
+  using double precision FFTs
+  3d grid and FFT values/proc = 10013 2304
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 0
+  Time step     : 0.001
+Memory usage per processor = 4.93526 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0         -nan            0         -nan         -nan 
+Loop time of 2.03848e-05 on 2 procs for 0 steps with 288 atoms
+
+93.2% CPU use with 2 MPI tasks x 1 OpenMP threads
+ERROR: Invalid Boolean syntax in if command (../variable.cpp:4601)
