@@ -1,5 +1,5 @@
 #!/bin/bash
-
+rm ./energy.out
 file=in.1dmc
 #Generate test atom arrangement
 python insertpair.py > testmc.xyz
@@ -20,7 +20,7 @@ i=0
 te=0
 tcount=0
 #---------------------------------------------------------------------------------------
-disordermoves=$((num_atoms*100))
+disordermoves=$((num_atoms*10))
 disinc=50
 end_dis=$((disordermoves+1))
 
@@ -42,7 +42,7 @@ if [ $skip -eq 0 ]; then
     tcount=$((tcount+1))
 #--------------------------------------------------------------------------------
     tempsteps=$num_atoms
-    totsteps=100
+    totsteps=50
     stepsinc=1000
     end_steps=$((totsteps +1))
     steps=$((totsteps*tempsteps))
@@ -87,7 +87,7 @@ if [ $skip -eq 0 ]; then
 
 
 #----------------- Energy plot every step--------------
-./grepplot.sh $i $te $steps
+#./grepplot.sh $i $te $steps
 #rm ./energyplot$i+$te.dat
 #rm ./ratioplot$i+$te.dat
 

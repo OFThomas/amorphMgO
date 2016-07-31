@@ -292,3 +292,101 @@ WARNING: Using polynomial approximation for long-range coulomb (../kspace.cpp:31
   using double precision FFTs
   3d grid and FFT values/proc = 5200 1800
 ERROR: No bond style is defined for compute bond/local (../compute_bond_local.cpp:83)
+
+Total # of neighbors = 16560
+Ave neighs/atom = 230
+Ave special neighs/atom = 0
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -1481.42658366852
+  	minimum energy of perfect lattice = -1481.42658366852
+
+ERROR on proc 0: Substitution for illegal variable (../input.cpp:530)
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -1185.29110213783
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 141
+  Disordered total moves = 720
+  accepted MC moves = 0
+  Total moves = 0
+ERROR: Divide by 0 in variable formula (../variable.cpp:2114)
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -1185.29110213783
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 141
+  Disordered total moves = 720
+  accepted MC moves = 0
+  Total moves = 0
+ERROR: Divide by 0 in variable formula (../variable.cpp:2114)
+  3d grid and FFT values/proc = 8228 1800
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 141
+  Time step     : 0.001
+Memory usage per processor = 5.63719 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+     141            0   -1187.8861            0   -1187.8861   -3916088.8 
+Loop time of 2.86102e-06 on 1 procs for 0 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+-1481.42658366852 -1185.29110213783 -1187.88609968278
+not skipped
+ERROR: Invalid Boolean syntax in if command (../variable.cpp:4718)
+  estimated relative force accuracy = 4.66201e-05
+  using double precision FFTs
+  3d grid and FFT values/proc = 8228 1800
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 0
+  Time step     : 0.001
+Memory usage per processor = 5.63719 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -1293.3057            0   -1293.3057    417930.54 
+Loop time of 1.19209e-06 on 1 procs for 0 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Unbalanced quotes in input line (../input.cpp:433)
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 141
+  Time step     : 0.001
+Memory usage per processor = 5.63719 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+     141            0   -1187.8861            0   -1187.8861   -3916088.8 
+Loop time of 1.90735e-06 on 1 procs for 0 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+inf
+-1481.42658366852 -1185.29110213783 -1187.88609968278
+not skipped
+ERROR: Invalid Boolean syntax in if command (../variable.cpp:4718)
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 141
+  Time step     : 0.001
+Memory usage per processor = 5.63719 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+     141            0   -1187.8861            0   -1187.8861   -3916088.8 
+Loop time of 2.14577e-06 on 1 procs for 0 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+inf 0.026
+-1481.42658366852 -1185.29110213783 -1187.88609968278
+not skipped
+ERROR: Invalid Boolean syntax in if command (../variable.cpp:4718)
