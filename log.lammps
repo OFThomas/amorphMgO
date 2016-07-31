@@ -9,6 +9,9 @@ Optimise lattice constant of MgO crystal
 units metal		#distance in A and energy in eV
 atom_style hybrid charge bond	#specifies what properties to associate with atoms
 
+bond_style zero
+compute bondlen all bond/local dist
+#variable blen equal c_bondlen
 #cell vectors
 variable a equal  4.212
 atom_modify     map array sort 0 0.0
@@ -136,7 +139,7 @@ Step Temp E_pair E_mol TotEng Press
        0            0   -1481.4266            0   -1481.4266    672.06402 
 Loop time of 2.14577e-06 on 1 procs for 0 steps with 72 atoms
 
-0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+139.8% CPU use with 1 MPI tasks x 1 OpenMP threads
 
 variable        estart equal $e
 variable        estart equal -1481.42658366852
@@ -213,19 +216,5 @@ set             atom 47 y ${yupdate}
 set             atom 47 y 5.44353024291992
   1 settings made for y
 #--------------------------------------------------------------
-compute 1 all bond/local dist
-#print "${bond1}"
-#print "$e ${elast}"
-#variable epe equal findpe
-run 0 post no
-WARNING: No fixes defined, atoms won't move (../verlet.cpp:55)
-PPPM initialization ...
-WARNING: Using polynomial approximation for long-range coulomb (../kspace.cpp:316)
-  G vector (1/distance) = 0.400041
-  grid = 8 15 15
-  stencil order = 5
-  estimated absolute RMS force accuracy = 0.000671313
-  estimated relative force accuracy = 4.66201e-05
-  using double precision FFTs
-  3d grid and FFT values/proc = 5200 1800
-ERROR: No bond style is defined for compute bond/local (../compute_bond_local.cpp:83)
+c_bondlen
+ERROR: Unknown command: c_bondlen (../input.cpp:245)

@@ -5,6 +5,9 @@ print "Optimise lattice constant of MgO crystal"
 units metal		#distance in A and energy in eV
 atom_style hybrid charge bond	#specifies what properties to associate with atoms
 
+bond_style zero
+compute bondlen all bond/local dist
+#variable blen equal c_bondlen
 #cell vectors
 variable a equal  4.212
 atom_modify     map array sort 0 0.0 
@@ -134,7 +137,7 @@ set             atom $i y ${yupdate}
 set             atom ${layeri} z ${zupdate}
 set             atom ${layeri} y ${yupdate}
 #--------------------------------------------------------------
-compute 1 all bond/local dist
+dump bondlen all local c_bondlen
 #print "${bond1}"
 #print "$e ${elast}"
 #variable epe equal findpe
