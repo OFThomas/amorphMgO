@@ -2,6 +2,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.ticker as tick
 from operator import itemgetter
 
 #num_atoms=int(raw_input('enter total number of atoms: \n'))
@@ -9,9 +10,11 @@ from operator import itemgetter
 #datafile=raw_input('enter data file name: \n')
 datafile="energy.out"
 energy, temp = np.genfromtxt(datafile, unpack=True)
-xp=np.linspace(0,len(energy), 100)
- 
-plt.plot(xp, energy, 'ro')
+#xp=np.linspace(0,len(energy), 100)
+ax=plt.gca()
+y_formatter=tick.ScalarFormatter(useOffset=False)
+ax.yaxis.set_major_formatter(y_formatter) 
+plt.plot( energy, 'ro')
     
 plt.ylabel('Energy, eV')
 plt.xlabel('Monte-Carlo steps')

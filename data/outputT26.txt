@@ -390,3 +390,31 @@ inf 0.026
 -1481.42658366852 -1185.29110213783 -1187.88609968278
 not skipped
 ERROR: Invalid Boolean syntax in if command (../variable.cpp:4718)
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -1481.42044504515
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 141
+  Disordered total moves = 720
+  accepted MC moves = 22
+  Total moves = 2880
+  	Ratio of accepted/Total = 0.763888888888889 %
+
+Calculation complete
+Total wall time: 0:00:33
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -1481.42044504515
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 141
+  Disordered total moves = 720
+  accepted MC moves = 22
+  Total moves = 2880
+  	Ratio of accepted/Total = 0.763888888888889 %
+
+Calculation complete
+Total wall time: 0:00:57

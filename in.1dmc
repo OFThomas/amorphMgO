@@ -120,7 +120,7 @@ label           loop
 label 		loop_allsites
 variable iter_sitemax loop 72
 #label 		loop_dis
-print "${e} ${kT}" append energy.out
+
 #print "initial kt ${kT}"
 variable        i equal ${irandom}
 # 0 for even, take away one to get lower layer
@@ -164,11 +164,15 @@ if "$e < ${emin}" then &
 
 
 print "not skipped"
-if  "($e <= ${elast}) || (${rand} <= ${boltzfactor}) " then &
+if  "$e <= ${elast}" then &
                   "variable elast equal $e" &
                   "variable naccept equal ${increment}" &
 		  "run 1 post no" &
-		else & 
+	elif " ${rand} <= ${boltzfactor}" &	
+		"variable elast equal $e" &
+                  "variable naccept equal ${increment}" &
+		  "run 1 post no" &
+	else & 
                   "set atom $i z ${z0}" &
                   "set atom $i y ${y0}" &
                   "set atom ${layeri} z ${z0}" &
@@ -176,7 +180,8 @@ if  "($e <= ${elast}) || (${rand} <= ${boltzfactor}) " then &
 
 label overlap
 
-
+run 0
+print "${e} ${kT}" append energy.out
 #run 1 post no
 #--------------------------------------------------------------
 variable nmoves equal ${nmincrement}
