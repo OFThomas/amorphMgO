@@ -7,6 +7,7 @@ atom_style hybrid charge bond	#specifies what properties to associate with atoms
 
 bond_style zero
 compute bondlen all bond/local dist
+compute Pot all pe
 #variable blen equal c_bondlen
 #cell vectors
 variable a equal  4.212
@@ -34,7 +35,7 @@ variable kT equal 1000 		#inf T for disorder phase
 variable Tdecrease equal v_kT-0.026
 
 variable deltaperturb equal 0.0    #0.2 max size of initial perturbation per dim
-variable deltamove equal 1.0    #0.1 max size of MC move in one dimension
+variable deltamove equal 2.0    #0.1 max size of MC move in one dimension
 
 variable seed equal 582783
 #-------------------------------------------------------------------------------------
@@ -56,7 +57,7 @@ pair_coeff * * coul/long
 kspace_style pppm 1.0e-4
 pair_modify table 0
 
-neighbor 0.5 bin
+neighbor 2.0 bin
 neigh_modify delay 0 every 1 check yes
 #neigh_modify check yes
 variable        e equal pe
@@ -80,6 +81,8 @@ set             group all z v_z
 set             group all y v_y
 #-------------------------------------------------------------------------------------
 dump 1 all custom 1 dumpmc0.026.lammpstrj id type xs ys zs 
+#dump energy all custom 1 energy.dump c_Pot
+
 
 run             0 post no
 
@@ -114,7 +117,7 @@ variable 	upperi equal "v_i + 1"
 label           loop
 label 		loop_allsites
 variable iter_sitemax loop 72
-
+print "${e}" append energy.out
 #print "initial kt ${kT}"
 variable        i equal ${irandom}
 # 0 for even, take away one to get lower layer
@@ -137,7 +140,7 @@ set             atom $i y ${yupdate}
 set             atom ${layeri} z ${zupdate}
 set             atom ${layeri} y ${yupdate}
 #--------------------------------------------------------------
-dump bondlen all local c_bondlen
+#dump bondlen all local c_bondlen
 #print "${bond1}"
 #print "$e ${elast}"
 #variable epe equal findpe
