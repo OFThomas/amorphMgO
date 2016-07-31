@@ -7,8 +7,8 @@ python insertpair.py > testmc.xyz
 #---- 1 to skip to plotting
 skip=0
 
-seed=582783
-#seed=4827938
+#seed=582783
+seed=4827938
 #Fitting params
 Ny=6
 Nz=6
