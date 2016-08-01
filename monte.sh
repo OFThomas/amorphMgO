@@ -42,7 +42,7 @@ if [ $skip -eq 0 ]; then
     tcount=$((tcount+1))
 #--------------------------------------------------------------------------------
     tempsteps=$num_atoms
-    totsteps=10
+    totsteps=70
     stepsinc=1000
     end_steps=$((totsteps +1))
     steps=$((totsteps*tempsteps))

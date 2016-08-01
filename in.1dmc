@@ -3,15 +3,21 @@ print "Optimise lattice constant of MgO crystal"
 
 #--------------------INITIALISATION----------------------------
 units metal		#distance in A and energy in eV
-atom_style hybrid charge bond	#specifies what properties to associate with atoms
+atom_style hybrid charge bond sphere	#specifies what properties to associate with atoms
 
 bond_style zero
 compute bondlen all bond/local dist
-compute Pot all pe
+compute pot all pe/atom
+compute patoms all reduce min c_pot
+
+compute cont all contact/atom
+compute contactred all reduce sum c_cont
+variable pcontact equal c_contactred
+
 #variable blen equal c_bondlen
 #cell vectors
 variable a equal  4.212
-atom_modify     map array sort 0 0.0 
+atom_modify     map array sort 1 0.0 
 
 region box block 0.0 4.212 0.0 12.636 0.0 12.636 units box
 boundary p p p  #PBC in x-direction
@@ -22,7 +28,7 @@ create_box 2 box  #generate simulation box
 
 #---------------------------- Parameters ----------------------------------------
 #Number of montecarlo steps to run for
-variable iter_steps loop 10
+variable iter_steps loop 70
 #number of steps to disorder system (inf temp)
 variable disorder equal 2880
 #number of sites in one Montecarlo step
@@ -46,6 +52,7 @@ read_dump testmc.xyz 0 x y z box no add yes format xyz
 #set up potential
 set type 1 charge  2.000000
 set type 2 charge -2.000000
+set atom * diameter 1
 
 mass 1 24.305 #specify mass of atoms
 mass 2 15.9994 #specify mass of atoms
@@ -86,6 +93,7 @@ dump 1 all custom 1 dumpmc0.026.lammpstrj id type xs ys zs
 
 run             0 post no
 
+
 variable        estart equal $e
 variable        elast equal $e
 
@@ -112,10 +120,11 @@ variable        yi equal y[v_i]
 variable	layeri equal 0
 variable 	loweri equal "v_i - 1"
 variable 	upperi equal "v_i + 1"
-
+variable potentialatoms vector c_patoms
 #--------------------- LOOP -----------------------------------
 #variable iter_dis loop ${disorder}
-
+#thermo_style custom c_contactred
+#thermo 1
 label           loop
 label 		loop_allsites
 variable iter_sitemax loop 72
@@ -143,13 +152,23 @@ set             atom $i y ${yupdate}
 set             atom ${layeri} z ${zupdate}
 set             atom ${layeri} y ${yupdate}
 #--------------------------------------------------------------
+
+if "${potentialatoms} <= 0" then &
+	"print 'pe atom $i < 0'"
+
 #dump bondlen all local c_bondlen
 #print "${bond1}"
 #print "$e ${elast}"
 #variable epe equal findpe
-run 0 post no 
+run 1 post no 
 #compute findpe all pe
 #print "${epe}"
+#variable atompe vector c_Pot
+
+#print "${atompe}"
+#thermo_style custom c_patoms
+
+#print "${potentialatoms}"
 #--------------------- Energy check ------------------------
 variable 	rand equal ${rn}
 print "${boltzfactor} ${kT} ${elast} $e"
