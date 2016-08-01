@@ -20,7 +20,7 @@ i=0
 te=0
 tcount=0
 #---------------------------------------------------------------------------------------
-disordermoves=$((num_atoms*10))
+disordermoves=$((num_atoms*40))
 disinc=50
 end_dis=$((disordermoves+1))
 
@@ -42,7 +42,7 @@ if [ $skip -eq 0 ]; then
     tcount=$((tcount+1))
 #--------------------------------------------------------------------------------
     tempsteps=$num_atoms
-    totsteps=50
+    totsteps=10
     stepsinc=1000
     end_steps=$((totsteps +1))
     steps=$((totsteps*tempsteps))
@@ -154,3 +154,4 @@ fi
 #done
 #display $filetoplot3 &	#Show percentage to total energy
 tail -n 14 temp$i.txt
+python quickplot.py

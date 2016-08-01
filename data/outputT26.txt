@@ -432,3 +432,87 @@ MC stats:
 
 Calculation complete
 Total wall time: 0:00:57
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -1481.37709065463
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 603
+  Disordered total moves = 2880
+  accepted MC moves = 15
+  Total moves = 4320
+  	Ratio of accepted/Total = 0.347222222222222 %
+
+Calculation complete
+Total wall time: 0:01:03
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -1481.37709065463
+  	minimum energy of perfect lattice = -1481.42658366852
+
+  Disordered accepted MC moves = 603
+  Disordered total moves = 2880
+  accepted MC moves = 15
+  Total moves = 4320
+  	Ratio of accepted/Total = 0.347222222222222 %
+
+Calculation complete
+Total wall time: 0:01:03
+
+Total # of neighbors = 16240
+Ave neighs/atom = 225.556
+Ave special neighs/atom = 0
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -1307.86733504522
+  	minimum energy of perfect lattice = -1481.42658366852
+
+ERROR on proc 0: Substitution for illegal variable (../input.cpp:530)
+
+Total # of neighbors = 16092
+Ave neighs/atom = 223.5
+Ave special neighs/atom = 0
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = 824.527218623189
+  	minimum energy of perfect lattice = -1481.42658366852
+
+ERROR on proc 0: Substitution for illegal variable (../input.cpp:530)
+
+Total # of neighbors = 15872
+Ave neighs/atom = 220.444
+Ave special neighs/atom = 0
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = -695.448965921377
+  	minimum energy of perfect lattice = -1481.42658366852
+
+ERROR on proc 0: Substitution for illegal variable (../input.cpp:530)
+
+Total # of neighbors = 15922
+Ave neighs/atom = 221.139
+Ave special neighs/atom = 0
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1481.42658366852
+  	final energy = 4154.50454418652
+  	minimum energy of perfect lattice = -1481.42658366852
+
+ERROR on proc 0: Substitution for illegal variable (../input.cpp:530)
