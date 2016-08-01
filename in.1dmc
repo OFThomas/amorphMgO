@@ -7,11 +7,8 @@ atom_style hybrid charge bond	#specifies what properties to associate with atoms
 
 bond_style zero
 
-
-
 compute bondlen all bond/local dist
 compute Pot all pe
-
 
 #variable blen equal c_bondlen
 #cell vectors
@@ -27,22 +24,21 @@ create_box 2 box  #generate simulation box
 
 #---------------------------- Parameters ----------------------------------------
 #Number of montecarlo steps to run for
-variable iter_steps loop 10
+variable iter_steps loop 20
 #number of steps to disorder system (inf temp)
-variable disorder equal 2880
+variable disorder equal 720
 #number of sites in one Montecarlo step
-
 
 #Temperature
 variable T equal 0.026
 #Inf temp for disordering
-variable kT equal 1000 		#inf T for disorder phase
+variable kT equal 10 		#inf T for disorder phase
 variable Tdecrease equal v_kT-0.026
 
 variable deltaperturb equal 0.0    #0.2 max size of initial perturbation per dim
-variable deltamove equal 1.5    #0.1 max size of MC move in one dimension
+variable deltamove equal 1.0  #0.1 max size of MC move in one dimension
 
-variable seed equal 4827938
+variable seed equal 582783
 #-------------------------------------------------------------------------------------
 
 #read in coordinates
@@ -171,13 +167,13 @@ run 0 post no
 variable 	rand equal ${rn}
 print "${boltzfactor} ${kT} ${elast} $e"
 print "${emin} ${elast} $e"
-if "$e < ${emin}" then &
-"set atom $i z ${z0}" &
-"set atom $i y ${y0}" &
-"set atom ${layeri} z ${z0}" &
-"set atom ${layeri} y ${y0}" &
- "print 'Rejected'" &
- "jump SELF overlap"  
+#if "$e < ${emin}" then &
+#"set atom $i z ${z0}" &
+#"set atom $i y ${y0}" &
+#"set atom ${layeri} z ${z0}" &
+#"set atom ${layeri} y ${y0}" &
+# "print 'Rejected'" &
+#"jump SELF overlap"  
 
 
 print "not skipped"
@@ -212,6 +208,9 @@ if		"${disordercounter} == ${disorder}" then &
 		"variable kT equal $T" &
 		"variable dismoves equal ${nmoves}" &
 		"variable disaccept equal ${naccept}" &
+		"variable deltamove equal 0.5 " &		
+		#"min_style cg #apply conjugate gradients" &
+                #"minimize 1e-15 1e-15 5000 5000 #minimiser settings"
 
 #--------------------------------------------------------------------------
 

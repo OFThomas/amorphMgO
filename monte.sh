@@ -7,8 +7,8 @@ python insertpair.py > testmc.xyz
 #---- 1 to skip to plotting
 skip=0
 
-#seed=582783
-seed=4827938
+seed=582783
+#seed=4827938
 #Fitting params
 Ny=6
 Nz=6
@@ -20,7 +20,7 @@ i=0
 te=0
 tcount=0
 #---------------------------------------------------------------------------------------
-disordermoves=$((num_atoms*40))
+disordermoves=$((num_atoms*10))
 disinc=50
 end_dis=$((disordermoves+1))
 
@@ -42,7 +42,7 @@ if [ $skip -eq 0 ]; then
     tcount=$((tcount+1))
 #--------------------------------------------------------------------------------
     tempsteps=$num_atoms
-    totsteps=10
+    totsteps=20
     stepsinc=1000
     end_steps=$((totsteps +1))
     steps=$((totsteps*tempsteps))
