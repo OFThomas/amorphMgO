@@ -6,8 +6,13 @@ units metal		#distance in A and energy in eV
 atom_style hybrid charge bond	#specifies what properties to associate with atoms
 
 bond_style zero
+
+
+
 compute bondlen all bond/local dist
 compute Pot all pe
+
+
 #variable blen equal c_bondlen
 #cell vectors
 variable a equal  4.212
@@ -113,6 +118,13 @@ variable	layeri equal 0
 variable 	loweri equal "v_i - 1"
 variable 	upperi equal "v_i + 1"
 
+#compute b1 all property/local batom1 batom2
+#compute b2 all bond/local dist
+#compute b3 all reduce min c_b1[1] c_b1[2] c_b2 replace 1 3 replace 2 3
+
+#variable red vector c_b3
+#dump bonds all local 100 dump.bond index c_b1[1] c_b1[2] c_b2[1]
+#print "${red}"
 #--------------------- LOOP -----------------------------------
 #variable iter_dis loop ${disorder}
 
@@ -143,10 +155,15 @@ set             atom $i y ${yupdate}
 set             atom ${layeri} z ${zupdate}
 set             atom ${layeri} y ${yupdate}
 #--------------------------------------------------------------
+
+
 #dump bondlen all local c_bondlen
 #print "${bond1}"
 #print "$e ${elast}"
 #variable epe equal findpe
+
+run 0 post no 
+#thermo_style custom c_b3[1] c_b3[2] c_b3[3]
 run 0 post no 
 #compute findpe all pe
 #print "${epe}"
@@ -182,6 +199,7 @@ label overlap
 
 run 1 post no
 print "${e} ${kT}" append energy.out
+
 #run 1 post no
 #--------------------------------------------------------------
 variable nmoves equal ${nmincrement}
