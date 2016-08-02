@@ -1,0 +1,219 @@
+#---------------------------WELCOME----------------------------
+print "Optimise lattice constant of MgO crystal"
+
+#--------------------INITIALISATION----------------------------
+units metal		#distance in A and energy in eV
+atom_style charge	#specifies what properties to associate with atoms
+
+#cell vectors
+variable a equal  4.212
+atom_modify     map array sort 0 0.0 
+
+region box block 0.0 4.212 0.0 25.272 0.0 25.272 units box
+boundary p p p  #PBC in x-direction
+create_box 2 box  #generate simulation box
+
+# set these parameters
+# make sure neigh skin > 2*deltamove
+
+#---------------------------- Parameters ----------------------------------------
+#Number of montecarlo steps to run for
+variable iter_steps loop 100
+#number of steps to disorder system (inf temp)
+variable disorder equal 5000
+#number of sites in one Montecarlo step
+
+#Temperature
+variable T equal 0.026
+#Inf temp for disordering
+variable kT equal 500 		#inf T for disorder phase
+variable Tdecrease equal v_kT-0.026
+
+variable deltaperturb equal 0.0    #0.2 max size of initial perturbation per dim
+variable deltamove equal 1.0    #0.1 max size of MC move in one dimension
+
+variable seed equal 582783
+#-------------------------------------------------------------------------------------
+
+#read in coordinates
+read_dump testmc288.xyz 0 x y z box no add yes format xyz
+
+#set up potential
+set type 1 charge  2.000000
+set type 2 charge -2.000000
+
+mass 1 24.305 #specify mass of atoms
+mass 2 15.9994 #specify mass of atoms
+
+pair_style hybrid/overlay buck 8.0 coul/long 8.0
+pair_coeff 1 2 buck 1284.38000  0.299700  0.000000 8.0
+pair_coeff 2 2 buck 9574.95996  0.219200  32.00000 8.0
+pair_coeff * * coul/long 
+kspace_style pppm 1.0e-4
+pair_modify table 0
+
+neighbor 2.0 bin
+neigh_modify delay 0 every 1 check yes
+
+variable        e equal pe
+
+# run 0 to get energy of perfect lattice
+# emin = minimum energy
+
+run             0
+variable        emin equal $e
+
+# -------------------------- setting up system and random displacements -------------
+# estart = initial energy
+
+variable        z atom z
+variable        y atom y
+
+#variable        z atom z+v_deltaperturb*random(-1.0,1.0,${seed})
+#variable        y atom y+v_deltaperturb*random(-1.0,1.0,${seed})
+
+set             group all z v_z
+set             group all y v_y
+#-------------------------------------------------------------------------------------
+dump 1 all custom 1 dumpmc0.026.lammpstrj id type xs ys zs 
+
+run             0
+
+variable        estart equal $e
+variable        elast equal $e
+
+#-------------------- loop over Monte Carlo moves ----------------------------
+#counters
+variable        naccept equal 0
+variable        increment equal v_naccept+1
+variable 	nmoves equal 0.0
+variable 	nmincrement equal v_nmoves+1
+variable 	disordercounter equal 0
+variable 	disincrement equal v_disordercounter+1
+variable 	dismoves equal 0
+
+variable        irandom equal floor(atoms*random(0.0,1.0,${seed})+1)
+variable        rn equal random(0.0,1.0,${seed})
+variable        boltzfactor equal "exp((atoms*(v_elast - v_e)) / v_kT)"
+
+variable        znew equal z[v_i]+v_deltamove*random(-1.0,1.0,${seed})
+variable        ynew equal y[v_i]+v_deltamove*random(-1.0,1.0,${seed})
+
+variable 	atomid equal v_i%2
+variable        zi equal z[v_i]
+variable        yi equal y[v_i]
+variable	layeri equal 0
+variable 	loweri equal "v_i - 1"
+variable 	upperi equal "v_i + 1"
+
+#--------------------- LOOP -----------------------------------
+label           loop
+label 		loop_allsites
+variable iter_sitemax loop 288
+
+#print "initial kt ${kT}"
+variable        i equal ${irandom}
+
+# 0 for even, take away one to get lower layer
+# !=0 for odd, add one to get upper layer
+if		"${atomid} == 0" then &
+                  "variable layeri equal ${loweri} " &
+                else &
+                  "variable layeri equal ${upperi} " &
+
+variable        z0 equal ${zi}
+variable        y0 equal ${yi}
+
+variable 	zupdate equal ${znew}
+variable 	yupdate equal ${ynew}
+
+# ---------------- Update pair of atoms (columns)-----------------
+set             atom $i z ${zupdate}
+set             atom $i y ${yupdate}
+
+set             atom ${layeri} z ${zupdate}
+set             atom ${layeri} y ${yupdate}
+#--------------------------------------------------------------
+#variable epe equal findpe
+run 0 post no
+#compute findpe all pe
+#print "${epe}"
+#--------------------- Energy check ------------------------
+variable 	rand equal ${rn}
+
+if              "$e <= ${elast}" then &
+                  "variable elast equal $e" &
+                  "variable naccept equal ${increment}" &
+		  "run 1 pre no post no" &
+                elif "${rand} <= ${boltzfactor}" &
+                  "variable elast equal $e" &
+                  "variable naccept equal ${increment}" &
+		  "run 1 pre no post no" &
+                else & 
+                  "set atom $i z ${z0}" &
+                  "set atom $i y ${y0}" &
+                  "set atom ${layeri} z ${z0}" &
+                  "set atom ${layeri} y ${y0}" &
+
+run 0 post no
+print "${e} ${kT}" append energy288.out
+
+#--------------------------------------------------------------
+variable nmoves equal ${nmincrement}
+
+variable 	disordercounter equal ${disincrement}
+
+# ------- To stop when sufficiently disordered, reset counters -------------
+
+if		"${disordercounter} == ${disorder}" then &
+		"variable kT equal $T" &
+		"variable dismoves equal ${nmoves}" &
+		"variable disaccept equal ${naccept}" &
+
+#--------------------------------------------------------------------------
+
+if		"${disordercounter} > ${disorder}" then &
+		'variable totnmoves equal "v_nmoves - v_dismoves"' &
+		'variable totnaccept equal "v_naccept - v_disaccept"' & 
+		'variable ratio equal "100*v_totnaccept/v_totnmoves"' &
+		'print "moves = ${totnmoves} Ratio of accepted/Total = ${ratio} %"' &	
+
+next 		iter_sitemax
+jump 		SELF loop_allsites
+
+variable kT equal ${Tdecrease}
+#print "adjusted kt is ${kT}"
+
+if 	"${kT} <= 0" then &
+	"variable kT equal 0.026" &
+
+#print "KT IS ! ${kT}"
+next            iter_steps
+jump            SELF loop
+
+
+# --------------------final energy and stats ---------------------------
+
+variable       nb equal nbuild
+variable       nbuild equal ${nb}
+variable       totnmoves equal "v_nmoves - v_dismoves"
+variable       totnaccept equal "v_naccept - v_disaccept"
+variable       ratio equal "100*v_totnaccept/v_totnmoves"
+
+run             0
+
+#-------------------------END OF MONTE CARLO------------------------
+print ""
+print           "MC stats:"
+print           "  	neighbor list rebuilds = ${nbuild}"
+print           "  	starting energy = ${estart}"
+print           "  	final energy = $e"
+print           "  	minimum energy of perfect lattice = ${emin}"
+print ""
+print           "  Disordered accepted MC moves = ${disaccept}"
+print 		"  Disordered total moves = ${dismoves}"
+print           "  accepted MC moves = ${totnaccept}"
+print 		"  Total moves = ${totnmoves}"
+print 		"  	Ratio of accepted/Total = ${ratio} %"
+print ""
+print "Calculation complete"
