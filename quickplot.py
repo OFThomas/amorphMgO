@@ -9,12 +9,14 @@ from operator import itemgetter
 
 #datafile=raw_input('enter data file name: \n')
 datafile="energy.out"
+datafile="288plot"
+datafile="energy288.out"
 energy, temp = np.genfromtxt(datafile, unpack=True)
 #xp=np.linspace(0,len(energy), 100)
 ax=plt.gca()
 y_formatter=tick.ScalarFormatter(useOffset=False)
 ax.yaxis.set_major_formatter(y_formatter) 
-plt.plot( energy, 'ro')
+plt.plot( energy[22000:28800], 'ro-')
     
 plt.ylabel('Energy, eV')
 plt.xlabel('Monte-Carlo steps')
