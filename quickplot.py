@@ -9,8 +9,8 @@ from operator import itemgetter
 
 #datafile=raw_input('enter data file name: \n')
 datafile="energy.out"
-datafile="288plot"
-datafile="energy288.out"
+#datafile="288plot"
+#datafile="energy288.out"
 energy, temp = np.genfromtxt(datafile, unpack=True)
 #xp=np.linspace(0,len(energy), 100)
 ax=plt.gca()

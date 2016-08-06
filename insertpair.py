@@ -1,5 +1,7 @@
 #!/usr/bin/env/python
 import numpy as np
+import random
+
 #how many atoms in y and z
 ny=6
 nz=6
@@ -22,12 +24,16 @@ xc2=0.5*lenunit
 yc=0
 zc=0
 
+maxdisp=0.8
+
 #for output in .xyz format
 print atoms
 print "0"
 
 for i in range (0, ny):
-	for j in range (0, nz):	
+	for j in range (0, nz):
+		rand=random.uniform(-maxdisp,maxdisp)	
+		#print rand
 		#to alternate which column is written, Mg-O or O-Mg
 		if ((i+j)%2 == 0):
 			pair=1
@@ -42,5 +48,5 @@ for i in range (0, ny):
 			element2=mg
 		#1st element is bottom of column
 		#2nd element is on top of column
-		print element1, xc1, yc+(delx*i), zc+(dely*j)
-		print element2, xc2, yc+(delx*i), zc+(dely*j)
+		print element1, xc1, yc+(delx*i)+rand, zc+(dely*j)+rand
+		print element2, xc2, yc+(delx*i)+rand, zc+(dely*j)+rand

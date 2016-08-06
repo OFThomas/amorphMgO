@@ -20,7 +20,7 @@ i=0
 te=0
 tcount=0
 #---------------------------------------------------------------------------------------
-disordermoves=$((num_atoms*10))
+disordermoves=$((num_atoms*0))
 disinc=50
 end_dis=$((disordermoves+1))
 
@@ -42,7 +42,7 @@ if [ $skip -eq 0 ]; then
     tcount=$((tcount+1))
 #--------------------------------------------------------------------------------
     tempsteps=$num_atoms
-    totsteps=70
+    totsteps=30
     stepsinc=1000
     end_steps=$((totsteps +1))
     steps=$((totsteps*tempsteps))
