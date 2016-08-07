@@ -10,9 +10,9 @@ skip=0
 seed=582783
 #seed=4827938
 #Fitting params
-Ny=12
-Nz=12
-num_atoms=288
+Ny=20
+Nz=20
+num_atoms=800
 
 DOF=9
 system=0
@@ -42,7 +42,7 @@ if [ $skip -eq 0 ]; then
     tcount=$((tcount+1))
 #--------------------------------------------------------------------------------
     tempsteps=$num_atoms
-    totsteps=20
+    totsteps=10
     stepsinc=1000
     end_steps=$((totsteps +1))
     steps=$((totsteps*tempsteps))

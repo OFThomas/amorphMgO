@@ -1373,3 +1373,101 @@ MC stats:
 
 Calculation complete
 Total wall time: 0:00:00
+  3d grid and FFT values/proc = 16337 4608
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 32
+  Time step     : 0.001
+Memory usage per processor = 5.50261 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+      32            0   -5347.3999            0   -5347.3999    667476.39 
+      33            0   -5347.3999            0   -5347.3999    667476.39 
+Loop time of 0.00779295 on 1 procs for 1 steps with 288 atoms
+
+102.7% CPU use with 1 MPI tasks x 1 OpenMP threads
+-5347.39994559403 0.026
+ERROR: Expected integer parameter in input script or data file (../output.cpp:548)
+  3d grid and FFT values/proc = 16337 4608
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 4
+  Time step     : 0.001
+Memory usage per processor = 5.5029 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       4            0   -5113.5342            0   -5113.5342    854609.24 
+       5            0   -5113.5342            0   -5113.5342    854609.24 
+Loop time of 0.00783515 on 1 procs for 1 steps with 288 atoms
+
+102.1% CPU use with 1 MPI tasks x 1 OpenMP threads
+-5113.53419836937 0.026
+ERROR: Expected integer parameter in input script or data file (../output.cpp:548)
+Total # of neighbors = 64994
+Ave neighs/atom = 225.674
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -5228.98874195041
+  	final energy = -5248.5719543316
+  	minimum energy of perfect lattice = -5228.98874195041
+
+
+Calculation complete
+Total wall time: 0:00:01
+  3d grid and FFT values/proc = 16337 4608
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 29
+  Time step     : 0.001
+Memory usage per processor = 5.75537 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+      29            0   -5093.8446            0   -5093.8446    927707.17 
+      30            0   -5093.8446            0   -5093.8446    927707.17 
+Loop time of 0.00786805 on 1 procs for 1 steps with 288 atoms
+
+101.7% CPU use with 1 MPI tasks x 1 OpenMP threads
+-5093.84464747431 0.026
+ERROR: Reuse of dump ID (../output.cpp:545)
+Total # of neighbors = 65052
+Ave neighs/atom = 225.875
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -5225.79204421747
+  	final energy = -5881.68507832877
+  	minimum energy of perfect lattice = -5225.79204421747
+
+
+Calculation complete
+Total wall time: 0:01:39
+Total # of neighbors = 64916
+Ave neighs/atom = 225.403
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -5398.1476712429
+  	final energy = -5782.12273303196
+  	minimum energy of perfect lattice = -5398.1476712429
+
+
+Calculation complete
+Total wall time: 0:00:42
+Total # of neighbors = 179752
+Ave neighs/atom = 224.69
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -14419.8817876462
+  	final energy = -15433.5823213691
+  	minimum energy of perfect lattice = -14419.8817876462
+
+
+Calculation complete
+Total wall time: 0:02:18

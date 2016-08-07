@@ -3,8 +3,8 @@ import numpy as np
 import random
 
 #how many atoms in y and z
-ny=12
-nz=12
+ny=20
+nz=20
 #total atoms
 atoms= ny*nz*2
 
