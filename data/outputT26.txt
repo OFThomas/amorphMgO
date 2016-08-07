@@ -869,3 +869,507 @@ MC stats:
 
 Calculation complete
 Total wall time: 0:00:21
+Total # of neighbors = 16536
+Ave neighs/atom = 229.667
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1221.26969772185
+  	final energy = -1480.40308476346
+  	minimum energy of perfect lattice = -1221.26969772185
+
+
+Calculation complete
+Total wall time: 0:00:21
+Total # of neighbors = 16484
+Ave neighs/atom = 228.944
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1244.36703397916
+  	final energy = -1480.19952661451
+  	minimum energy of perfect lattice = -1244.36703397916
+
+
+Calculation complete
+Total wall time: 0:00:21
+Total # of neighbors = 16244
+Ave neighs/atom = 225.611
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1233.20331767282
+  	final energy = -12824313.5328481
+  	minimum energy of perfect lattice = -1233.20331767282
+
+
+Calculation complete
+Total wall time: 0:00:21
+Total # of neighbors = 16380
+Ave neighs/atom = 227.5
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1190.46404031414
+  	final energy = -1477.52640773116
+  	minimum energy of perfect lattice = -1190.46404031414
+
+
+Calculation complete
+Total wall time: 0:00:21
+Total # of neighbors = 16412
+Ave neighs/atom = 227.944
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1301.58148782839
+  	final energy = -1476.4987614835
+  	minimum energy of perfect lattice = -1301.58148782839
+
+
+Calculation complete
+Total wall time: 0:00:21
+Total # of neighbors = 16364
+Ave neighs/atom = 227.278
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1349.3630260183
+  	final energy = -1473.06095355077
+  	minimum energy of perfect lattice = -1349.3630260183
+
+
+Calculation complete
+Total wall time: 0:00:21
+Total # of neighbors = 65338
+Ave neighs/atom = 226.868
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -5174.56481542279
+  	final energy = -5898.49848533587
+  	minimum energy of perfect lattice = -5174.56481542279
+
+
+Calculation complete
+Total wall time: 0:04:44
+  estimated relative force accuracy = 9.96919e-05
+  using double precision FFTs
+  3d grid and FFT values/proc = 16337 4608
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 0
+  Time step     : 0.001
+Memory usage per processor = 5.49548 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -5394.3116            0   -5394.3116    658261.72 
+Loop time of 1.19209e-06 on 1 procs for 0 steps with 288 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Unknown command: varaible 	consist equal 0 (../input.cpp:245)
+  estimated relative force accuracy = 9.96919e-05
+  using double precision FFTs
+  3d grid and FFT values/proc = 16337 4608
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 0
+  Time step     : 0.001
+Memory usage per processor = 5.50291 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -5214.9527            0   -5214.9527     812886.1 
+Loop time of 9.53674e-07 on 1 procs for 0 steps with 288 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+ERROR: Illegal variable command (../variable.cpp:390)
+Total # of neighbors = 16440
+Ave neighs/atom = 228.333
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1283.47498117946
+  	final energy = -1476.13245204756
+  	minimum energy of perfect lattice = -1283.47498117946
+
+
+Calculation complete
+Total wall time: 0:00:21
+Total # of neighbors = 16340
+Ave neighs/atom = 226.944
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1300.51496065852
+  	final energy = -1472.59239554244
+  	minimum energy of perfect lattice = -1300.51496065852
+
+
+Calculation complete
+Total wall time: 0:00:21
+Total # of neighbors = 16528
+Ave neighs/atom = 229.556
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1332.28772517096
+  	final energy = -1480.18969946873
+  	minimum energy of perfect lattice = -1332.28772517096
+
+
+Calculation complete
+Total wall time: 0:00:21
+Total # of neighbors = 16512
+Ave neighs/atom = 229.333
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1265.93908444652
+  	final energy = -1479.87976704581
+  	minimum energy of perfect lattice = -1265.93908444652
+
+
+Calculation complete
+Total wall time: 0:00:21
+Total # of neighbors = 16448
+Ave neighs/atom = 228.444
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1325.31191114175
+  	final energy = -1479.92287642256
+  	minimum energy of perfect lattice = -1325.31191114175
+
+
+Calculation complete
+Total wall time: 0:00:21
+  using double precision FFTs
+  3d grid and FFT values/proc = 8228 1800
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 0
+  Time step     : 0.001
+Memory usage per processor = 4.86629 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -1358.6681            0   -1358.6681    632303.33 
+Loop time of 9.53674e-07 on 1 procs for 0 steps with 72 atoms
+
+0.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+not skipped
+ERROR: Invalid Boolean syntax in if command (../variable.cpp:4575)
+Total # of neighbors = 16230
+Ave neighs/atom = 225.417
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1337.64347659922
+  	final energy = -1339.53069068056
+  	minimum energy of perfect lattice = -1337.64347659922
+
+
+Calculation complete
+Total wall time: 0:00:00
+Total # of neighbors = 16192
+Ave neighs/atom = 224.889
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1260.20115882489
+  	final energy = -1270.39516223683
+  	minimum energy of perfect lattice = -1260.20115882489
+
+
+Calculation complete
+Total wall time: 0:00:00
+Total # of neighbors = 16180
+Ave neighs/atom = 224.722
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1216.02128233367
+  	final energy = -1222.54285499898
+  	minimum energy of perfect lattice = -1216.02128233367
+
+
+Calculation complete
+Total wall time: 0:00:00
+Total # of neighbors = 16234
+Ave neighs/atom = 225.472
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1350.96014986456
+  	final energy = -1350.96014986456
+  	minimum energy of perfect lattice = -1350.96014986456
+
+
+Calculation complete
+Total wall time: 0:00:00
+Total # of neighbors = 16192
+Ave neighs/atom = 224.889
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1298.92445092157
+  	final energy = -1424.54062516697
+  	minimum energy of perfect lattice = -1298.92445092157
+
+
+Calculation complete
+Total wall time: 0:00:02
+Total # of neighbors = 16402
+Ave neighs/atom = 227.806
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -1328.85854329648
+  	final energy = -1474.41811618073
+  	minimum energy of perfect lattice = -1328.85854329648
+
+
+Calculation complete
+Total wall time: 0:00:06
+Total # of neighbors = 64724
+Ave neighs/atom = 224.736
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -5081.18303368604
+  	final energy = -5755.924508938
+  	minimum energy of perfect lattice = -5081.18303368604
+
+
+Calculation complete
+Total wall time: 0:00:51
+  3d grid and FFT values/proc = 16337 4608
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 0
+  Time step     : 0.001
+Memory usage per processor = 5.50299 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+       0            0   -4995.1841            0   -4995.1841    960053.79 
+       1            0   -4995.1841            0   -4995.1841    960053.79 
+Loop time of 0.00787497 on 1 procs for 1 steps with 288 atoms
+
+101.6% CPU use with 1 MPI tasks x 1 OpenMP threads
+-4995.1841278416 0.026 0 0
+ERROR: Unknown command: 	"run 1 post no" 	"jump SELF endprog" (../input.cpp:245)
+  3d grid and FFT values/proc = 16337 4608
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 975
+  Time step     : 0.001
+Memory usage per processor = 5.50286 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+     975            0   -5699.7493            0   -5699.7493    283302.65 
+     976            0   -5699.7493            0   -5699.7493    283302.65 
+Loop time of 0.00779796 on 1 procs for 1 steps with 288 atoms
+
+102.6% CPU use with 1 MPI tasks x 1 OpenMP threads
+-5699.74931869325 0.026 0 20
+ERROR: Reuse of dump ID (../output.cpp:545)
+Total # of neighbors = 65028
+Ave neighs/atom = 225.792
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -5298.52863219941
+  	final energy = -5853.48005730582
+  	minimum energy of perfect lattice = -5298.52863219941
+
+
+Calculation complete
+Total wall time: 0:01:15
+Total # of neighbors = 64876
+Ave neighs/atom = 225.264
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -5138.64724234394
+  	final energy = -5702.27941802592
+  	minimum energy of perfect lattice = -5138.64724234394
+
+
+Calculation complete
+Total wall time: 0:00:33
+Total # of neighbors = 64914
+Ave neighs/atom = 225.396
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -5229.7124029723
+  	final energy = -5792.73709603692
+  	minimum energy of perfect lattice = -5229.7124029723
+
+
+Calculation complete
+Total wall time: 0:00:51
+Total # of neighbors = 65140
+Ave neighs/atom = 226.181
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -5154.78034295659
+  	final energy = -5872.00542804452
+  	minimum energy of perfect lattice = -5154.78034295659
+
+
+Calculation complete
+Total wall time: 0:01:36
+  3d grid and FFT values/proc = 16337 4608
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 3869
+  Time step     : 0.001
+Memory usage per processor = 5.50991 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+    3869            0   -5902.9272            0   -5902.9272    39212.026 
+    3870            0   -5902.9272            0   -5902.9272    39212.026 
+Loop time of 0.007936 on 1 procs for 1 steps with 288 atoms
+
+50.4% CPU use with 1 MPI tasks x 1 OpenMP threads
+-5902.92719058675 0.026
+ERROR: Illegal dump image command (../dump_image.cpp:87)
+Total # of neighbors = 64950
+Ave neighs/atom = 225.521
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -5111.86465517924
+  	final energy = -5133.44564411952
+  	minimum energy of perfect lattice = -5111.86465517924
+
+
+Calculation complete
+Total wall time: 0:00:01
+  3d grid and FFT values/proc = 16337 4608
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 19
+  Time step     : 0.001
+Memory usage per processor = 5.50665 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+      19            0   -5265.8017            0   -5265.8017    769423.08 
+      20            0   -5265.8017            0   -5265.8017    769423.08 
+Loop time of 0.00784492 on 1 procs for 1 steps with 288 atoms
+
+102.0% CPU use with 1 MPI tasks x 1 OpenMP threads
+-5265.80169763473 0.026
+ERROR: Support for writing images in PNG format not included (../dump_image.cpp:82)
+Total # of neighbors = 64936
+Ave neighs/atom = 225.472
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -5084.15808468723
+  	final energy = -5098.93682940639
+  	minimum energy of perfect lattice = -5084.15808468723
+
+
+Calculation complete
+Total wall time: 0:00:00
+Total # of neighbors = 64860
+Ave neighs/atom = 225.208
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -5037.6040175771
+  	final energy = -5083.29653151517
+  	minimum energy of perfect lattice = -5037.6040175771
+
+
+Calculation complete
+Total wall time: 0:00:00
+  3d grid and FFT values/proc = 16337 4608
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 36
+  Time step     : 0.001
+Memory usage per processor = 5.50294 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+      36            0   -5281.5225            0   -5281.5225    746711.51 
+      37            0   -5281.5225            0   -5281.5225    746711.51 
+Loop time of 0.00780797 on 1 procs for 1 steps with 288 atoms
+
+102.5% CPU use with 1 MPI tasks x 1 OpenMP threads
+-5281.52247185778 0.026
+ERROR: Illegal dump image command (../dump_image.cpp:304)
+Total # of neighbors = 64956
+Ave neighs/atom = 225.542
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -5256.16569336976
+  	final energy = -5274.0673494772
+  	minimum energy of perfect lattice = -5256.16569336976
+
+
+Calculation complete
+Total wall time: 0:00:01
+Total # of neighbors = 64904
+Ave neighs/atom = 225.361
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -5100.07896927159
+  	final energy = -5100.07896927159
+  	minimum energy of perfect lattice = -5100.07896927159
+
+
+Calculation complete
+Total wall time: 0:00:00

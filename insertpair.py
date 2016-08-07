@@ -3,8 +3,8 @@ import numpy as np
 import random
 
 #how many atoms in y and z
-ny=6
-nz=6
+ny=12
+nz=12
 #total atoms
 atoms= ny*nz*2
 
@@ -24,7 +24,7 @@ xc2=0.5*lenunit
 yc=0
 zc=0
 
-maxdisp=0.8
+maxdisp=0.7
 
 #for output in .xyz format
 print atoms

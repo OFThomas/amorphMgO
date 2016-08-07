@@ -20,7 +20,7 @@ atom_style charge	#specifies what properties to associate with atoms
 variable a equal  4.212
 atom_modify     map array sort 1 0.0 
 
-region box block 0.0 4.212 0.0 12.636 0.0 12.636 units box
+region box block 0.0 4.212 0.0 25.272 0.0 25.272 units box
 boundary p p p  #PBC in x-direction
 create_box 2 box  #generate simulation box
 
@@ -30,7 +30,7 @@ create_box 2 box  #generate simulation box
 #---------------------------- Parameters ----------------------------------------
 #Number of montecarlo steps to run for
 
-variable iter_steps loop 30
+variable iter_steps loop 20
 
 #number of steps to disorder system (inf temp)
 variable disorder equal 0
@@ -43,7 +43,7 @@ variable kT equal 0.026 		#inf T for disorder phase
 variable Tdecrease equal v_kT-0.026
 
 variable deltaperturb equal 0.0    #0.2 max size of initial perturbation per dim
-variable deltamove equal 0.1  #0.1 max size of MC move in one dimension
+variable deltamove equal 0.2  #0.1 max size of MC move in one dimension
 
 variable seed equal 582783
 #-------------------------------------------------------------------------------------
@@ -121,6 +121,9 @@ variable	layeri equal 0
 variable 	loweri equal "v_i - 1"
 variable 	upperi equal "v_i + 1"
 
+variable 	consist equal 0
+variable 	consistincr equal v_consist+1 
+
 #variable potentialatoms vector c_patoms
 
 #compute b1 all property/local batom1 batom2
@@ -138,7 +141,7 @@ variable 	upperi equal "v_i + 1"
 
 label           loop
 label 		loop_allsites
-variable iter_sitemax loop 72
+variable iter_sitemax loop 288
 #label 		loop_dis
 
 #print "initial kt ${kT}"
@@ -199,6 +202,12 @@ variable 	rand equal ${rn}
 #"jump SELF overlap"  
 
 print "not skipped"
+variable ediff equal v_elast-v_e
+
+if 	  "${ediff} < 0.00001" then &
+	  "variable consist equal ${consistincr}" &
+	else &
+	  "variable consist equal 0" &
 
 if  		"$e <= ${elast}" then &
 		  "print '${elast} $e' append accpt.out " &
@@ -218,6 +227,12 @@ if  		"$e <= ${elast}" then &
 
 run 1 post no
 print "${e} ${kT}" append energy.out
+
+if "${consist} >= 5" then &
+	"dump d2 all image 2 dumpfinal..*.jpg type type view 90 0 size 1920 1080 box no 0.2 " & 
+	"run 1 post no" &
+	"jump SELF endprog" &
+
 
 #run 1 post no
 #--------------------------------------------------------------
@@ -258,6 +273,7 @@ jump 		SELF loop_allsites
 next            iter_steps
 jump            SELF loop
 
+label endprog
 
 # --------------------final energy and stats ---------------------------
 
