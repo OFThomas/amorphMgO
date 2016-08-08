@@ -76,7 +76,7 @@ set             group all z v_z
 set             group all y v_y
 #-------------------------------------------------------------------------------------
 dump 1 all custom 1 dumpmc0.026.lammpstrj id type xs ys zs 
-
+dump d2 all image 10000 dumpfinal..*.jpg type type view 90 0 size 1920 1080 box no 0.2 
 run             0 post no
 
 variable        estart equal $e
@@ -147,7 +147,6 @@ run 0 post no
 variable 	rand equal ${rn}
 variable 	outimg equal 10000 
 
-print "not skipped"
 variable ediff equal v_elast-v_e
 
 if 	  "${ediff} < 0.00001" then &
@@ -159,18 +158,19 @@ if  		"$e <= ${elast}" then &
 		  "print '${elast} $e' append accpt.out " &
                   "variable elast equal $e" &
                   "variable naccept equal ${increment}" &
+		  "run 1 post no" &
 		elif " ${rand} <= ${boltzfactor}" &
 		  "print 'boltz acc ${rand} ${boltzfactor}' append boltz.out" &	
 		  "variable elast equal $e" &
                   "variable naccept equal ${increment}" &
+		  "run 1 post no" &
 		else & 
                   "set atom $i z ${z0}" &
                   "set atom $i y ${y0}" &
                   "set atom ${layeri} z ${z0}" &
                   "set atom ${layeri} y ${y0}" &
 
-run 1 post no
-print "${e} ${kT}" append energy.out
+print "${elast} ${kT}" append energy.out
 
 if "${consist} >= 20" then &
 	"variable outimg equal 1" &
@@ -179,6 +179,7 @@ if "${consist} >= 20" then &
 	"dump_modify d2 every 10000" &
 
 if "${consist} >= 30" then &
+	"print 'ended early at consistency of 30 steps' file end.txt" &
 	"jump SELF endprog" &
 
 #--------------------------------------------------------------

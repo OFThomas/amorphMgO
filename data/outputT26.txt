@@ -1471,3 +1471,31 @@ MC stats:
 
 Calculation complete
 Total wall time: 0:02:18
+  3d grid and FFT values/proc = 37553 12800
+Setting up Verlet run ...
+  Unit style    : metal
+  Current step  : 5499
+  Time step     : 0.001
+Memory usage per processor = 7.24545 Mbytes
+Step Temp E_pair E_mol TotEng Press 
+    5499            0   -16190.816            0   -16190.816    150290.15 
+    5500            0   -16190.816            0   -16190.816    150290.15 
+Loop time of 0.037024 on 1 procs for 1 steps with 800 atoms
+
+99.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+-16190.8162591965 0.026
+ERROR: Cound not find dump_modify ID (../output.cpp:604)
+Total # of neighbors = 180996
+Ave neighs/atom = 226.245
+Neighbor list builds = 0
+Dangerous builds = 0
+
+MC stats:
+  	neighbor list rebuilds = 0
+  	starting energy = -14275.2841604322
+  	final energy = -16314.4029083414
+  	minimum energy of perfect lattice = -14275.2841604322
+
+
+Calculation complete
+Total wall time: 0:20:03
