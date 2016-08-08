@@ -5,17 +5,6 @@ print "Optimise lattice constant of MgO crystal"
 units metal		#distance in A and energy in eV
 atom_style charge	#specifies what properties to associate with atoms
 
-#bond_style zero
-
-#compute bondlen all bond/local dist
-#compute pot all pe/atom
-#compute patoms all reduce min c_pot
-
-#compute cont all contact/atom
-#compute contactred all reduce sum c_cont
-#variable pcontact equal c_contactred
-
-#variable blen equal c_bondlen
 #cell vectors
 variable a equal  4.212
 atom_modify     map array sort 1 0.0 
@@ -83,14 +72,10 @@ variable        emin equal $e
 variable        z atom z
 variable        y atom y
 
-#variable        z atom z+v_deltaperturb*random(-1.0,1.0,${seed})
-#variable        y atom y+v_deltaperturb*random(-1.0,1.0,${seed})
-
 set             group all z v_z
 set             group all y v_y
 #-------------------------------------------------------------------------------------
 dump 1 all custom 1 dumpmc0.026.lammpstrj id type xs ys zs 
-#dump energy all custom 1 energy.dump c_Pot
 
 run             0 post no
 
@@ -124,21 +109,7 @@ variable 	upperi equal "v_i + 1"
 variable 	consist equal 0
 variable 	consistincr equal v_consist+1 
 
-#variable potentialatoms vector c_patoms
-
-#compute b1 all property/local batom1 batom2
-#compute b2 all bond/local dist
-#compute b3 all reduce min c_b1[1] c_b1[2] c_b2 replace 1 3 replace 2 3
-
-#variable red vector c_b3
-#dump bonds all local 100 dump.bond index c_b1[1] c_b1[2] c_b2[1]
-#print "${red}"
-
-dump d2 all image 10000 dumpfinal..*.jpg type type view 90 0 size 1920 1080 box no 0.2 
 #--------------------- LOOP -----------------------------------
-#variable iter_dis loop ${disorder}
-#thermo_style custom c_contactred
-#thermo 1
 
 label           loop
 label 		loop_allsites
@@ -170,38 +141,11 @@ set             atom ${layeri} z ${zupdate}
 set             atom ${layeri} y ${yupdate}
 #--------------------------------------------------------------
 
-#if "${potentialatoms} <= 0" then &
-#	"print 'pe atom $i < 0'"
-
-#dump bondlen all local c_bondlen
-#print "${bond1}"
-#print "$e ${elast}"
-#variable epe equal findpe
-#run 1 post no 
-#thermo_style custom c_b3[1] c_b3[2] c_b3[3]
-#run 0 post no 
-#compute findpe all pe
-#print "${epe}"
-#variable atompe vector c_Pot
-#print "${atompe}"
-#thermo_style custom c_patoms
-#print "${potentialatoms}"
-
 run 0 post no 
 
 #--------------------- Energy check ------------------------
 variable 	rand equal ${rn}
-variable 	outimg equal 10000
-
-#print "${boltzfactor} ${kT} ${elast} $e"
-#print "${emin} ${elast} $e"
-#if "$e < ${emin}" then &
-#"set atom $i z ${z0}" &
-#"set atom $i y ${y0}" &
-#"set atom ${layeri} z ${z0}" &
-#"set atom ${layeri} y ${y0}" &
-# "print 'Rejected'" &
-#"jump SELF overlap"  
+variable 	outimg equal 10000 
 
 print "not skipped"
 variable ediff equal v_elast-v_e
@@ -225,21 +169,18 @@ if  		"$e <= ${elast}" then &
                   "set atom ${layeri} z ${z0}" &
                   "set atom ${layeri} y ${y0}" &
 
-#label overlap
-
 run 1 post no
 print "${e} ${kT}" append energy.out
 
-if "${consist} >= 15" then &
+if "${consist} >= 20" then &
 	"variable outimg equal 1" &
 	"dump_modify d2 every 1" &
 	"run 1 post no" &
 	"dump_modify d2 every 10000" &
 
-if "${consist} >= 20" then &
+if "${consist} >= 30" then &
 	"jump SELF endprog" &
 
-#run 1 post no
 #--------------------------------------------------------------
 variable nmoves equal ${nmincrement}
 
