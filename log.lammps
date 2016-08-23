@@ -12,28 +12,28 @@ atom_style charge	#specifies what properties to associate with atoms
 #cell vectors
 variable a equal  4.212
 
-region box block 0.0 4.212 0.0 42.12 0.0 42.12 units box
+region box block 0.0 4.212 0.0 105.3 0.0 105.3 units box
 boundary p p p  #PBC in x-direction
 create_box 2 box  #generate simulation box
-Created orthogonal box = (0 0 0) to (4.212 42.12 42.12)
+Created orthogonal box = (0 0 0) to (4.212 105.3 105.3)
   1 by 1 by 1 MPI processor grid
 
 #read in coordinates
 read_dump testmc.xyz 0 x y z box no add yes format xyz
-  orthogonal box = (0 0 0) to (4.212 42.12 42.12)
+  orthogonal box = (0 0 0) to (4.212 105.3 105.3)
   0 atoms before read
-  800 atoms in snapshot
+  5000 atoms in snapshot
   0 atoms purged
   0 atoms replaced
   0 atoms trimmed
-  800 atoms added
-  800 atoms after read
+  5000 atoms added
+  5000 atoms after read
 
 #set up potential
 set type 1 charge  2.000000
-  400 settings made for charge
+  2500 settings made for charge
 set type 2 charge -2.000000
-  400 settings made for charge
+  2500 settings made for charge
 
 mass 1 24.305 #specify mass of atoms
 mass 2 15.9994 #specify mass of atoms
@@ -59,70 +59,85 @@ min_style cg #apply conjugate gradients
 minimize 1e-15 1e-15 5000 5000 #minimiser settings
 PPPM initialization ...
 WARNING: Using polynomial approximation for long-range coulomb (../kspace.cpp:316)
-  G vector (1/distance) = 0.387869
-  grid = 8 40 40
+  G vector (1/distance) = 0.38446
+  grid = 9 90 90
   stencil order = 5
-  estimated absolute RMS force accuracy = 0.00123919
-  estimated relative force accuracy = 8.60569e-05
+  estimated absolute RMS force accuracy = 0.00146818
+  estimated relative force accuracy = 0.000101959
   using double precision FFTs
-  3d grid and FFT values/proc = 37553 12800
+  3d grid and FFT values/proc = 169362 72900
 Neighbor list info ...
   2 neighbor list requests
   update every 1 steps, delay 0 steps, check yes
   max neighbors/atom: 2000, page size: 100000
   master list distance cutoff = 10
   ghost atom cutoff = 10
-  binsize = 5 -> bins = 1 9 9
-Memory usage per processor = 8.34039 Mbytes
+  binsize = 5 -> bins = 1 22 22
+Memory usage per processor = 28.5541 Mbytes
 Step PotEng 
-       0   -14275.284 
-      10   -16235.342 
-      20   -16457.076 
-      30   -16460.034 
-      40   -16460.188 
-      50   -16460.216 
-      60    -16460.22 
-      70   -16460.221 
-      80   -16460.221 
-      90   -16460.221 
-     100   -16460.221 
-     110   -16460.221 
-     120   -16460.221 
-     124   -16460.221 
-Loop time of 5.10678 on 1 procs for 124 steps with 800 atoms
+       0   -83401.131 
+      10    -100227.5 
+      20   -102714.72 
+      30   -102870.05 
+      40   -102875.38 
+      50   -102876.06 
+      60   -102876.19 
+      70   -102876.23 
+      80   -102876.25 
+      90   -102876.25 
+     100   -102876.26 
+     110   -102876.26 
+     120   -102876.26 
+     130   -102876.26 
+     140   -102876.26 
+     150   -102876.26 
+     160   -102876.26 
+     170   -102876.26 
+     180   -102876.26 
+     190   -102876.26 
+     200   -102876.26 
+     210   -102876.26 
+     220   -102876.26 
+     230   -102876.26 
+     240   -102876.26 
+     250   -102876.26 
+     260   -102876.26 
+     270   -102876.26 
+     272   -102876.26 
+Loop time of 71.1534 on 1 procs for 272 steps with 5000 atoms
 
-99.9% CPU use with 1 MPI tasks x 1 OpenMP threads
+99.6% CPU use with 1 MPI tasks x 1 OpenMP threads
 
 Minimization stats:
   Stopping criterion = energy tolerance
   Energy initial, next-to-last, final = 
-        -14275.2841604     -16460.2206351     -16460.2206351
-  Force two-norm initial, final = 903.183 3.64071e-06
-  Force max component initial, final = 206.818 2.97858e-07
-  Final line search alpha, max atom move = 1 2.97858e-07
-  Iterations, force evaluations = 124 231
+        -83401.1305639     -102876.256777     -102876.256777
+  Force two-norm initial, final = 3469.42 6.61073e-05
+  Force max component initial, final = 284.55 2.94937e-06
+  Final line search alpha, max atom move = 1 2.94937e-06
+  Iterations, force evaluations = 272 519
 
 MPI task timing breakdown:
 Section |  min time  |  avg time  |  max time  |%varavg| %total
 ---------------------------------------------------------------
-Pair    | 4.0563     | 4.0563     | 4.0563     |   0.0 | 79.43
-Kspace  | 0.88581    | 0.88581    | 0.88581    |   0.0 | 17.35
-Neigh   | 0.006546   | 0.006546   | 0.006546   |   0.0 |  0.13
-Comm    | 0.017059   | 0.017059   | 0.017059   |   0.0 |  0.33
-Output  | 0.13118    | 0.13118    | 0.13118    |   0.0 |  2.57
+Pair    | 57.172     | 57.172     | 57.172     |   0.0 | 80.35
+Kspace  | 11.567     | 11.567     | 11.567     |   0.0 | 16.26
+Neigh   | 0.079908   | 0.079908   | 0.079908   |   0.0 |  0.11
+Comm    | 0.29567    | 0.29567    | 0.29567    |   0.0 |  0.42
+Output  | 1.8848     | 1.8848     | 1.8848     |   0.0 |  2.65
 Modify  | 0          | 0          | 0          |   0.0 |  0.00
-Other   |            | 0.009903   |            |       |  0.19
+Other   |            | 0.1548     |            |       |  0.22
 
-Nlocal:    800 ave 800 max 800 min
+Nlocal:    5000 ave 5000 max 5000 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
-Nghost:    8451 ave 8451 max 8451 min
+Nghost:    33291 ave 33291 max 33291 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
-Neighs:    181624 ave 181624 max 181624 min
+Neighs:    1.14265e+06 ave 1.14265e+06 max 1.14265e+06 min
 Histogram: 1 0 0 0 0 0 0 0 0 0
 
-Total # of neighbors = 181624
-Ave neighs/atom = 227.03
-Neighbor list builds = 1
+Total # of neighbors = 1142650
+Ave neighs/atom = 228.53
+Neighbor list builds = 2
 Dangerous builds = 0
 
 #----------------------SIMULATION DONE-------------------------------
@@ -139,4 +154,4 @@ Dangerous builds = 0
 
 print "Calculation complete"
 Calculation complete
-Total wall time: 0:00:05
+Total wall time: 0:01:11
