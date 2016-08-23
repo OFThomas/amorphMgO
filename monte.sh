@@ -49,17 +49,14 @@ if [ $skip -eq 0 ]; then
 
 #--------------------------------------------------------------------------------
     while [ 0 -lt $(echo $totsteps $end_steps | awk '{if ($1<=$2) print 1; else print 0;}') ]
-    #while [ 0 -lt $(echo $disordermoves $end_dis | awk '{if ($1<=$2) print 1; else print 0;}') ]
       do 
       i=$((i+1))
       te=$(echo $temp | awk '{print $1*1000}')
-      #vary=$disordermoves
       vary=$totsteps
 
       sed -i "/variable disorder equal/c\variable disorder equal "$disordermoves"" $file	
       sed -i "/variable iter_steps loop/c\variable iter_steps loop "$totsteps"" $file
       sed -i "/variable iter_sitemax loop/c\variable iter_sitemax loop "$tempsteps"" $file
-      #sed -i "/variable iter loop/c\variable iter loop "$disordermoves"" $file
       sed -i "/variable T equal/c\variable T equal "$temp"" $file
       sed -i "/variable Tdecrease equal/c\variable Tdecrease equal v_kT-"$tinc"" $file
       sed -i "/dump 1 all custom 1 dumpmc/c\dump 1 all custom 1 dumpmc"$temp".lammpstrj id type xs ys zs " $file
@@ -73,45 +70,10 @@ if [ $skip -eq 0 ]; then
 
       search=$(grep "final energy" ./temp$i.txt)
       energy=$(echo $search | awk '{print $4}')
-      #echo "Disorder moves: "$vary "Temp: " $temp "Energy: " $energy
       echo "total moves: "$vary "Temp: " $temp "Energy: " $energy
-      #echo $vary $energy >> disorderplot.dat
 
-      #mv output.txt ./data/output.txt
-      #if [ $skip -eq 1 ] ; then
-       #	vmd dumpmc.lammpstrj
-      #else
-       #	echo "skipped"
-      #fi
-      #more disorderplot.txt
+#---------------------------------------------------------------
 
-
-
-#----------------- Energy plot every step--------------
-#./grepplot.sh $i $te $steps
-#rm ./energyplot$i+$te.dat
-#rm ./ratioplot$i+$te.dat
-
-#for j in $(eval echo "{5001..$steps}")
-    #for j in {1..500}
-#    do
-#    if [ $j -lt 1000 ]; then 
-#	searchenergy=$(grep "^     $j" ./temp.txt)
-#    elif [[ $j -gt 999 ]] && [[ $j -lt 10000 ]]; then
-#	searchenergy=$(grep "^    $j" ./temp.txt)
-#    else
-#	searchenergy=$(grep "^   $j" ./temp.txt)
-#    fi
-#  stepenergy=$(echo $searchenergy | awk '{print $5}')
-#  echo $j $stepenergy >> energyplot$i+$te.dat
-
-  #searchratio=$(grep "^moves = $((j-500))" ./temp.txt )
-  #accpt_moves=$(echo $searchratio | awk '{print $8}')
-  #echo $j $accpt_moves >> ratioplot$i+$te.dat
-#done 
-#-----------------------------------------------------------------
-
-#disordermoves=$(echo $disordermoves $disinc | awk '{print $1+$2}')
 totsteps=$(echo $totsteps $stepsinc | awk '{print $1+$2}')
 done
 
@@ -122,27 +84,6 @@ else
 echo "Skipping to plotting"
 fi
 
-#for filetoplot in ./energyplot*
-#do
-#python2 plot.py << EOF
-#$num_atoms
-#$filetoplot
-#$DOF
-#0
-#EOF
-#display $filetoplot.png &
-#done
-
-#for filetoplot2 in ./ratioplot*
-#do
-#python2 plot.py << EOF
-#$num_atoms
-#$filetoplot2
-#$DOF
-#1
-#EOF
-#display $filetoplot2.png &
-#done
 #for filetoplot3 in ./disorderplot*
 #do
 #python2 plot.py << EOF

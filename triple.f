@@ -37,6 +37,8 @@ c	declarations
 	real :: Deltax,Deltay
 	logical :: togglecryst2
 	
+	
+	
 c	read in triple junction triangle specification
 c	note that n2+n3 > n1 is required
 c	also n2+n3 not too large
@@ -57,12 +59,12 @@ c	shift of crystals as frac of a
 c	number of layers in b directions (perp to centre)	
 c         to generate core region
 c          nbmin=-5
-c         nbmax=-1
+c          nbmax=-1
                 
 c         to generate hollow core
-          nbmin=2
+          nbmin=-5
 	  nbmax=20
-c	nbmin=-5
+	
 c	number of layers in a directions (tangent to perp)	
 	namin=-30
 	namax=30
@@ -442,9 +444,8 @@ c	count atoms in crystal
 	  endif
 	enddo
 	
-	write(*,"(I4)") atomscrys
-c	write(*,*) 'Atoms. Timestep: 0'
-	write(*,"(I2)") 0
+	write(*,*) atomscrys
+	write(*,*) 'Atoms. Timestep: 0'
 	do I=1,atoms
 	  if(C(i).ne.0) then
 	    write(*,*) Id(i),Zc(i), Xc(i),Yc(i)
@@ -452,4 +453,5 @@ c	write(*,*) 'Atoms. Timestep: 0'
 	enddo
 
       end program
+
 
